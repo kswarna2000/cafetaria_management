@@ -10,7 +10,7 @@
       <div class="DisplayOrder-welcome">
         <h1>Your Orders</h1>
       </div>
-      <% Order.all.each do |order|%>
+      <% Order.where(delivered_at: nil).each do |order|%>
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <h4>Order id: <b><%=order.id.to_s%></b></h4>
@@ -19,9 +19,8 @@
           </div>
         </div>
       <% end %>
-      <%= form_with(url: "/orders", method:"post", class: "AddItem-body") do %>
-        <input type="submit" value="Place  New Order" class="AddOrder-button" />
+<%= form_with(url: "/orders", method:"post", class: "AddItem-body") do %>
+      <input type="submit" value="Place  New Order" class="AddOrder-button" />
      <%end%>
     </div>
-  </div>
 </body>
