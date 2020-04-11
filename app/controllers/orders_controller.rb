@@ -14,4 +14,16 @@ class OrdersController < ApplicationController
     )
     redirect_to orderitems_path
   end
+
+  def destroy
+    id = params[:id]
+    order = Order.find(id)
+    order.delivered_at = DateTime.now
+    order.save!
+    redirect_to orders_showorders_path
+  end
+
+  def showorders
+    render "showorders"
+  end
 end

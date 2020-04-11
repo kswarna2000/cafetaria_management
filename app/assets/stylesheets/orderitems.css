@@ -41,6 +41,17 @@ body {
   color: black;
 }
 
+.DisplayOrder-itemsContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 70%;
+}
+
+.DisplayOrder-container {
+  padding: 2px 16px;
+  flex: 30%;
+}
+
 /* Column container */
 
 .AddOrderItemContainer {
