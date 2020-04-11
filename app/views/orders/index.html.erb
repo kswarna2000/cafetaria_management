@@ -1,7 +1,4 @@
 <body>
-  <!-- Note -->
-
-  <!-- Navigation Bar -->
   <div class="Navbar">
     <a href="#">home</a>
     <a href="#">profile</a>
@@ -13,17 +10,18 @@
       <div class="DisplayOrder-welcome">
         <h1>Your Orders</h1>
       </div>
-       <% Order.all.each do |order|%>
-      <div class="DisplayOrder-card">
-        <div class="DisplayOrder-container">
-          <h4>Order id: <b><%=order.id.to_s%></b></h4>
-          <h4><b>Order date: <%= order.order_date.to_s(:long) %></b></h4>
-          <h4><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s %></h4>
+      <% Order.all.each do |order|%>
+        <div class="DisplayOrder-card">
+          <div class="DisplayOrder-container">
+            <h4>Order id: <b><%=order.id.to_s%></b></h4>
+            <h4><b>Order date: <%= order.order_date.to_s(:long) %></b></h4>
+            <h4><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s %></h4>
+          </div>
         </div>
-      </div>
       <% end %>
-<%= form_with(url: "/orders", method:"post", class: "AddItem-body") do %>
-      <input type="submit" value="Place  New Order" class="AddOrder-button" />
+      <%= form_with(url: "/orders", method:"post", class: "AddItem-body") do %>
+        <input type="submit" value="Place  New Order" class="AddOrder-button" />
      <%end%>
     </div>
+  </div>
 </body>

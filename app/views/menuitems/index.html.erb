@@ -1,6 +1,4 @@
 <body>
-  <!-- Note -->
-
   <!-- Navigation Bar -->
   <div class="Navbar">
     <a href="/menuitems">home</a>
@@ -9,7 +7,7 @@
 
   <!-- The flexible grid (content) -->
   <div class="AddItem">
-   <%= form_with(url: "/menuitems", method:"post", class: "AddItem-body") do %>
+    <%= form_with(url: "/menuitems", method:"post", class: "AddItem-body") do %>
       <h2>Add Item</h2>
       <div class="AddItem-container">
         <p class="AddItem-name">Menu id:</p>
@@ -33,15 +31,16 @@
       <div class="DisplayItem-welcome">
         <h1>Welcome Gattu........</h1>
       </div>
-       <% Menuitem.all.each do |menuitem|%>
-      <div class="DisplayItem-card">
-        <div class="DisplayItem-container">
-          <h4><b><%=menuitem.menu_id.to_s%></b></h4>
-          <h4><b><%= menuitem.item_name%></b></h4>
-          <p> <%= menuitem.item_description%></p>
-          <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
+      <% Menuitem.all.each do |menuitem|%>
+        <div class="DisplayItem-card">
+          <div class="DisplayItem-container">
+            <h4><b><%=menuitem.menu_id.to_s%></b></h4>
+            <h4><b><%= menuitem.item_name%></b></h4>
+            <p> <%= menuitem.item_description%></p>
+            <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
+          </div>
         </div>
-      </div>
       <% end %>
     </div>
+  </div>
 </body>
