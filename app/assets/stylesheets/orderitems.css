@@ -1,12 +1,3 @@
-.AddOrder-button {
-  height: 35px;
-  width: 200px;
-  align-self: center;
-  vertical-align: middle;
-  color: white;
-  background-color: green;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -20,7 +11,7 @@ body {
 
 /* Header/logo Title */
 
-.DisplayOrder-welcome {
+.DisplayItem-welcome {
   padding: 30px;
   text-align: center;
   background: #1abc9c;
@@ -52,8 +43,14 @@ body {
 
 /* Column container */
 
-.Add {
+.AddOrderItemContainer {
   display: flex;
+}
+
+.AddOrderItem {
+  flex: 30%;
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -61,7 +58,7 @@ body {
 
 /* Sidebar/left column */
 
-.AddOrder-body {
+.AddItem-body {
   flex: 20%;
   display: flex;
   flex-direction: column;
@@ -72,33 +69,41 @@ body {
   border-color: violet;
 }
 
-.AddOrder-item {
+.AddItem-item {
   flex: 60%;
   height: 30px;
   padding: 0%;
 }
 
-.AddOrder-name {
+.AddItem-name {
   flex: 40%;
   height: 30px;
   font-weight: bold;
 }
 
-.AddOrder-container {
+.AddItem-container {
   display: flex;
   margin-bottom: 20px;
   align-items: center;
 }
 
+.AddItem-button {
+  height: 35px;
+  width: 100px;
+  align-self: center;
+  color: white;
+  background-color: green;
+}
+
 /* Main column */
 
-.DisplayOrder {
+.DisplayOrderItem {
   flex: 70%;
   background-color: white;
   padding: 20px;
 }
 
-.DisplayOrder-card {
+.DisplayItem-card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -106,13 +111,13 @@ body {
 
 /* On mouse-over, add a deeper shadow */
 
-.DisplayOrder-card:hover {
+.DisplayItem-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Add some padding inside the card container */
 
-.DisplayOrder-container {
+.DisplayItem-container {
   padding: 2px 16px;
 }
 
