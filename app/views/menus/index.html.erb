@@ -1,0 +1,23 @@
+<body>
+  <div class="Navbar">
+    <a href="/orders/showorders">show orders</a>
+    <a href="/menus/new">Create menu</a>
+    <a href="/menus">show menus</a>
+  </div>
+
+  <!-- The flexible grid (content) -->
+  <div class="AddOrder">
+    <div class="DisplayOrder">
+      <div class="DisplayOrder-welcome">
+        <h1>Your Menus</h1>
+      </div>
+      <% Menu.all.each do |menu|%>
+        <div class="DisplayOrder-card">
+          <div class="DisplayOrder-container">
+            <h4>Menu id: <b><%=menu.id.to_s%></b></h4>
+            <h4><b>Menu name: <%= menu.name %></b></h4>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</body>

@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
       user_id: user_id,
       delivered_at: delivered_at,
     )
+    session[:current_order_id] = new_order.id
     redirect_to orderitems_path
   end
 

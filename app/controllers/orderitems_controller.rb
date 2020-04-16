@@ -4,7 +4,7 @@ class OrderitemsController < ApplicationController
   end
 
   def create
-    order_id = params[:order_id]
+    order_id = session[:current_order_id]
     menu_item_id = params[:menu_item_id]
     menu_item_name = params[:menu_item_name]
     menu_item_price = params[:menu_item_price]

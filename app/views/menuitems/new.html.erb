@@ -1,18 +1,15 @@
 <body>
   <!-- Navigation Bar -->
   <div class="Navbar">
-    <a href="/menuitems">home</a>
     <a href="/orders/showorders">show orders</a>
+    <a href="/menus/new">Create menu</a>
+    <a href="/menus">show menus</a>
   </div>
 
   <!-- The flexible grid (content) -->
   <div class="AddItem">
     <%= form_with(url: "/menuitems", method:"post", class: "AddItem-body") do %>
       <h2>Add Item</h2>
-      <div class="AddItem-container">
-        <p class="AddItem-name">Menu id:</p>
-        <input type="text" name="menu_id" class="AddItem-item" />
-      </div>
       <div class="AddItem-container">
         <p class="AddItem-name">Item Name:</p>
         <input type="text" name="item_name" class="AddItem-item" />
@@ -29,9 +26,9 @@
     <% end %>
     <div class="DisplayItem">
       <div class="DisplayItem-welcome">
-        <h1>Welcome Gattu........</h1>
+        <h1><%= Menu.find( @current_menu_id).name %> Menu:</h1>
       </div>
-      <% Menuitem.all.each do |menuitem|%>
+      <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem|%>
         <div class="DisplayItem-card">
           <div class="DisplayItem-container">
             <h4><b><%=menuitem.menu_id.to_s%></b></h4>

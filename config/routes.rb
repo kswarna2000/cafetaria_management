@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :menuitems
   resources :orders
   resources :orderitems
+  resources :menus
 end
