@@ -1,0 +1,18 @@
+<body>
+  <div class="Navbar">
+    <a href="/orderitems/new">show menus</a>
+    <a href="/orders">show orders</a>
+    <a href="/orders/new">place new order</a>
+  </div>
+
+  <!-- The flexible grid (content) -->
+  <div class="AddOrder">
+    <div class="DisplayOrder">
+      <div class="DisplayOrder-welcome">
+        <h1>Your Orders</h1>
+      </div>
+          <%= form_with(url: "/orders", method:"post") do %>
+      <input type="submit" value="Place  New Order" class="AddOrder-button" />
+     <%end%>
+    </div>
+</body>

@@ -15,4 +15,10 @@ class MenusController < ApplicationController
     session[:current_menu_id] = new_menu.id
     redirect_to new_menuitem_path
   end
+
+  def edit
+    id = params[:id]
+    session[:current_menu_id] = id
+    redirect_to new_menuitem_path
+  end
 end

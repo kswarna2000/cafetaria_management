@@ -11,13 +11,17 @@
       <div class="DisplayOrder-welcome">
         <h1>Your Menus</h1>
       </div>
+      <%= form_with(url: "/menus/edit", method:"post", class: "AddItem-body") do %>
       <% Menu.all.each do |menu|%>
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <h4>Menu id: <b><%=menu.id.to_s%></b></h4>
             <h4><b>Menu name: <%= menu.name %></b></h4>
+            <input type="hidden" name="id" value=<%= menu.id%>>
+            <input type="submit" value="Edit menu " class="AddOrder-button" />
           </div>
         </div>
       <% end %>
+      <%end%>
     </div>
 </body>

@@ -1,7 +1,8 @@
 <body>
   <div class="Navbar">
-    <a href="#">home</a>
-    <a href="#">profile</a>
+    <a href="/orderitems/new">show menus</a>
+    <a href="/orders">show orders</a>
+    <a href="/orders/new">place new order</a>
   </div>
 
   <!-- The flexible grid (content) -->
@@ -19,8 +20,6 @@
           </div>
         </div>
       <% end %>
-<%= form_with(url: "/orders", method:"post", class: "AddItem-body") do %>
-      <input type="submit" value="Place  New Order" class="AddOrder-button" />
-     <%end%>
+
     </div>
 </body>

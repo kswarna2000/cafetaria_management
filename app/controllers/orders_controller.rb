@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       delivered_at: delivered_at,
     )
     session[:current_order_id] = new_order.id
-    redirect_to orderitems_path
+    redirect_to new_orderitem_path
   end
 
   def destroy
@@ -22,6 +22,10 @@ class OrdersController < ApplicationController
     order.delivered_at = DateTime.now
     order.save!
     redirect_to orders_showorders_path
+  end
+
+  def new
+    render "new"
   end
 
   def showorders

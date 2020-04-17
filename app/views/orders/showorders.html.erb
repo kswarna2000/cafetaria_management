@@ -20,11 +20,7 @@
               <input type="submit" value="Mark as delivered" class="AddItem-button" />
             <%end%>
           </div>
-          <div DisplayOrder-itemsContainer>
-            <%Orderitem.where(order_id: order.id).order(:menu_item_name).each do |orderitem| %>
-              <p> <%= orderitem.menu_item_name%> </p>
-            <%end%>
-          </div>
+
         </div>
      <% end %>
     </div>

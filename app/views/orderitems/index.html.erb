@@ -1,7 +1,8 @@
 <body>
   <div class="Navbar">
-    <a href="#">home</a>
-    <a href="#">profile</a>
+    <a href="/orderitems/new">show menus</a>
+    <a href="/orders">show orders</a>
+     <a href="/orders/new">place new order</a>
   </div>
   <div class="DisplayItem-welcome">
     <h1>Welcome Gattu........</h1>
@@ -10,8 +11,9 @@
   <div class="AddOrderItemContainer">
     <div class="AddOrderItem">
       <%order_id= session[:current_order_id]%>
+      <%menu_id= session[:show_menu_id]%>
       <h2>Menu Items</h2>
-      <% Menuitem.all.each do |menuitem|%>
+      <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
         <div class="DisplayItem-card">
           <%= form_with(url: "/orderitems", method:"post", class: "AddItem-body") do %>
             <div class="DisplayItem-container">
@@ -22,9 +24,8 @@
               <h4><b><%= menuitem.item_name%></b></h4>
               <input type="hidden" name="menu_item_name" value=<%= menuitem.item_name%>>
               <h4><b><%= menuitem.item_description%></b></h4>
-              <h4> <%= menuitem.item_price.to_s%></h4>
+              <h4>&#8377 <%= menuitem.item_price.to_s%></h4>
               <input type="hidden" name="menu_item_price" value=<%= menuitem.item_price%>>
-              <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
               <input type="submit" value="Add Item" class="AddItem-button" />
             </div>
           <%end%>

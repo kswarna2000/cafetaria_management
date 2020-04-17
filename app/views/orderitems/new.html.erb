@@ -1,0 +1,28 @@
+<body>
+  <div class="Navbar">
+     <a href="/orderitems/new">show menus</a>
+    <a href="/orders">show orders</a>
+     <a href="/orders/new">place new order</a>
+  </div>
+  <div class="DisplayItem-welcome">
+    <h1>Welcome Gattu........</h1>
+  </div>
+  <!-- The flexible grid (content) -->
+  <div class="AddOrderItemContainer">
+    <div class="AddOrderItem">
+      <h2>Menus</h2>
+      <% Menu.all.each do |menu|%>
+        <div class="DisplayItem-card">
+          <%= form_with(url: "/orderitems/showmenuitems", method:"post", class: "AddItem-body") do %>
+            <div class="DisplayItem-container">
+              <h4><b><%=menu.id%></b></h4>
+              <input type="hidden" name="menu_item_id" value= <%= menu.id%>>
+              <h4><b><%=menu.name%></b></h4>
+              <input type="submit" value="Show menu " class="AddItem-button" />
+            </div>
+          <%end%>
+        </div>
+      <%end%>
+   </div>
+  </div>
+</body>
