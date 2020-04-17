@@ -16,9 +16,11 @@
             <h4>Order id: <b><%=order.id.to_s%></b></h4>
             <h4><b>Order date: <%= order.order_date.to_s(:long) %></b></h4>
             <h4><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : ordered.delivered_at.to_s %></h4>
-            <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>
-              <input type="submit" value="Mark as delivered" class="AddItem-button" />
+             <%= form_with(url: "/orderitems/display", method:"post") do %>
+              <input type="submit" value="Show Items" class="AddItem-button" />
+              <input type="hidden" name="order_id" value=<%=order.id%>>
             <%end%>
+
           </div>
 
         </div>

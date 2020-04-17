@@ -21,6 +21,15 @@ class OrderitemsController < ApplicationController
     render "new"
   end
 
+  def display
+    session[:show_order_id] = params[:order_id]
+    redirect_to "/orderitems/showitems"
+  end
+
+  def showitems
+    render "display"
+  end
+
   def showmenuitems
     session[:show_menu_id] = params[:menu_item_id]
     redirect_to orderitems_path
