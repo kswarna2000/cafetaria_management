@@ -11,7 +11,7 @@
         <h1>Your Orders</h1>
       </div>
           <%= form_with(url: "/orders", method:"post") do %>
-      <input type="submit" value="Place  New Order" class="AddOrder-button" />
+           <%= submit_tag "Place New Order" , class: "AddOrder-button"%>
      <%end%>
     </div>
 </body>

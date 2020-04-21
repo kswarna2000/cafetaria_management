@@ -14,9 +14,9 @@
   <%= form_with(url: "/menus", method:"post", class: "AddItem-body") do %>
     <div class="AddItem-container">
         <p class="AddItem-name">Menu Name:</p>
-        <input type="text" name="name" class="AddItem-item" />
+        <%= text_field_tag 'name' ,nil , class: "AddItem-item" %>
       </div>
-      <input type="submit" value="Add items " class="AddOrder-button" />
+      <%= submit_tag "Add Items" , class: "AddOrder-button"%>
      <%end%>
     </div>
 </body>

@@ -20,7 +20,7 @@
         </div>
       <% end %>
        <%= form_with(url: "/orders/#{session[:show_order_id]}", method:"delete") do %>
-              <input type="submit" value="Mark as delivered" class="AddItem-button" />
+              <%= submit_tag "Mark as delivered" , class: "AddItem-button"%>
         <%end%>
     </div>
   </div>
