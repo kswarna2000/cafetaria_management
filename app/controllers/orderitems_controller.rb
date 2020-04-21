@@ -7,12 +7,14 @@ class OrderitemsController < ApplicationController
     order_id = session[:current_order_id]
     menu_item_id = params[:menu_item_id]
     menu_item_name = params[:menu_item_name]
-    menu_item_price = params[:menu_item_price]
+    menu_item_price = params[:menu_item_price].to_f
+    menu_item_quantity = params[:menu_item_quantity].to_i
     neworderitem = Orderitem.create!(
       order_id: order_id,
       menu_item_id: menu_item_id,
       menu_item_name: menu_item_name,
       menu_item_price: menu_item_price,
+      menu_item_quantity: menu_item_quantity,
     )
     redirect_to orderitems_path
   end

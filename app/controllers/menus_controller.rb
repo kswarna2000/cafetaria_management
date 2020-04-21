@@ -18,8 +18,14 @@ class MenusController < ApplicationController
 
   def edit
     id = params[:id]
-    puts "hi #{id}"
     session[:current_menu_id] = id
     redirect_to new_menuitem_path
+  end
+
+  def destroy
+    id = params[:id]
+    menu = Menu.find(id)
+    menu.destroy
+    redirect_to "/menus"
   end
 end

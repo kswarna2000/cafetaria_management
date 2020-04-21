@@ -25,6 +25,7 @@
               <h4><b><%= menuitem.item_description%></b></h4>
               <h4>&#8377 <%= menuitem.item_price.to_s%></h4>
                 <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
+               <h4> Quantity: <%=text_field_tag  "menu_item_quantity",nil , class: "AddItem-item"%></h4>
                  <%= submit_tag "Add Item" , class: "AddItem-button"%>
             </div>
           <%end%>
@@ -39,7 +40,7 @@
             <h4><b><%=orderitem.order_id.to_s%></b></h4>
             <h4><b><%= orderitem.menu_item_id%></b></h4>
             <h4><b><%= orderitem.menu_item_name%></b></h4>
-            <p> &#8377 <%= orderitem.menu_item_price.to_s%></p>
+            <p> &#8377 <%= orderitem.menu_item_price*orderitem.menu_item_quantity %></p>
           </div>
         </div>
      <% end %>

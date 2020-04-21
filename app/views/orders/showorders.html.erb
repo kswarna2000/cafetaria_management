@@ -8,7 +8,7 @@
 <!-- The flexible grid (content) -->
     <div class="DisplayOrder">
       <div class="DisplayOrder-welcome">
-        <h1>Your Orders</h1>
+        <h1>Orders</h1>
       </div>
       <% Order.pending_orders.each do |order|  #getting only undelivered orders%>
         <div class="DisplayOrder-card">
@@ -20,9 +20,7 @@
                <%= hidden_field_tag 'order_id', order.id %>
               <%= submit_tag "Show Items" , class: "AddItem-button"%>
             <%end%>
-
           </div>
-
         </div>
      <% end %>
     </div>
