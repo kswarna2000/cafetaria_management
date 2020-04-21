@@ -21,6 +21,7 @@
             <%= submit_tag "received?" , class: "AddItem-button"%>
           <%end%>
           <%= form_with(url: "/orders/complain", method:"post") do %>
+              <%= hidden_field_tag 'id', order.id %>
             <%= submit_tag "complain" , class: "AddItem-button"%>
           <%end%>
           <%end%>

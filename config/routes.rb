@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "/orderitems/redirect", to: "orderitems#redirect"
   post "/menus/edit", to: "menus#edit"
   post "/orders/mark", to: "orders#mark"
-  post "/orders/complain", "orders#complain"
+  post "/orders/complain", to: "orders#complain"
   resources :menuitems
   resources :orders
   resources :orderitems

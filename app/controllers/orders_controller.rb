@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
     id = params[:id]
     order = Order.find(id)
     order.delivered_at = nil
+    order.save!
     redirect_to "/orders"
   end
 
