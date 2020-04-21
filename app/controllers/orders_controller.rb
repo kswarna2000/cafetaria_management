@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order_date = Date.today
+    order_date = DateTime.now
     user_id = 1
     delivered_at = nil
     new_order = Order.create!(

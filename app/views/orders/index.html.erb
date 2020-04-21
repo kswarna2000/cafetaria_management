@@ -14,8 +14,8 @@
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <h4>Order id: <b><%=order.id.to_s%></b></h4>
-            <h4><b>Order date: <%= order.order_date.to_s(:long) %></b></h4>
-            <h4><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s %></h4>
+            <h4><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>
+            <h4><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.to_s(:long)}" %></h4>
           </div>
         </div>
       <% end %>
