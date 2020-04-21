@@ -29,13 +29,20 @@
         <h1><%= Menu.find( @current_menu_id).name %> Menu:</h1>
       </div>
       <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem|%>
-        <div class="DisplayItem-card">
-          <div class="DisplayItem-container">
+        <div class="MenuItem-card">
+          <div class="MenuItem-container">
             <h4><b><%=menuitem.menu_id.to_s%></b></h4>
             <h4><b><%= menuitem.item_name%></b></h4>
             <p> <%= menuitem.item_description%></p>
             <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
           </div>
+          <div class="MenuButton-container">
+             <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="AddItem-button">Edit</button></a>
+            <%= form_with(url: "/menuitems/#{menuitem.id}", method:"delete") do %>
+              <%=submit_tag "Delete", class: "AddItem-button"%>
+            <% end%>
+          </div>
+
         </div>
       <% end %>
     </div>
