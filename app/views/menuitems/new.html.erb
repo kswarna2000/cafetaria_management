@@ -6,9 +6,16 @@
     <a href="/menus">show menus</a>
   </div>
 
+
+
   <!-- The flexible grid (content) -->
   <div class="AddItem">
     <%= form_with(url: "/menuitems", method:"post", class: "AddItem-body") do %>
+    <%if flash[:error]%>
+        <p class="Flash-error">
+          <%= flash[:error]%>
+        </p>
+    <%end%>
       <h2>Add Item</h2>
       <div class="AddItem-container">
         <p class="AddItem-name">Item Name:</p>
@@ -45,6 +52,7 @@
 
         </div>
       <% end %>
+      <a href="/menus/new"><button class="AddItem-button">Done</a>
     </div>
   </div>
 </body>

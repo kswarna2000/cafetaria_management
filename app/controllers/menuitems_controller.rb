@@ -1,7 +1,11 @@
 class MenuitemsController < ApplicationController
   def new
-    @current_menu_id = session[:current_menu_id]
-    render "new"
+    if session[:current_menu_id]
+      @current_menu_id = session[:current_menu_id]
+      render "new"
+    else
+      redirect_to new_menu_path
+    end
   end
 
   def create
@@ -9,13 +13,18 @@ class MenuitemsController < ApplicationController
     item_name = params[:item_name]
     item_description = params[:item_description]
     item_price = (params[:item_price]).to_f
-    new_menuitem = Menuitem.create!(
+    new_menuitem = Menuitem.new(
       menu_id: menu_id,
       item_name: item_name,
       item_description: item_description,
       item_price: item_price,
     )
-    redirect_to new_menuitem_path
+    if new_menuitem.save
+      redirect_to new_menuitem_path
+    else
+      flash[:error] = new_menuitem.errors.full_messages.join(",")
+      redirect_to new_menuitem_path
+    end
   end
 
   def edit

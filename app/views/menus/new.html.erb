@@ -18,5 +18,13 @@
       </div>
       <%= submit_tag "Add Items" , class: "AddOrder-button"%>
      <%end%>
+     <%if flash[:error]%>
+        <p class="Flash-error">
+          <%= flash[:error]%>
+        </p>
+    <%end%>
     </div>
+
+
+
 </body>

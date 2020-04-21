@@ -1,6 +1,10 @@
 class OrderitemsController < ApplicationController
   def index
-    render "index"
+    if session[:current_order_id]
+      render "index"
+    else
+      redirect_to orders_path
+    end
   end
 
   def create
@@ -9,14 +13,19 @@ class OrderitemsController < ApplicationController
     menu_item_name = params[:menu_item_name]
     menu_item_price = params[:menu_item_price].to_f
     menu_item_quantity = params[:menu_item_quantity].to_i
-    neworderitem = Orderitem.create!(
+    neworderitem = Orderitem.new(
       order_id: order_id,
       menu_item_id: menu_item_id,
       menu_item_name: menu_item_name,
       menu_item_price: menu_item_price,
       menu_item_quantity: menu_item_quantity,
     )
-    redirect_to orderitems_path
+    if neworderitem.save
+      redirect_to orderitems_path
+    else
+      flash[:error] = neworderitem.errors.full_messages.join(",")
+      redirect_to orderitems_path
+    end
   end
 
   def new
@@ -38,6 +47,7 @@ class OrderitemsController < ApplicationController
   end
 
   def redirect
+    session[:current_order_id] = nil
     redirect_to orders_path
   end
 end
