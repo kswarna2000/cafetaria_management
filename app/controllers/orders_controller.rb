@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     redirect_to new_orderitem_path
   end
 
-  def destroy
+  def mark
     id = params[:id]
     order = Order.find(id)
     order.delivered_at = DateTime.now
@@ -24,8 +24,22 @@ class OrdersController < ApplicationController
     redirect_to orders_showorders_path
   end
 
+  def destroy
+    id = params[:id]
+    order = Order.find(id)
+    order.destroy
+    redirect_to "/orders"
+  end
+
   def new
     render "new"
+  end
+
+  def complain
+    id = params[:id]
+    order = Order.find(id)
+    order.delivered_at = nil
+    redirect_to "/orders"
   end
 
   def showorders
