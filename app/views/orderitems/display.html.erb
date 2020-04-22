@@ -1,11 +1,8 @@
 <body>
-  <!-- Navigation Bar -->
   <div class="Navbar">
     <a href="/orders/showorders">show orders</a>
     <a href="/menus/new">Create menu</a>
   </div>
-
-  <!-- The flexible grid (content) -->
   <div class="AddItem">
     <div class="DisplayItem">
       <div class="DisplayItem-welcome">
@@ -20,10 +17,10 @@
           </div>
         </div>
       <% end %>
-       <%= form_with(url: "/orders/mark", method:"post") do %>
-              <%= hidden_field_tag 'id', session[:show_order_id] %>
-              <%= submit_tag "Mark as delivered" , class: "AddItem-button"%>
-        <%end%>
+      <%= form_with(url: "/orders/mark", method:"post") do %>
+        <%= hidden_field_tag 'id', session[:show_order_id] %>
+        <%= submit_tag "Mark as delivered" , class: "AddItem-button"%>
+      <%end%>
     </div>
   </div>
 </body>

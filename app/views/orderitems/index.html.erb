@@ -1,37 +1,36 @@
 <body>
   <div class="Navbar">
     <a href="/orders">show orders</a>
-     <a href="/orders/new">place new order</a>
+    <a href="/orders/new">place new order</a>
   </div>
   <div class="DisplayItem-welcome">
     <h1>Welcome Gattu........</h1>
   </div>
-  <!-- The flexible grid (content) -->
   <div class="AddOrderItemContainer">
     <div class="AddOrderItem">
       <%order_id= session[:current_order_id]%>
       <%menu_id= session[:show_menu_id]%>
       <h2>Menu Items</h2>
-       <%if flash[:error]%>
+      <%if flash[:error]%>
         <p class="Flash-error">
           <%= flash[:error]%>
         </p>
-    <%end%>
+      <%end%>
       <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
         <div class="DisplayItem-card">
           <%= form_with(url: "/orderitems", method:"post", class: "AddItem-body") do %>
             <div class="DisplayItem-container">
               <h4><b><%=order_id%></b></h4>
-               <%= hidden_field_tag 'order_id', order_id %>
+              <%= hidden_field_tag 'order_id', order_id %>
               <h4><b><%=menuitem.id.to_s%></b></h4>
-               <%= hidden_field_tag 'menu_item_id', menuitem.id %>
+              <%= hidden_field_tag 'menu_item_id', menuitem.id %>
               <h4><b><%= menuitem.item_name%></b></h4>
-               <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
+              <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
               <h4><b><%= menuitem.item_description%></b></h4>
               <h4>&#8377 <%= menuitem.item_price.to_s%></h4>
-                <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
-               <h4> Quantity: <%=text_field_tag  "menu_item_quantity",nil , class: "AddItem-item"%></h4>
-                 <%= submit_tag "Add Item" , class: "AddItem-button"%>
+              <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
+              <h4> Quantity: <%=text_field_tag  "menu_item_quantity",nil , class: "AddItem-item"%></h4>
+              <%= submit_tag "Add Item" , class: "AddItem-button"%>
             </div>
           <%end%>
         </div>
@@ -50,7 +49,7 @@
         </div>
      <% end %>
      <%= form_with(url: "/orderitems/redirect", method:"post", class: "AddItem-body") do %>
-          <%= submit_tag "Place Order" , class: "AddOrder-button"%>
+        <%= submit_tag "Place Order" , class: "AddOrder-button"%>
      <%end%>
     </div>
   </div>

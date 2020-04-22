@@ -1,21 +1,16 @@
 <body>
-  <!-- Navigation Bar -->
   <div class="Navbar">
     <a href="/orders/showorders">show orders</a>
     <a href="/menus/new">Create menu</a>
     <a href="/menus">show menus</a>
   </div>
-
-
-
-  <!-- The flexible grid (content) -->
   <div class="AddItem">
     <%= form_with(url: "/menuitems", method:"post", class: "AddItem-body") do %>
-    <%if flash[:error]%>
+      <%if flash[:error]%>
         <p class="Flash-error">
           <%= flash[:error]%>
         </p>
-    <%end%>
+      <%end%>
       <h2>Add Item</h2>
       <div class="AddItem-container">
         <p class="AddItem-name">Item Name:</p>
@@ -23,11 +18,11 @@
       </div>
       <div class="AddItem-container">
         <p class="AddItem-name">Item Description:</p>
-         <%=text_area_tag  "item_description", nil ,rows: 5, class: "AddItem-item"%>
+        <%=text_area_tag  "item_description", nil ,rows: 5, class: "AddItem-item"%>
       </div>
       <div class="AddItem-container">
         <p class="AddItem-name">Item Price:</p>
-           <%=text_field_tag  "item_price", nil ,class: "AddItem-item"%>
+        <%=text_field_tag  "item_price", nil ,class: "AddItem-item"%>
       </div>
       <%=submit_tag "Add Item", class: "AddItem-button"%>
     <% end %>
@@ -44,12 +39,11 @@
             <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
           </div>
           <div class="MenuButton-container">
-             <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="AddItem-button">Edit</button></a>
+            <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="AddItem-button">Edit</button></a>
             <%= form_with(url: "/menuitems/#{menuitem.id}", method:"delete") do %>
               <%=submit_tag "Delete", class: "AddItem-button"%>
             <% end%>
           </div>
-
         </div>
       <% end %>
       <a href="/menus/new"><button class="AddItem-button">Done</a>

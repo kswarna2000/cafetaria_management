@@ -6,7 +6,6 @@
   <div class="DisplayItem-welcome">
     <h1>Welcome Gattu........</h1>
   </div>
-  <!-- The flexible grid (content) -->
   <div class="AddOrderItemContainer">
     <div class="AddOrderItem">
       <h2>Menus</h2>
@@ -15,9 +14,9 @@
           <%= form_with(url: "/orderitems/showmenuitems", method:"post", class: "AddItem-body") do %>
             <div class="DisplayItem-container">
               <h4><b><%=menu.id%></b></h4>
-                <%= hidden_field_tag 'menu_item_id', menu.id %>
+              <%= hidden_field_tag 'menu_item_id', menu.id %>
               <h4><b><%=menu.name%></b></h4>
-               <%= submit_tag "Show menu" , class: "AddItem-button"%>
+              <%= submit_tag "Show menu" , class: "AddItem-button"%>
             </div>
           <%end%>
         </div>
