@@ -1,11 +1,6 @@
 <body>
   <div class="AddItem">
     <%= form_with(url: "/menuitems", method:"post", class: "AddItem-body") do %>
-      <%if flash[:error]%>
-        <p class="Flash-error">
-          <%= flash[:error]%>
-        </p>
-      <%end%>
       <h2>Add Item</h2>
       <div class="AddItem-container">
         <p class="AddItem-name">Item Name:</p>

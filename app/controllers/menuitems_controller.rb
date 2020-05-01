@@ -28,7 +28,7 @@ class MenuitemsController < ApplicationController
   end
 
   def edit
-    @update_menuitem = Menuitem.where(current_menu_id: session[:current_menu_id]).find(params[:id])
+    @update_menuitem = Menuitem.where(menu_id: session[:current_menu_id]).find(params[:id])
     render "edititem"
   end
 
@@ -41,11 +41,15 @@ class MenuitemsController < ApplicationController
 
   def update
     id = params[:id]
-    menuitem = Menuitem.where(current_menu_id: session[:current_menu_id]).find(id)
+    menuitem = Menuitem.where(menu_id: session[:current_menu_id]).find(id)
     menuitem.item_name = params[:item_name]
     menuitem.item_description = params[:item_description]
     menuitem.item_price = params[:item_price]
-    menuitem.save
-    redirect_to new_menuitem_path
+    if menuitem.save
+      redirect_to new_menuitem_path
+    else
+      flash[:error] = new_menuitem.errors.full_messages.join(",")
+      render "edititem"
+    end
   end
 end
