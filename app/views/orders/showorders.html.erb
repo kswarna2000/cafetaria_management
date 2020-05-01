@@ -6,9 +6,9 @@
     <% Order.pending_orders.each do |order|  #getting only undelivered orders%>
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
-          <h4>Order id: <b><%=order.id.to_s%></b></h4>
           <h4><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>
           <h4><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : ordered.delivered_at.to_s(:long) %></h4>
+          <h4>Total: <b><%=order.total.to_s%></b></h4>
           <%= form_with(url: "/orderitems/display", method:"post") do %>
             <%= hidden_field_tag 'order_id', order.id %>
             <%= submit_tag "Show Items" , class: "AddItem-button"%>

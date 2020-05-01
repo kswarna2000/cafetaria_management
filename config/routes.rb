@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/orders/showorders", to: "orders#showorders"
   get "/orderitems/showitems", to: "orderitems#showitems"
   post "/orderitems/display", to: "orderitems#display"
-  post "/orderitems/redirect", to: "orderitems#redirect"
+  post "/orders/store", to: "orders#store"
   post "/menus/edit", to: "menus#edit"
   post "/orders/mark", to: "orders#mark"
   post "/orders/complain", to: "orders#complain"

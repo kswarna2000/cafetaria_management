@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
       order_date: order_date,
       user_id: @current_user.id,
       delivered_at: delivered_at,
+      total: 0,
     )
     session[:current_order_id] = new_order.id
     redirect_to new_orderitem_path
@@ -45,5 +46,13 @@ class OrdersController < ApplicationController
 
   def showorders
     render "showorders"
+  end
+
+  def store
+    current_order = Order.where(user_id: current_user.id).find(session[:current_order_id])
+    current_order.total = params[:total]
+    current_order.save!
+    session[:current_order_id] = nil
+    redirect_to orders_path
   end
 end
