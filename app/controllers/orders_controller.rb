@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def mark
     id = params[:id]
-    order = Order.where(user_id: current_user.id).find(id)
+    order = Order.find(id)
     order.delivered_at = DateTime.now
     order.save!
     redirect_to orders_showorders_path

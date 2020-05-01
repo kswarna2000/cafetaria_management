@@ -4,7 +4,7 @@
       <div class="DisplayOrder-welcome">
         <h1>Your Orders</h1>
       </div>
-      <% Order.where(user_id: @current_user.id).each do |order|%>
+      <% Order.all.each do |order|%>
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <h4>Order id: <b><%=order.id.to_s%></b></h4>

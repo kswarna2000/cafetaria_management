@@ -12,6 +12,7 @@ class MenusController < ApplicationController
     name = params[:name]
     new_menu = Menu.new(
       name: name,
+      user_id: @current_user.id,
     )
     if new_menu.save
       session[:current_menu_id] = new_menu.id
