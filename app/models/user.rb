@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   end
 
   def self.new_user(newuser)
-    role = "customer"
+    role = newuser[:role]
     first_name = newuser[:first_name]
     last_name = newuser[:last_name]
     email = newuser[:email]
