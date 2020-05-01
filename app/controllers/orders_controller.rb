@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     delivered_at = nil
     new_order = Order.create!(
       order_date: order_date,
-      user_id: user_id,
+      user_id: @current_user.id,
       delivered_at: delivered_at,
     )
     session[:current_order_id] = new_order.id
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def mark
     id = params[:id]
-    order = Order.find(id)
+    order = Order.where(user_id: current_user.id).find(id)
     order.delivered_at = DateTime.now
     order.save!
     redirect_to orders_showorders_path
@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
   def destroy
     id = params[:id]
-    order = Order.find(id)
+    order = Order.where(user_id: current_user.id).find(id)
     order.destroy
     redirect_to "/orders"
   end
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
   def complain
     id = params[:id]
-    order = Order.find(id)
+    order = Order.where(user_id: current_user.id).find(id)
     order.delivered_at = nil
     order.save!
     redirect_to "/orders"

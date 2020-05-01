@@ -3,3 +3,159 @@
   color: darkred;
   margin-bottom: 20px;
 }
+
+.header {
+  overflow: hidden;
+  background: url(fav-col2.jpg) no-repeat center;
+  background-size: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.header p {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 20px;
+  font-style: Monospace;
+  line-height: 25px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.header p.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header p.nav-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.header p:hover {
+  color: rgb(209, 250, 26);
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header p {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+/* Style the top navigation bar */
+
+.topnav {
+  overflow: hidden;
+  background: url(backimg.jpg) no-repeat center;
+  background-size: 100%;
+}
+
+/* Style the topnav links */
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.NewUsers-title {
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+
+.Form-section {
+  margin-bottom: 30px;
+}
+
+.Form-input {
+  font-size: 20px;
+  padding: 8px;
+}
+
+.FormInput-label {
+  margin-bottom: 8px;
+  font-weight: 300;
+  color: #414040
+}
+
+.Form-submit {
+  padding: 15px;
+  font-size: 20px;
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 110px;
+  background-color: #11a52cca;
+}
+
+.Home-title {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+.Home-authenticate {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.UserHeader {
+  padding: 10px;
+  background-color: lightgray;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Flash-error {
+  color: darkred;
+  background: rgb(189, 255, 34);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  margin-left: 80%;
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Flash-success {
+  color: darkgreen;
+  background: rgb(189, 255, 34);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  margin-left: 80%;
+  margin-top: 25px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}

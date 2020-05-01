@@ -10,6 +10,33 @@
   </head>
 
   <body>
+   <%if @current_user%>
+      <p class = UserHeader>
+        Hello
+        <%= @current_user.first_name %>
+        <%= link_to "sign-out",destroy_session_path,method: "delete"%>
+      </p>
+
+       <div class="header">
+    <p class="logo">Caffeteria Management</p>
+    <div class="header-right">
+      <p class="nav-text"><%= link_to "Signup", new_user_path,{:style=>'color:#FFFFFF;', :class => "css_class"}%></p>
+      <p class="nav-text"><%= link_to "Signin", new_session_path ,{:style=>'color:#FFFFFF;', :class => "css_class"} %></p>
+       <%= link_to "sign-out",destroy_session_path,method: "delete"%> </div>
+  </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="Flash-error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <% if flash[:success] %>
+      <p class=Flash-success>
+        <%= flash[:success] %>
+      </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

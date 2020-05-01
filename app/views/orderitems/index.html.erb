@@ -29,7 +29,7 @@
               <h4><b><%= menuitem.item_description%></b></h4>
               <h4>&#8377 <%= menuitem.item_price.to_s%></h4>
               <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
-              <h4> Quantity: <%=text_field_tag  "menu_item_quantity",nil , class: "AddItem-item"%></h4>
+              <h4> Quantity: <%= text_field_tag  "menu_item_quantity", nil, class: "AddItem-item" %> </h4>
               <%= submit_tag "Add Item" , class: "AddItem-button"%>
             </div>
           <%end%>
