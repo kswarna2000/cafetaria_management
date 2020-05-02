@@ -12,13 +12,22 @@ class UsersController < ApplicationController
   def create
     user = User.new_user(params)
     if user.save
-      session[:current_user_id] = user.id
-      flash[:success] = "Signed up sucessfully! You are logged in automatically"
-      redirect_to ""
+      if session[:current_user_id] == nil
+        session[:current_user_id] = user.id
+        flash[:success] = "Signed up sucessfully! You are logged in automatically"
+        redirect_to ""
+      else
+        flash[:success] = "Added Clerk successfully"
+        redirect_to ""
+      end
     else
       flash[:error] = user.errors.full_messages.join(", ")
       redirect_to new_user_path
     end
+  end
+
+  def newclerk
+    render "newclerk"
   end
 
   def check

@@ -9,13 +9,25 @@ class OrdersController < ApplicationController
     order_date = DateTime.now
     user_id = current_user.id
     delivered_at = nil
-    new_order = Order.create!(
-      order_date: order_date,
-      user_id: current_user.id,
-      delivered_at: delivered_at,
-      total: 0,
-      status: "inprogress",
-    )
+    if @current_user.role == "customer"
+      new_order = Order.create!(
+        order_date: order_date,
+        user_id: current_user.id,
+        delivered_at: delivered_at,
+        total: 0,
+        status: "inprogress",
+        walkin_customer: false,
+      )
+    else
+      new_order = Order.create!(
+        order_date: order_date,
+        user_id: current_user.id,
+        delivered_at: delivered_at,
+        total: 0,
+        status: "inprogress",
+        walkin_customer: true,
+      )
+    end
     session[:current_order_id] = new_order.id
     redirect_to new_orderitem_path
   end
