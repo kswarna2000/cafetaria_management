@@ -1,9 +1,9 @@
 <body>
   <div class="DisplayOrder">
     <div class="DisplayOrder-welcome">
-      <h1>Orders</h1>
+      <h1>Complaint orders</h1>
     </div>
-    <% Order.where(delivered_at: nil,status: "inprogress").order(:order_date).each do |order|  #getting only undelivered orders%>
+    <% Order.where(status: "complaint").each do |order|  #getting only undelivered orders%>
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
           <h4><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post "/orderitems/showmenuitems", to: "orderitems#showmenuitems"
   get "/orders/showorders", to: "orders#showorders"
   get "/orderitems/showitems", to: "orderitems#showitems"
+  get "/orders/complaints", to: "orders#complaints"
+  get "/orders/viewcomplaints", to: "orders#viewcomplaints"
   post "/orderitems/display", to: "orderitems#display"
   post "/orders/store", to: "orders#store"
   post "/menus/edit", to: "menus#edit"

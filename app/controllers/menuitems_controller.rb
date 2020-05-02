@@ -34,7 +34,7 @@ class MenuitemsController < ApplicationController
 
   def destroy
     id = params[:id]
-    menuitem = Menuitem.where(current_menu_id: session[:current_menu_id]).find(id)
+    menuitem = Menuitem.where(menu_id: session[:current_menu_id]).find(id)
     menuitem.destroy
     redirect_to new_menuitem_path
   end

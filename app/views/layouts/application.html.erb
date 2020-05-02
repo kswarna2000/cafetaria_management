@@ -22,12 +22,14 @@
 <div class="topnav">
  <a href="/orders">show orders</a>
  <a href="/orders/new">place new order</a>
+ <a href="/orders/complaints">my complaints</a>
 </div>
 <%elsif @current_user.role=="owner"%>
 <div class="topnav">
   <a href="/orders/showorders">show orders</a>
     <a href="/menus/new">Create menu</a>
     <a href="/menus">show menus</a>
+     <a href="/orders/viewcomplaints">view complaints</a>
  </div>
 <%end%>
 

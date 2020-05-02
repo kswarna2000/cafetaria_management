@@ -5,13 +5,14 @@ class OrdersController < ApplicationController
 
   def create
     order_date = DateTime.now
-    user_id = 1
+    user_id = current_user.id
     delivered_at = nil
     new_order = Order.create!(
       order_date: order_date,
-      user_id: @current_user.id,
+      user_id: current_user.id,
       delivered_at: delivered_at,
       total: 0,
+      status: "inprogress",
     )
     session[:current_order_id] = new_order.id
     redirect_to new_orderitem_path
@@ -28,7 +29,8 @@ class OrdersController < ApplicationController
   def destroy
     id = params[:id]
     order = Order.where(user_id: current_user.id).find(id)
-    order.destroy
+    order.status = "completed"
+    order.save!
     redirect_to "/orders"
   end
 
@@ -40,8 +42,17 @@ class OrdersController < ApplicationController
     id = params[:id]
     order = Order.where(user_id: current_user.id).find(id)
     order.delivered_at = nil
+    order.status = "complaint"
     order.save!
     redirect_to "/orders"
+  end
+
+  def complaints
+    render "complaints"
+  end
+
+  def viewcomplaints
+    render "view_complaints"
   end
 
   def showorders

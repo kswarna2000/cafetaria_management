@@ -2,9 +2,9 @@
   <div class="AddOrder">
     <div class="DisplayOrder">
       <div class="DisplayOrder-welcome">
-        <h1>Your Orders</h1>
+        <h1>Your Complaint Orders</h1>
       </div>
-      <% Order.show_orders.where(user_id: @current_user.id).each do |order|%>
+      <% Order.where(user_id: @current_user.id, status: "complaint" ).each do |order|%>
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <h4>Order id: <b><%=order.id.to_s%></b></h4>
@@ -13,10 +13,6 @@
             <%if order.delivered_at != nil%>
               <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>
                 <%= submit_tag "received?" , class: "AddItem-button"%>
-              <%end%>
-              <%= form_with(url: "/orders/complain", method:"post") do %>
-                <%= hidden_field_tag 'id', order.id %>
-                <%= submit_tag "complain" , class: "AddItem-button"%>
               <%end%>
             <%end%>
           </div>
