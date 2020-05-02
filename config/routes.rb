@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy", as: :destroy_session
   post "/orderitems/invoice", to: "orderitems#invoice"
   get "/orderitems/showinvoice", to: "orderitems#showinvoice"
+  post "/filter", to: "orders#filter"
+  get "/orders/showreport", to: "orders#showreport"
   resources :menuitems
   resources :orders
   resources :orderitems

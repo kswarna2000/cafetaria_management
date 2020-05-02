@@ -5,15 +5,15 @@
     </div>
     <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
-       <%= form_with(url: "/todos", method:"post", class: "MyTodo") do %>
+       <%= form_with(url: "/filter", method:"post", class: "MyTodo") do %>
           <%= date_field_tag 'from_date' , class:"MyTodo-date" %>
           <%= date_field_tag 'to_date' , class:"MyTodo-date" %>
-          <%= submit_tag "Add" , class: "AddItem-button" %>
+          <%= submit_tag "filter" , class: "AddItem-button" %>
         <%end%>
           </div>
       <div>
-
-    <% Order.where(status: "completed").order(:order_date).each do |order|  #getting only undelivered orders%>
+   <%if @orders_report != nil%>
+    <% @orders_report.each do |order|  #getting only undelivered orders%>
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
           <h4><b>Order id: <%= order.order_date.to_s(:long) %></b></h4>
@@ -24,5 +24,6 @@
         </div>
       </div>
     <% end %>
+    <%end%>
   </div>
 </body>

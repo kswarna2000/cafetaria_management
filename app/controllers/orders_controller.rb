@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  @@orders_report = nil
+
   def index
     render "index"
   end
@@ -60,6 +62,33 @@ class OrdersController < ApplicationController
   end
 
   def report
+    @orders_report = Order.where(status: "completed").order(:order_date)
+    render "report"
+  end
+
+  def filter
+    if params[:from_date] == "" or params[:to_date] == ""
+      flash[:error] = "from date cannot be blank"
+      redirect_to "/orders/showreport"
+      return
+    end
+    from_date = Date.parse params[:from_date]
+    to_date = Date.parse params[:to_date]
+    if from_date > to_date
+      flash[:error] = "From date cannot be greater than to date"
+      redirect_to "/orders/showreport"
+      return
+    end
+    @@orders_report = Order.where(status: "completed").where("order_date BETWEEN ? and ?", from_date.to_datetime, to_date.to_datetime)
+    if @@orders_report.empty?
+      flash[:error] = "No records found"
+    end
+    redirect_to "/orders/showreport"
+  end
+
+  def showreport
+    @orders_report = @@orders_report
+
     render "report"
   end
 
