@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   post "/filter", to: "orders#filter"
   get "/orders/showreport", to: "orders#showreport"
   get "/users/newclerk", to: "users#newclerk"
+  post "/users/display", to: "users#display"
+  get "/users/displaycustomers", to: "users#displaycustomers"
+  get "/users/displayclerks", to: "users#displayclerks"
+  get "/users/clerks", to: "users#clerks"
   resources :menuitems
   resources :orders
   resources :orderitems
