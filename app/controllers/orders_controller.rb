@@ -59,6 +59,10 @@ class OrdersController < ApplicationController
     render "showorders"
   end
 
+  def report
+    render "report"
+  end
+
   def store
     current_order = Order.where(user_id: current_user.id).find(session[:current_order_id])
     current_order.total = params[:total]

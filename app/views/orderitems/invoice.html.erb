@@ -2,6 +2,7 @@
   <div class="AddItem">
     <div class="DisplayItem">
       <div class="DisplayItem-welcome">
+        <h1>Invoice details</h1>
         <h1>Order no <%= session[:show_order_id] %>: </h1>
       </div>
       <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
@@ -18,10 +19,6 @@
           <h1><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h1>
           </div>
           </div>
-      <%= form_with(url: "/orders/mark", method:"post") do %>
-        <%= hidden_field_tag 'id', session[:show_order_id] %>
-        <%= submit_tag "Mark as delivered" , class: "AddItem-button"%>
-      <%end%>
     </div>
   </div>
 </body>

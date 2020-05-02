@@ -37,6 +37,15 @@ class OrderitemsController < ApplicationController
     redirect_to "/orderitems/showitems"
   end
 
+  def invoice
+    session[:show_order_id] = params[:order_id]
+    redirect_to "/orderitems/showinvoice"
+  end
+
+  def showinvoice
+    render "invoice"
+  end
+
   def showitems
     render "display"
   end
