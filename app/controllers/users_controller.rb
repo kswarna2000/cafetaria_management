@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def report
+    render "report"
+  end
+
   def display
     @@role = params[:role]
     puts @@role

@@ -98,9 +98,44 @@ class OrdersController < ApplicationController
     redirect_to "/orders/showreport"
   end
 
+  def customer
+    session[:show_customer_id] = params[:user_id]
+    @@orders_report = Order.where(user_id: params[:user_id])
+    redirect_to "/orders/showreport1"
+  end
+
+  def walkincustomer
+    @@orders_report = Order.where(walkin_customer: true)
+    redirect_to "/orders/showreport1"
+  end
+
+  def filter1
+    if params[:from_date] == "" or params[:to_date] == ""
+      flash[:error] = "from date cannot be blank"
+      redirect_to "/orders/showreport1"
+      return
+    end
+    from_date = Date.parse params[:from_date]
+    to_date = Date.parse params[:to_date]
+    if from_date > to_date
+      flash[:error] = "From date cannot be greater than to date"
+      redirect_to "/orders/showreport1"
+      return
+    end
+    @@orders_report = Order.where(status: "completed", user_id: session[:show_customer_id]).where("order_date BETWEEN ? and ?", from_date.to_datetime, to_date.to_datetime)
+    if @@orders_report.empty?
+      flash[:error] = "No records found"
+    end
+    redirect_to "/orders/showreport1"
+  end
+
+  def showreport1
+    @orders_report = @@orders_report
+    render "report1"
+  end
+
   def showreport
     @orders_report = @@orders_report
-
     render "report"
   end
 

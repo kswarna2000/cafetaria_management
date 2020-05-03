@@ -1,0 +1,29 @@
+<body>
+  <div class="DisplayOrder">
+    <div class="DisplayOrder-welcome">
+      <h1>Order details </h1>
+    </div>
+    <div class="DisplayOrder-card">
+        <div class="DisplayOrder-container">
+       <%= form_with(url: "/orders/filter1", method:"post", class: "MyTodo") do %>
+          <%= date_field_tag 'from_date' , class:"MyTodo-date" %>
+          <%= date_field_tag 'to_date' , class:"MyTodo-date" %>
+          <%= submit_tag "filter" , class: "AddItem-button" %>
+        <%end%>
+          </div>
+      <div>
+   <%if @orders_report != nil%>
+    <% @orders_report.each do |order|  #getting only undelivered orders%>
+      <div class="DisplayOrder-card">
+        <div class="DisplayOrder-container">
+          <h4><b>Order id: <%= order.order_date.to_s(:long) %></b></h4>
+          <%= form_with(url: "/orderitems/invoice", method:"post") do %>
+            <%= hidden_field_tag 'order_id', order.id %>
+            <%= submit_tag "Invoice details" , class: "AddItem-button"%>
+          <%end%>
+        </div>
+      </div>
+    <% end %>
+    <%end%>
+  </div>
+</body>

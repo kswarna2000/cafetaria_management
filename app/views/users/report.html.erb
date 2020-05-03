@@ -19,20 +19,26 @@
 <body>
   <div class="DisplayOrder">
     <div class="DisplayOrder-welcome">
-      <h1>Clerks</h1>
+      <h1>Order details</h1>
     </div>
     <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
-          <h4><b>Name: <%= user.first_name %></b></h4>
-          <h4><b> Clerk</b></h4>
-          <%= form_with(url: "/users/display", method:"post") do %>
-            <%= hidden_field_tag 'id', user.id %>
-            <%= hidden_field_tag 'role', "customer" %>
-            <%= submit_tag "View details" , class: "AddItem-button"%>
+          <h4><b>Customer name:: <%= user.first_name %></b></h4>
+          <%= form_with(url: "/orders/customer", method:"post") do %>
+            <%= hidden_field_tag 'user_id', user.id %>
+            <%= submit_tag "View Orders" , class: "AddItem-button"%>
           <%end%>
         </div>
       </div>
     <% end %>
+ <div class="DisplayOrder-card">
+        <div class="DisplayOrder-container">
+          <h4><b>Walk in customer:</b></h4>
+          <%= form_with(url: "/orders/walkincustomer", method:"post") do %>
+            <%= submit_tag "View Orders" , class: "AddItem-button"%>
+          <%end%>
+        </div>
+      </div>
   </div>
 </body>
