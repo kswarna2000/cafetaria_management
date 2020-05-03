@@ -1,0 +1,57 @@
+<body>
+  <div class="DisplayItem-welcome">
+    <h1>My CART</h1>
+  </div>
+  <div class="AddOrderItemContainer">
+    <div class="AddOrderItem">
+      <%order_id= session[:current_order_id]%>
+      <%menu_id= session[:show_menu_id]%>
+      <%total=0%>
+      <h2>Menu Items</h2>
+      <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
+        <div class="DisplayItem-card">
+          <%= form_with(url: "/orderitems/cart", method:"post", class: "AddItem-body") do %>
+            <div class="DisplayItem-container">
+              <h4><b><%=order_id%></b></h4>
+              <%= hidden_field_tag 'order_id', order_id %>
+              <h4><b><%=menuitem.id.to_s%></b></h4>
+              <%= hidden_field_tag 'menu_item_id', menuitem.id %>
+              <h4><b><%= menuitem.item_name%></b></h4>
+              <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
+              <h4><b><%= menuitem.item_description%></b></h4>
+              <h4>&#8377 <%= menuitem.item_price.to_s%></h4>
+              <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
+              <h4> Quantity: <%= text_field_tag  "menu_item_quantity", nil, class: "AddItem-item" %> </h4>
+              <%= submit_tag "Add to cart" , class: "AddItem-button"%>
+            </div>
+          <%end%>
+        </div>
+      <%end%>
+   </div>
+   <div class="DisplayOrderItem">
+      <h1>Ordered Items</h1>
+      <% Orderitem.where(in_cart: true).each do |orderitem| #tracking current order id%>
+        <div class="DisplayItem-card">
+          <div class="DisplayItem-container">
+            <h4><b><%=orderitem.order_id.to_s%></b></h4>
+            <h4><b><%= orderitem.menu_item_id%></b></h4>
+            <h4><b><%= orderitem.menu_item_name%></b></h4>
+            <p> &#8377
+             <%total+=orderitem.menu_item_price*orderitem.menu_item_quantity%>
+            <%= orderitem.menu_item_price*orderitem.menu_item_quantity %>
+            </p>
+          </div>
+        </div>
+     <% end %>
+     <div class="DisplayItem-card">
+          <div class="DisplayItem-container">
+          <h1><b>Total: <%=total%></b></h1>
+          </div>
+          </div>
+     <%= form_with(url: "/orders/store1", method:"post", class: "AddItem-body") do %>
+       <%= hidden_field_tag 'total', total %>
+        <%= submit_tag "Place Order" , class: "AddOrder-button"%>
+     <%end%>
+    </div>
+  </div>
+</body>

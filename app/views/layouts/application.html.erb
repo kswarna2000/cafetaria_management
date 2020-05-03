@@ -15,6 +15,7 @@
        <div class="header">
     <p class="logo">Cafeteria Management</p>
     <div class="header-right">
+    <p class="nav-text"><%=@current_user.first_name%></p>
     <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
     </div>
   </div>
@@ -23,13 +24,14 @@
  <a href="/orders">show orders</a>
  <a href="/orders/new">place new order</a>
  <a href="/orders/complaints">my complaints</a>
+ <a href="/orderitems/new1">Add to cart</a>
 </div>
 <%elsif @current_user.role=="owner"%>
 <div class="topnav">
   <a href="/orders/showorders">show orders</a>
     <a href="/menus/new">Create menu</a>
     <a href="/menus">show menus</a>
-     <a href="/orders/viewcomplaints">view complaints</a>
+    <a href="/orders/viewcomplaints">view complaints</a>
       <a href="/report">view report</a>
       <a href="/users/newclerk">add clerk</a>
       <a href="/users/">view customers</a>
@@ -39,6 +41,7 @@
  <div class="topnav">
   <a href="/orders/showorders">show orders</a>
   <a href="/orders/new">place new order</a>
+
 
  </div>
 <%end%>

@@ -111,4 +111,46 @@ class OrdersController < ApplicationController
     session[:current_order_id] = nil
     redirect_to orders_path
   end
+
+  def store1
+    orderitem_list = Orderitem.where(in_cart: true)
+    if orderitem_list.empty?
+      flash[:error] = "Order cannot be empty"
+      redirect_to "/orderitems/new1"
+      return
+    end
+    order_date = DateTime.now
+    user_id = current_user.id
+    delivered_at = nil
+
+    if @current_user.role == "customer"
+      new_order = Order.create!(
+        order_date: order_date,
+        user_id: current_user.id,
+        delivered_at: delivered_at,
+        total: 0,
+        status: "inprogress",
+        walkin_customer: false,
+      )
+    else
+      new_order = Order.create!(
+        order_date: order_date,
+        user_id: current_user.id,
+        delivered_at: delivered_at,
+        total: 0,
+        status: "inprogress",
+        walkin_customer: true,
+      )
+    end
+    sum = 0
+    orderitem_list.each do |orderitem|
+      sum += orderitem.menu_item_price * orderitem.menu_item_quantity
+      orderitem.in_cart = false
+      orderitem.order_id = new_order.id
+      orderitem.save!
+    end
+    new_order.total = sum
+    new_order.save!
+    redirect_to "/orderitems/new1"
+  end
 end

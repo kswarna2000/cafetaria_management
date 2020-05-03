@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   get "/users/displaycustomers", to: "users#displaycustomers"
   get "/users/displayclerks", to: "users#displayclerks"
   get "/users/clerks", to: "users#clerks"
+  get "/orderitems/index1", to: "orderitems#index1"
+  get "/orderitems/new1", to: "orderitems#new1"
+  post "orders/store1", to: "orders#store1"
+  post "/orderitems/cart", to: "orderitems#cart"
+  post "orderitems/showmenuitems1", to: "orderitems#showmenuitems1"
   resources :menuitems
   resources :orders
   resources :orderitems
