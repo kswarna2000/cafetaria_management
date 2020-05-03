@@ -151,6 +151,7 @@ class OrdersController < ApplicationController
     end
     new_order.total = sum
     new_order.save!
+    flash[:success] = "Placed order successfully!!"
     redirect_to "/orderitems/new1"
   end
 end
