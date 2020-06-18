@@ -1,25 +1,33 @@
 <body>
-  <div class="AddOrder">
+
+  </section>
+
+
+  <div class="content">
     <div class="DisplayOrder">
-      <div class="DisplayOrder-welcome">
-        <h1>Your Orders</h1>
+      <div class="Displaymenu">
+        <h1>Edit Item</h1>
       </div>
-      <%= form_with(url: "/menuitems/#{@update_menuitem.id}", method:"put", class: "AddItem-body") do %>
-        <h2>Edit Item</h2>
-        <div class="AddItem-container">
-          <p class="AddItem-name">Item Name:</p>
-          <%=text_field_tag  "item_name", @update_menuitem.item_name, class: "AddItem-item"%>
+      <section class="page-heading">
+        <%= form_with(url: "/menuitems/#{@update_menuitem.id}", method:"put") do %>
+        <div>
+          <h2>Item Name:</h2>
+
+          <%=text_field_tag  "item_name", @update_menuitem.item_name, class: "Form-input"%>
         </div>
-        <div class="AddItem-container">
-          <p class="AddItem-name">Item Description:</p>
-          <%=text_area_tag  "item_description",@update_menuitem.item_description  ,rows: 5, class: "AddItem-item"%>
+
+        <div>
+          <h3>Item Description:</h3>
+          <%=text_field_tag  "item_description",@update_menuitem.item_description, class: "Form-input"%>
         </div>
-        <div class="AddItem-container">
-          <p class="AddItem-name">Item Price:</p>
-          <%=text_field_tag  "item_price", @update_menuitem.item_price ,class: "AddItem-item"%>
+        <div>
+          <h2>Item Price:</h2>
+          <%=text_field_tag  "item_price", @update_menuitem.item_price ,class: "Form-input"%>
         </div>
-        <%= submit_tag "Update item" , class: "AddOrder-button"%>
-      <%end%>
+
+        <%= submit_tag "Update item" , class: "signup-btn-in3"%>
+        <% end %>
     </div>
-  </div>
+
+    </section>
 </body>
