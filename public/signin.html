@@ -1,31 +1,18 @@
-<body>
-
-
-  <div class="content">
-
-    <div class="DisplayOrder">
-      <div class="Displaymenu">
-        <h1>Complaint Orders</h1>
-      </div>
-
-      <hr class="roundedfull">
-      <section class="page-heading1">
-
-        <% Order.where(status: "complaint").each do |order|  #getting only undelivered orders%>
-
-        <h4><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>
-        <h4><b>Delivery status:
-            <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s(:long) %></h4>
-        <h4>Total: <b><%=order.total.to_s%></b></h4>
-        <%= form_with(url: "/orderitems/display", method:"post") do %>
-        <%= hidden_field_tag 'order_id', order.id %>
-        <%= submit_tag "Show Items" , class: "signup-btn-in4"%>
-        <%end%>
-
+<div class="layer">
+  <div class="signup-form">
+    <h1>Sign in</h1>
+    <section class="NewUser">
+      <%= form_with url: sessions_path do |form| %>
+      <div class="Form-section">
+        <%= form.email_field :email,placeholder: "email",class: "Form-input" %>
+        <%= form.password_field :password_digest,placeholder: "password",class: "Form-input" %>
+        <select id="roles" name="role">
+          <option value="customer">Customer</option>
+          <option value="clerk">Billing Clerk</option>
+          <option value="owner">Owner</option>
+        </select>
+        <%= form.submit "Sign in!",class:"signup-btn" %>
         <% end %>
-      </section>
-
-    </div>
-
-
-</body>
+    </section>
+  </div>
+</div>
