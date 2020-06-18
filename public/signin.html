@@ -6,43 +6,34 @@
         <h1>Order Details</h1>
       </div>
 
-
-
-
       <section class="page-heading">
-
-
-
-        <h4>Enter Dates to Filter</h4>
-
-
-        <%= form_with(url: "/filter", method:"post", class: "MyTodo") do %>
-        <%= date_field_tag 'from_date' , class:"MyTodo-date" %>
-        <%= date_field_tag 'to_date' , class:"MyTodo-date" %>
-        <%= submit_tag "filter" , class: "signup-btn-in4" %>
-
-
-        <%end%>
+        <div class="DisplayOrder-card">
+          <div class="DisplayOrder-container">
+            <%= form_with(url: "/orders/filter1", method:"post", class: "MyTodo") do %>
+            <%= date_field_tag 'from_date' , class:"MyTodo-date" %>
+            <%= date_field_tag 'to_date' , class:"MyTodo-date" %>
+            <%= submit_tag "filter" , class: "signup-btn-in4" %>
+            <%end%>
+          </div>
+          <div>
 
       </section>
-
-
-
 
 
       <%if @orders_report != nil%>
       <% @orders_report.each do |order|  #getting only undelivered orders%>
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
-          <div class="textline"><b>Order id: <%= order.order_date.to_s(:long) %></b></div>
-          <%= form_with(url: "/orderitems/invoice", method:"post") do %>
-          <%= hidden_field_tag 'order_id', order.id %>
-          <%= submit_tag "Invoice details" , class: "signup-btn-in6"%>
-          <%end%>
+          <div class="textline"><b>Order id: <%= order.order_date.to_s(:long) %></b></h4>
+            <%= form_with(url: "/orderitems/invoice", method:"post") do %>
+            <%= hidden_field_tag 'order_id', order.id %>
+            <%= submit_tag "Invoice details" , class: "signup-btn-in4"%>
+            <%end%>
+          </div>
         </div>
+        <% end %>
+        <%end%>
+
+
       </div>
-      <% end %>
-      <%end%>
-    </div>
-  </div>
 </body>
