@@ -1,57 +1,36 @@
 <body>
-
-
   <div class="content">
-    <div class="DisplayOrder">
-      <div class="Displaymenu">
-        <h1>Add Items</h1>
-      </div>
-      <section class="page-heading">
-        <%= form_with(url: "/menuitems", method:"post", class: "") do %>
-        <div>
-          <h2>Item Name:</h2>
-          <%=text_field_tag  "item_name", nil, class: "Form-input"%>
+    <div class="">
+      <div class="DisplayOrder">
+        <div class="Displaymenu">
+          <h1>Your Menus</h1>
         </div>
 
-        <div>
-          <h3>Item Description:</h3>
-          <%=text_field_tag  "item_description", nil , class: "Form-input"%>
-        </div>
-        <div>
-          <h2>Item Price:</h2>
-          <%=text_field_tag  "item_price", nil ,class: "Form-input"%>
-        </div>
-        <%=submit_tag "Add Item", class: "signup-btn-in3"%>
-        <% end %>
-    </div>
-
-    </section>
-
-
-    <div class="DisplayItem">
-      <div class="Displaymenu">
-        <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
-      </div>
-
-      <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem|%>
-      <div class="">
-        <div class="offer-item">
-          <img src="/assets/menu-item-thumbnail-03.jpg" alt="">
-          <div class=adjustmenu>
-
-            <h4><b><%= menuitem.item_name%></b></h4>
-            <p> <%= menuitem.item_description%></p>
-            <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
-          </div>
-          <div class="MenuButton-container">
-            <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="signup-btn-in4">Edit</button></a>
-            <%= form_with(url: "/menuitems/#{menuitem.id}", method:"delete") do %>
-            <%=submit_tag "Delete", class: "signup-btn-in4"%>
-            <% end%>
+        <% Menu.where(user_id: @current_user.id).each do |menu|%>
+        <div class="">
+          <div class="offer-item">
+            <img src="/assets/menu-item-thumbnail-03.jpg" alt="">
+            <div class=adjustmenu>
+              <h3><b>Menu name: <%= menu.name %></b></h3>
+              <p>
+                choose any item from menu.
+              </p>
+            </div>
+            <div>
+              <%= form_with(url: "/menus/edit", method:"post") do %>
+              <%= hidden_field_tag 'id', menu.id %>
+              <%= submit_tag "View menu" , class: "signup-btn-in1"%>
+              <% end %>
+              <%= form_with(url: "/menus/#{menu.id}", method:"delete") do %>
+              <%= submit_tag "Delete menu" , class: "signup-btn-in2"%>
+              <% end %></div>
           </div>
         </div>
-        <% end %>
-        <a href="/menus/new"><button class="signup-btn-in5">Done</a>
+
+        <%end%>
+
+
       </div>
     </div>
+  </div>
 </body>
