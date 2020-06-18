@@ -37,8 +37,11 @@
                 <%= hidden_field_tag 'id', user.id %>
                 <%= hidden_field_tag 'role', "clerk" %>
                 <%= submit_tag "View details" , class: "signup-btn-in10"%>
-                <%end%>
-
+             <% end%>
+              <%= form_with(url: "/users/#{user.id}", method:"delete") do %>
+               <%= hidden_field_tag 'id', user.id %>
+               <%=submit_tag "Delete", class: "signup-btn-in10"%>
+             <% end%>
               </div>
             </div>
           </div>

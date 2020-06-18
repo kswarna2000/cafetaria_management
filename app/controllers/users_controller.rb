@@ -54,4 +54,13 @@ class UsersController < ApplicationController
   def check
     render plain: User.check(params)
   end
+
+  def destroy
+    id = params[:id]
+    puts id
+    clerk = User.find(id)
+    clerk.destroy
+    flash[:success] = "Deleted Clerk successfully"
+    redirect_to "/users/clerks"
+  end
 end
