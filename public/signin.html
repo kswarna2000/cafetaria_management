@@ -20,35 +20,26 @@
 <body>
   <div class="content">
     <div class="DisplayOrder">
-      <div class="Displaymenu2">
-
-        <%if @role =="customer"%>
-        <h1>Customer details</h1>
-        <%else%>
-        <h1>Clerk details</h1>
-        <%end%>
+      <div class="Displaymenu">
+        <h1>Clerks</h1>
       </div>
 
-      <section class="page-heading3">
-        <% User.where(id: session[:show_user_id]).each do |user|%>
-
-        <h4><b>Name : <%=user.first_name%></b></h4>
-
-        <h4><b>Email : <%= user.email%></b></h4>
-
-        <%if @role== "customer" %>
-
-        <%sum=0%>
-        <% Order.where(user_id: user.id).each do |order|#calculate total sales by the user%>
-
-        <%sum+=order.total%>
-        <% end %>
-        <h4><b>Total Sales : <%=sum%></b></h4>
 
 
-        <%end%>
-        <%end%>
-      </section>
+
+      <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
+      <div class="DisplayOrder-card">
+        <div class="DisplayOrder-container">
+          <div class="textline"><b>Name: <%= user.first_name %></b></div>
+          <div class="textline"><b> Clerk</b></div>
+          <%= form_with(url: "/users/display", method:"post") do %>
+          <%= hidden_field_tag 'id', user.id %>
+          <%= hidden_field_tag 'role', "customer" %>
+          <%= submit_tag "View details" , class: "signup-btn-in6"%>
+          <%end%>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </body>
