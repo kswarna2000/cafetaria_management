@@ -1,36 +1,13 @@
 <body>
-  <div class="content">
+
+  <div class="AddOrder">
     <div class="DisplayOrder">
-      <div class="Displaymenu2">
+      <div class="DisplayOrder-welcome">
         <h1>Your Orders</h1>
       </div>
-
-      <div class="inline">
-        <%= image_tag("deliveryboy.jpg",:size => "600x550", :alt => "rss feed") %>
-        <% Order.show_orders.where(user_id: @current_user.id).each do |order| %>
-        <div class="secondhalf2">
-          <div class="DisplayOrder-card">
-            <div class="DisplayOrder-container">
-              <div class="textline1">Order id: <b><%= order.id.to_s %></b></div>
-              <div class="textline1"><b>Order time: <%= order.order_date.to_s(:long) %></b></div>
-              <div class="textline1"><b>Delivery status:
-                  <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.to_s(:long)}" %>
-              </div>
-              <% if order.delivered_at != nil %>
-              <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>
-              <%= submit_tag "received?", class: "signup-btn-in3"%>
-              <% end %>
-              <%= form_with(url: "/orders/complain", method:"post") do %>
-              <%= hidden_field_tag 'id', order.id %>
-              <%= submit_tag "complain", class: "signup-btn-in3" %>
-              <% end %>
-              <% end %>
-            </div>
-
-          </div>
-          <% end %>
-
-
-        </div>
-      </div>
+      <%= form_with(url: "/orders", method:"post") do %>
+      <%= submit_tag "Place New Order" , class: "AddOrder-button"%>
+      <%end%>
+    </div>
+  </div>
 </body>
