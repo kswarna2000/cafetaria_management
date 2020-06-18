@@ -1,0 +1,33 @@
+ <div class="header">
+    <p class="logo">Cafeteria Management</p>
+    <div class="header-right">
+    <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
+    </div>
+  </div>
+  <div class="topnav">
+  <a href="/orders/showorders">show orders</a>
+    <a href="/menus/new">Create menu</a>
+    <a href="/menus">show menus</a>
+     <a href="/orders/viewcomplaints">view complaints</a>
+      <a href="/report">view report</a>
+      <a href="/users/newclerk">add clerk</a>
+      <a href="/users/">view customers</a>
+      <a href="/users/clerks">view clerks</a>
+      <a href="/users/report">view customer report</a>
+ </div>
+ </div>
+<body>
+  <div class="signup-form">
+    <h1>Add Clerk</h1>
+    <section class="NewUser">
+      <%= form_with url: users_path do |form| %>
+      <%= form.text_field :first_name,class: "Form-input",placeholder: "Clerk's first name",autofocus: "autofocus" %>
+       <%= form.text_field :last_name,class: "Form-input",placeholder: "Clerk's last name",autofocus: "autofocus" %>
+      <%= form.email_field :email,placeholder: "email",class: "Form-input" %>
+      <%= form.password_field :password_digest,placeholder: "password",class: "Form-input" %>
+       <%= hidden_field_tag 'role', 'clerk' %>
+      <%= form.submit "Add Clerk",class: "signup-btn" %>
+      <% end %>
+    </section>
+  </div>
+</body>

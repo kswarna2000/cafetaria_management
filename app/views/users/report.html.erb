@@ -1,0 +1,44 @@
+ <div class="header">
+    <p class="logo">Cafeteria Management</p>
+    <div class="header-right">
+    <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
+    </div>
+  </div>
+  <div class="topnav">
+  <a href="/orders/showorders">show orders</a>
+    <a href="/menus/new">Create menu</a>
+    <a href="/menus">show menus</a>
+     <a href="/orders/viewcomplaints">view complaints</a>
+      <a href="/report">view report</a>
+      <a href="/users/newclerk">add clerk</a>
+      <a href="/users/">view customers</a>
+      <a href="/users/clerks">view clerks</a>
+      <a href="/users/report">view customer report</a>
+ </div>
+ </div>
+<body>
+  <div class="DisplayOrder">
+    <div class="DisplayOrder-welcome">
+      <h1>Order details</h1>
+    </div>
+    <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
+      <div class="DisplayOrder-card">
+        <div class="DisplayOrder-container">
+          <h4><b>Customer name:: <%= user.first_name %></b></h4>
+          <%= form_with(url: "/orders/customer", method:"post") do %>
+            <%= hidden_field_tag 'user_id', user.id %>
+            <%= submit_tag "View Orders" , class: "AddItem-button"%>
+          <%end%>
+        </div>
+      </div>
+    <% end %>
+ <div class="DisplayOrder-card">
+        <div class="DisplayOrder-container">
+          <h4><b>Walk in customer:</b></h4>
+          <%= form_with(url: "/orders/walkincustomer", method:"post") do %>
+            <%= submit_tag "View Orders" , class: "AddItem-button"%>
+          <%end%>
+        </div>
+      </div>
+  </div>
+</body>

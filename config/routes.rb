@@ -17,6 +17,21 @@ Rails.application.routes.draw do
   get "/orderitems/showinvoice", to: "orderitems#showinvoice"
   post "/filter", to: "orders#filter"
   get "/orders/showreport", to: "orders#showreport"
+  get "/users/newclerk", to: "users#newclerk"
+  post "/users/display", to: "users#display"
+  get "/users/displaycustomers", to: "users#displaycustomers"
+  get "/users/displayclerks", to: "users#displayclerks"
+  get "/users/clerks", to: "users#clerks"
+  get "/orderitems/index1", to: "orderitems#index1"
+  get "/orderitems/new1", to: "orderitems#new1"
+  post "orders/store1", to: "orders#store1"
+  post "/orderitems/cart", to: "orderitems#cart"
+  post "orderitems/showmenuitems1", to: "orderitems#showmenuitems1"
+  get "users/report", to: "users#report"
+  post "orders/customer", to: "orders#customer"
+  post "orders/walkincustomer", to: "orders#walkincustomer"
+  post "orders/filter1", to: "orders#filter1"
+  get "orders/showreport1", to: "orders#showreport1"
   resources :menuitems
   resources :orders
   resources :orderitems

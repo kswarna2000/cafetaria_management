@@ -15,23 +15,35 @@
        <div class="header">
     <p class="logo">Cafeteria Management</p>
     <div class="header-right">
+    <p class="nav-text"><%=@current_user.first_name+" "+@current_user.last_name%></p>
     <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
     </div>
   </div>
     <%if @current_user.role=="customer"%>
 <div class="topnav">
  <a href="/orders">show orders</a>
- <a href="/orders/new">place new order</a>
  <a href="/orders/complaints">my complaints</a>
-
+ <a href="/orderitems/new1">Place new order</a>
 </div>
 <%elsif @current_user.role=="owner"%>
 <div class="topnav">
   <a href="/orders/showorders">show orders</a>
     <a href="/menus/new">Create menu</a>
     <a href="/menus">show menus</a>
-     <a href="/orders/viewcomplaints">view complaints</a>
+    <a href="/orders/viewcomplaints">view complaints</a>
       <a href="/report">view report</a>
+      <a href="/users/newclerk">add clerk</a>
+      <a href="/users/">view customers</a>
+      <a href="/users/clerks">view clerks</a>
+      <a href="/users/report">view customer report</a>
+ </div>
+ <%elsif @current_user.role=="clerk"%>
+ <div class="topnav">
+  <a href="/orders/showorders">show orders</a>
+  <a href="/orders/new">place new order</a>
+   <a href="/orders">Placed orders</a>
+
+
  </div>
 <%end%>
 

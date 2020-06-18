@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_235409) do
+ActiveRecord::Schema.define(version: 2020_05_03_132837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_235409) do
     t.string "menu_item_name"
     t.integer "menu_item_quantity"
     t.decimal "menu_item_price"
+    t.boolean "in_cart"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_235409) do
     t.datetime "delivered_at"
     t.decimal "total"
     t.string "status"
+    t.boolean "walkin_customer"
   end
 
   create_table "todos", force: :cascade do |t|

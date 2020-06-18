@@ -1,0 +1,53 @@
+ <div class="header">
+    <p class="logo">Cafeteria Management</p>
+    <div class="header-right">
+    <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
+    </div>
+  </div>
+  <div class="topnav">
+  <a href="/orders/showorders">show orders</a>
+    <a href="/menus/new">Create menu</a>
+    <a href="/menus">show menus</a>
+     <a href="/orders/viewcomplaints">view complaints</a>
+      <a href="/report">view report</a>
+      <a href="/users/newclerk">add clerk</a>
+      <a href="/users/">view customers</a>
+      <a href="/users/clerks">view clerks</a>
+      <a href="/users/report">view customer report</a>
+ </div>
+ </div>
+<body>
+  <div class="AddItem">
+    <div class="DisplayItem">
+      <div class="DisplayItem-welcome">
+        <%if @role =="customer"%>
+        <h1>Customer details</h1>
+     <%else%>
+      <h1>Clerk details</h1>
+      <%end%>
+      </div>
+      <% User.where(id: session[:show_user_id]).each do |user|%>
+        <div class="DisplayItem-card">
+          <div class="DisplayItem-container">
+            <h4><b><%=user.first_name%></b></h4>
+            <h4><b><%= user.last_name%></b></h4>
+            <h4><b><%= user.email%></b></h4>
+          </div>
+        </div>
+        <%if @role== "customer" %>
+       <div class="DisplayItem-card">
+          <div class="DisplayItem-container">
+            <%sum=0%>
+          <% Order.where(user_id: user.id).each do |order|#calculate total sales by the user%>
+
+          <%sum+=order.total%>
+          <% end %>
+          <h1><b>Total Sales : <%=sum%></b></h1>
+          </div>
+        </div>
+
+        <%end%>
+        <%end%>
+    </div>
+  </div>
+</body>
