@@ -18,33 +18,37 @@
 </div>
 
 <body>
-
-
   <div class="content">
     <div class="DisplayOrder">
       <div class="Displaymenu2">
-        <h1>Clerks</h1>
+
+        <%if @role =="customer"%>
+        <h1>Customer details</h1>
+        <%else%>
+        <h1>Clerk details</h1>
+        <%end%>
       </div>
-      <div class="inline">
-        <%= image_tag("customer1.jpg",:size => "500x600", :alt => "rss feed") %>
-        <div class="secondhalf">
-          <% User.where(role: "clerk").each do |user|  #getting only undelivered orders%>
-          <div class="DisplayOrder-card">
-            <div class="DisplayOrder-container">
-              <div class="textline"><b>Name: <%= user.first_name %></b></div>
-              <div class="textline"><b> Clerk</b></div>
-              <div class=""><%= form_with(url: "/users/display", method:"post") do %>
-                <%= hidden_field_tag 'id', user.id %>
-                <%= hidden_field_tag 'role', "clerk" %>
-                <%= submit_tag "View details" , class: "signup-btn-in10"%>
-                <%end%>
 
-              </div>
-            </div>
-          </div>
+      <section class="page-heading3">
+        <% User.where(id: session[:show_user_id]).each do |user|%>
 
-          <% end %>
-          <div>
-          </div>
-        </div>
+        <h4><b>Name : <%=user.first_name%></b></h4>
+
+        <h4><b>Email : <%= user.email%></b></h4>
+
+        <%if @role== "customer" %>
+
+        <%sum=0%>
+        <% Order.where(user_id: user.id).each do |order|#calculate total sales by the user%>
+
+        <%sum+=order.total%>
+        <% end %>
+        <h4><b>Total Sales : <%=sum%></b></h4>
+
+
+        <%end%>
+        <%end%>
+      </section>
+    </div>
+  </div>
 </body>
