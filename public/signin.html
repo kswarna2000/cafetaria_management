@@ -17,18 +17,31 @@
 </div>
 </div>
 
+
 <body>
-  <div class="signup-form">
-    <h1>Add Clerk</h1>
-    <section class="NewUser">
-      <%= form_with url: users_path do |form| %>
-      <%= form.text_field :first_name,class: "Form-input",placeholder: "Clerk's first name",autofocus: "autofocus" %>
-      <%= form.text_field :last_name,class: "Form-input",placeholder: "Clerk's last name",autofocus: "autofocus" %>
-      <%= form.email_field :email,placeholder: "email",class: "Form-input" %>
-      <%= form.password_field :password_digest,placeholder: "password",class: "Form-input" %>
-      <%= hidden_field_tag 'role', 'clerk' %>
-      <%= form.submit "Add Clerk",class: "signup-btn" %>
-      <% end %>
-    </section>
-  </div>
+  <div class="content">
+    <div class="DisplayOrder">
+      <div class="Displaymenu2">
+        <h1>Order Details</h1>
+      </div>
+      <hr class="roundedfull">
+      <section class="page-heading1">
+        <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
+        <div class="inline">
+          <h3><b>Customer name : <%= user.first_name %></b></h3>
+          <%= form_with(url: "/orders/customer", method:"post") do %>
+          <%= hidden_field_tag 'user_id', user.id %>
+          <%= submit_tag "View Orders" , class: "signup-btn-in8"%>
+          <%end%>
+        </div>
+
+        <% end %>
+        <div class="inline">
+          <h3><b> Walk in customer : </b></h3>
+          <%= form_with(url: "/orders/walkincustomer", method:"post") do %>
+          <%= submit_tag "View Orders" , class: "signup-btn-in9"%>
+          <%end%>
+        </div>
+      </section>
+    </div>
 </body>
