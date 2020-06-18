@@ -1,27 +1,43 @@
 <body>
-  <div class="AddItem">
-    <div class="DisplayItem">
-      <div class="DisplayItem-welcome">
+  <div class="content">
+
+    <div class="DisplayOrder">
+      <div class="Displaymenu">
         <h1>Order no <%= session[:show_order_id] %>: </h1>
       </div>
-      <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
-        <div class="DisplayItem-card">
-          <div class="DisplayItem-container">
-            <h4><b><%=orderitem.order_id.to_s%></b></h4>
-            <h4><b><%= orderitem.menu_item_name%></b></h4>
-            <h4><b><%= orderitem.menu_item_quantity%></b></h4>
+
+
+      <section class="page-heading">
+
+        <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
+
+        <div class="">
+
+          <div class="">
+
+            <h4><b>Order id : <%=orderitem.order_id.to_s%></b></h4>
+            <h4><b>Item name : <%= orderitem.menu_item_name%></b></h4>
+            <h4><b>Item quantity : <%= orderitem.menu_item_quantity%></b></h4>
           </div>
         </div>
-      <% end %>
-       <div class="DisplayItem-card">
-          <div class="DisplayItem-container">
-          <h1><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h1>
+        <% end %>
+        <div class="">
+          <div class="">
+            <h1><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h1>
           </div>
-          </div>
-      <%= form_with(url: "/orders/mark", method:"post") do %>
+        </div>
+        <%= form_with(url: "/orders/mark", method:"post") do %>
         <%= hidden_field_tag 'id', session[:show_order_id] %>
-        <%= submit_tag "Mark as delivered" , class: "AddItem-button"%>
-      <%end%>
+        <%= submit_tag "Mark as delivered" , class: "signup-btn-in3"%>
+        <%end%>
     </div>
+
+    </section>
+
+
+
+
   </div>
+
+
 </body>

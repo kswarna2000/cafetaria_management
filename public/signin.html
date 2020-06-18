@@ -1,21 +1,43 @@
-<div class="content">
+<body>
+  <div class="content">
 
-  <div class="DisplayOrder">
-    <div class="Displaymenu">
-      <h1>Your Orders</h1>
+    <div class="DisplayOrder">
+      <div class="Displaymenu">
+        <h1>Order no <%= session[:show_order_id] %>: </h1>
+      </div>
+
+
+      <section class="page-heading">
+
+        <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
+
+        <div class="">
+
+          <div class="">
+
+            <h4><b>Order id : <%=orderitem.order_id.to_s%></b></h4>
+            <h4><b>Item name : <%= orderitem.menu_item_name%></b></h4>
+            <h4><b>Item quantity : <%= orderitem.menu_item_quantity%></b></h4>
+          </div>
+        </div>
+        <% end %>
+        <div class="">
+          <div class="">
+            <h1><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h1>
+          </div>
+        </div>
+        <%= form_with(url: "/orders/mark", method:"post") do %>
+        <%= hidden_field_tag 'id', session[:show_order_id] %>
+        <%= submit_tag "Mark as delivered" , class: "signup-btn-in3"%>
+        <%end%>
     </div>
 
-
-
-    <section class="page-heading">
-
-
-      <%= form_with(url: "/menus", method:"post", class: "") do %>
-      <h1>Enter Menu Name</h1>
-      <%= text_field_tag 'name' ,nil , class: "Form-input" %>
-      <%= submit_tag "Add Items" , class: "signup-btn-in3"%>
-
-      <%end%>
-
     </section>
+
+
+
+
   </div>
+
+
+</body>
