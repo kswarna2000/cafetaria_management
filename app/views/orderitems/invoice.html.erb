@@ -1,27 +1,21 @@
 <body>
-  <div class="AddItem">
-    <div class="DisplayItem">
-      <div class="DisplayItem-welcome">
-        <h1>Invoice details</h1>
-        <h1>Order no <%= session[:show_order_id] %>: </h1>
-          <%customer_id=Order.find(session[:show_order_id]).user_id%>
-          <h1>Customer name:<%= User.find(customer_id).first_name + " " +User.find(customer_id).last_name%></h1>
+  <div class="content">
+    <div class="DisplayOrder">
+      <div class="Displaymenu2">
+        <h1>Invoice Details</h1>
       </div>
-      <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
-        <div class="DisplayItem-card">
-          <div class="DisplayItem-container">
-
-            <h4><b><%=orderitem.order_id.to_s%></b></h4>
-            <h4><b><%= orderitem.menu_item_name%></b></h4>
-            <h4><b><%= orderitem.menu_item_quantity%></b></h4>
-          </div>
-        </div>
-      <% end %>
-       <div class="DisplayItem-card">
-          <div class="DisplayItem-container">
-          <h1><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h1>
-          </div>
-          </div>
+      <hr class="roundedfull">
+      <section class="page-heading1">
+        <h4>Order no : <%= session[:show_order_id] %> </h4>
+        <%customer_id=Order.find(session[:show_order_id]).user_id%>
+        <h4>Customer name : <%= User.find(customer_id).first_name + " " +User.find(customer_id).last_name%></h4>
+        <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
+        <h4><b>Item name : <%= orderitem.menu_item_name%></b></h4>
+        <h4><b>Quantity : <%= orderitem.menu_item_quantity%></b></h4>
+        <% end %>
+        <hr class="rounded">
+        <h4><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h4>
     </div>
+    </section>
   </div>
 </body>

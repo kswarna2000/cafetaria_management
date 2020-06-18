@@ -1,76 +1,21 @@
 <body>
   <div class="content">
-
     <div class="DisplayOrder">
-      <div class="Displaymenu">
-        <h1>My CART</h1>
+      <div class="Displaymenu2">
+        <h1>Invoice Details</h1>
       </div>
-
-      <section class="page-heading4">
-
-        <%order_id= session[:current_order_id]%>
-        <%menu_id= session[:show_menu_id]%>
-        <%total=0%>
-        <h4>Menu Items</h4>
-        <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
-
-        <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
-
-        <h4><b><%=order_id%></b></h4>
-        <%= hidden_field_tag 'order_id', order_id %>
-
-        <h4><b>Item : <%= menuitem.item_name%></b></h4>
-        <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
-        <h4><b>Description : <%= menuitem.item_description%></b></h4>
-        <h4>Price : &#8377 <%= menuitem.item_price.to_s%></h4>
-        <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
-
-
-        <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "AddItem-item" %> </h4>
-        <%= submit_tag "Add to cart" , class: "signup-btn-in11"%>
-
-
-        <%end%>
-
-        <%end%>
-
-
-
-
-      </section>
-      <div class="content">
-
-        <div class="DisplayOrder">
-          <div class="Displaymenu">
-            <h1>Ordered Items</h1>
-          </div>
-          <hr class="roundedfull">
-          <section class="page-heading1">
-
-            <% Orderitem.where(in_cart: true).each do |orderitem| #tracking current order id%>
-
-            <h4><b><%=orderitem.order_id.to_s%></b></h4>
-            <h4><b><%= orderitem.menu_item_id%></b></h4>
-            <div class="inline">
-              <h4><b><%= orderitem.menu_item_name%></b></h4>
-              <div class="floatright">
-                <h4> &#8377
-                  <%total+=orderitem.menu_item_price*orderitem.menu_item_quantity%>
-                  <%= orderitem.menu_item_price*orderitem.menu_item_quantity %>
-                </h4>
-              </div>
-            </div>
-
-            <% end %>
-
-            <hr class="rounded">
-
-            <h4><b>Total: <%=total%></b></h4>
-
-            <%= form_with(url: "/orders/store1", method:"post") do %>
-            <%= hidden_field_tag 'total', total %>
-            <%= submit_tag "Place Order" , class: "signup-btn-in4"%>
-            <%end%>
-        </div>
-      </div>
+      <hr class="roundedfull">
+      <section class="page-heading1">
+        <h4>Order no : <%= session[:show_order_id] %> </h4>
+        <%customer_id=Order.find(session[:show_order_id]).user_id%>
+        <h4>Customer name : <%= User.find(customer_id).first_name + " " +User.find(customer_id).last_name%></h4>
+        <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem|%>
+        <h4><b>Item name : <%= orderitem.menu_item_name%></b></h4>
+        <h4><b>Quantity : <%= orderitem.menu_item_quantity%></b></h4>
+        <% end %>
+        <hr class="rounded">
+        <h4><b>Total: <%=Order.find(session[:show_order_id]).total%></b></h4>
+    </div>
+    </section>
+  </div>
 </body>
