@@ -1,28 +1,31 @@
 <body>
+
+
   <div class="content">
 
     <div class="DisplayOrder">
       <div class="Displaymenu">
-        <h1>Orders</h1>
+        <h1>Complaint Orders</h1>
       </div>
 
-    </div>
+      <hr class="roundedfull">
+      <section class="page-heading1">
 
+        <% Order.where(status: "complaint").each do |order|  #getting only undelivered orders%>
 
-    <% Order.where(delivered_at: nil,status: "inprogress").order(:order_date).each do |order|  #getting only undelivered orders%>
-    <div class="DisplayOrder-card">
-      <div class="DisplayOrder-container">
-        <div class="textline"><b>Order time: <%= order.order_date.to_s(:long) %></b></div>
-        <div class="textline"><b>Delivery status:
-            <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s(:long) %></div>
-        <div class="textline">Total: <b><%=order.total.to_s%></b></div>
+        <h4><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>
+        <h4><b>Delivery status:
+            <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s(:long) %></h4>
+        <h4>Total: <b><%=order.total.to_s%></b></h4>
         <%= form_with(url: "/orderitems/display", method:"post") do %>
         <%= hidden_field_tag 'order_id', order.id %>
-        <%= submit_tag "Show Items" , class: "signup-btn-in6"%>
+        <%= submit_tag "Show Items" , class: "signup-btn-in4"%>
         <%end%>
-      </div>
-    </div>
-    <% end %>
 
-  </div>
+        <% end %>
+      </section>
+
+    </div>
+
+
 </body>
