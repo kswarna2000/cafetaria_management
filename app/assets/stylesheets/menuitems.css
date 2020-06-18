@@ -1,0 +1,242 @@
+
+section.page-heading {
+	padding: 80px 0px;
+	background-image: url(footer_background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	text-align: center;
+}
+
+section.page-heading1 {
+	padding: 80px 0px;
+	background-image: url(total_back.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	text-align: center;
+}
+
+
+section.page-heading3 {
+	padding: 180px 0px;
+	background-image: url(customer_bg.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+}
+
+section.page-heading4 {
+	padding: 80px 0px;
+	background-image: url(banner.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+}
+
+
+section.page-heading4 {
+	padding: 80px 0px;
+	background-image: url(heading-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+}
+
+.page-heading4 h4 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 300px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+	color:white;
+}
+
+.page-heading4 h4 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 300px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+	color:white;
+}
+
+.page-heading3 h4 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-left: 300px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+
+	color: black;
+}
+
+.page-heading h1 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-family: 'Spectral', serif;
+	font-size: 48px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.page-heading1 h4 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+	color: #fff;
+}
+
+.page-heading1 h3 {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+
+	color: #fff;
+}
+
+
+.page-heading h4 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+
+	color: #fff;
+}
+
+.page-heading p {
+	color: #fff;
+	font-size: 14px;
+	padding: 0px 25%;
+	margin-bottom: 0px;
+}
+
+
+.page-heading h2 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	padding-right: 120px;
+	padding-left: 60px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+	display: inline-flex;
+
+}
+
+.page-heading h3 {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	padding-left: 60px;
+	padding-right: 20px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+	display: inline-flex;
+
+}
+
+
+.textline{
+
+	 margin-top: 20px;
+	 text-align: center;
+	 font-weight: 550;
+	 font-size: 22px;
+	 font-style: roboto;
+
+}
+
+.textline1{
+
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-weight: 550;
+	font-size: 22px;
+	font-style: roboto;
+
+}
+
+
+.textline1{
+
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-weight: 550;
+	font-size: 22px;
+	font-style: roboto;
+
+}
+
+
+hr.rounded {
+  border-top: 4px solid yellowgreen;
+	border-radius: 2px;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-bottom: 20px;
+}
+
+
+hr.roundedfull {
+  border-top: 5px solid rgb(53, 184, 13);
+	border-radius: 2px;
+
+}
+
+.modelimage{
+
+	height: 500px;
+  width:200px;
+}
+
+.secondhalf{
+
+	width: 838px;
+
+}
+
+
+.secondhalf2{
+
+	width: 738px;}
+
+.left{
+	float: left;
+}
+
+.floatright
+{
+ margin-left: 100px;
+}
+
+.textline3{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 340px;
+	font-family: 'Spectral', serif;
+	font-size: 24px;
+	font-weight: 700;
+	color:white;
+
+}
