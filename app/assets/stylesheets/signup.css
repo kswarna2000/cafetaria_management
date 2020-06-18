@@ -51,6 +51,7 @@ body {
   font-size: 40px;
 }
 
+
 .signup-form input {
   display: block;
   width: 100%;
@@ -62,6 +63,22 @@ body {
   border: none;
   font-weight: 500;
   font-family: "montserrat", sans-serif;
+}
+
+
+.dropdown {
+  font-weight: 700;
+  font-size: large;
+  margin-top: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 30px;
+  padding-left: 40px;
+  background: white;
+  color: black;
+  border-radius: 44px;
+  cursor: pointer;
+  transition: 0.8s;
 }
 
 .txtb {
