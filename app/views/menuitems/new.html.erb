@@ -21,6 +21,10 @@
           <h2>Item Price:</h2>
           <%=text_field_tag  "item_price", nil ,class: "Form-input"%>
         </div>
+         <div>
+          <h2>Image Url:</h2>
+          <%=text_field_tag  "image_url", "Enter Url of item's image.." ,class: "Form-input"%>
+        </div>
         <%=submit_tag "Add Item", class: "signup-btn-in3"%>
         <% end %>
     </div>
@@ -36,7 +40,7 @@
       <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem|%>
       <div class="">
         <div class="offer-item">
-          <img src="/assets/menu-item-thumbnail-03.jpg" alt="">
+          <img src=<%=menuitem.image_url%> alt="/assets/menu-item-thumbnail-03.jpg">
           <div class=adjustmenu>
 
             <h4><b><%= menuitem.item_name%></b></h4>

@@ -24,6 +24,10 @@
           <h2>Item Price:</h2>
           <%=text_field_tag  "item_price", @update_menuitem.item_price ,class: "Form-input"%>
         </div>
+        <div>
+          <h2>Image Url:</h2>
+          <%=text_field_tag  "image_url", @update_menuitem.image_url ,class: "Form-input"%>
+        </div>
 
         <%= submit_tag "Update item" , class: "signup-btn-in3"%>
         <% end %>

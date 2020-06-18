@@ -13,11 +13,13 @@ class MenuitemsController < ApplicationController
     item_name = params[:item_name]
     item_description = params[:item_description]
     item_price = (params[:item_price]).to_f
+    image_url = params[:image_url]
     new_menuitem = Menuitem.new(
       menu_id: menu_id,
       item_name: item_name,
       item_description: item_description,
       item_price: item_price,
+      image_url: image_url,
     )
     if new_menuitem.save
       redirect_to new_menuitem_path
@@ -45,6 +47,7 @@ class MenuitemsController < ApplicationController
     menuitem.item_name = params[:item_name]
     menuitem.item_description = params[:item_description]
     menuitem.item_price = params[:item_price]
+    menuitem.image_url = params[:image_url]
     if menuitem.save
       redirect_to new_menuitem_path
     else

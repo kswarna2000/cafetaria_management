@@ -13,6 +13,7 @@ class OrderitemsController < ApplicationController
     menu_item_name = params[:menu_item_name]
     menu_item_price = params[:menu_item_price].to_f
     menu_item_quantity = params[:menu_item_quantity].to_i
+    image_url = params[:image_url]
     neworderitem = Orderitem.new(
       order_id: order_id,
       menu_item_id: menu_item_id,
@@ -20,6 +21,7 @@ class OrderitemsController < ApplicationController
       menu_item_price: menu_item_price,
       menu_item_quantity: menu_item_quantity,
       in_cart: false,
+      image_url: image_url,
     )
     if neworderitem.save
       redirect_to orderitems_path
