@@ -11,7 +11,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    if User.exists?(email: params[:email]) and User.exists?(role: params[:role])
+      flash[:error] = "User Email Id already exists"
+      redirect_to new_user_path
+      return
+    end
+
     user = User.new_user(params)
+
     if user.save
       if session[:current_user_id] == nil
         session[:current_user_id] = user.id
