@@ -40,7 +40,11 @@
       <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem|%>
       <div class="">
         <div class="offer-item">
-          <img src=<%=menuitem.image_url%> alt="/assets/menu-item-thumbnail-03.jpg">
+        <% if menuitem.image_url == "" %>
+          <img src="/assets/menu-item-thumbnail-03.jpg" >
+        <% else %>
+          <img src=<%=menuitem.image_url%> alt="No image available">
+        <% end%>
           <div class=adjustmenu>
 
             <h4><b><%= menuitem.item_name%></b></h4>

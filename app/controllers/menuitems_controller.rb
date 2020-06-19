@@ -21,11 +21,17 @@ class MenuitemsController < ApplicationController
       item_price: item_price,
       image_url: image_url,
     )
-    if new_menuitem.save
-      redirect_to new_menuitem_path
+    if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url.trim() == ""
+      if new_menuitem.save
+        redirect_to new_menuitem_path
+      else
+        flash[:error] = new_menuitem.errors.full_messages.join(",")
+        redirect_to new_menuitem_path
+      end
     else
-      flash[:error] = new_menuitem.errors.full_messages.join(",")
+      flash[:error] = "Enter a URL with valid image extension (.jpeg, .jpg, .png)!! or leave the field blank"
       redirect_to new_menuitem_path
+      return
     end
   end
 
@@ -48,11 +54,17 @@ class MenuitemsController < ApplicationController
     menuitem.item_description = params[:item_description]
     menuitem.item_price = params[:item_price]
     menuitem.image_url = params[:image_url]
-    if menuitem.save
-      redirect_to new_menuitem_path
+    if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url.trim() == ""
+      if menuitem.save
+        redirect_to new_menuitem_path
+      else
+        flash[:error] = new_menuitem.errors.full_messages.join(",")
+        render "edititem"
+      end
     else
-      flash[:error] = new_menuitem.errors.full_messages.join(",")
+      flash[:error] = "Enter a URL with valid image extension (.jpeg, .jpg, .png)!! or leave the field blank"
       render "edititem"
+      return
     end
   end
 end

@@ -16,25 +16,31 @@
 
         <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
 
+        <div class="offer-item">
+        <div >
         <h4><b><%=order_id%></b></h4>
         <%= hidden_field_tag 'order_id', order_id %>
-        <%= image_tag(menuitem.image_url,:size => "200*200", :alt => "rss feed") %>
         <h4><b>Item : <%= menuitem.item_name%></b></h4>
         <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
         <h4><b>Description : <%= menuitem.item_description%></b></h4>
         <h4>Price : &#8377 <%= menuitem.item_price.to_s%></h4>
         <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
-
-
-        <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "AddItem-item" %> </h4>
+ <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "AddItem-item" %> </h4>
+        </div>
+        <div>
+          <% if menuitem.image_url == "" %>
+          <img src="/assets/menu-item-thumbnail-03.jpg" >
+        <% else %>
+         <%= image_tag(menuitem.image_url,:size => "200*200", :alt => "rss feed") %>
+        <% end%>
+        </div>
+        </div>
         <%= submit_tag "Add to cart" , class: "signup-btn-in11"%>
 
 
         <%end%>
 
         <%end%>
-
-
 
 
       </section>
