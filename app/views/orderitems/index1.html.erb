@@ -53,7 +53,7 @@
           <hr class="roundedfull">
           <section class="page-heading1">
 
-            <% Orderitem.where(in_cart: true).each do |orderitem| #tracking current order id%>
+            <% Orderitem.in_cart.each do |orderitem| #tracking current order id%>
 
             <h4><b><%=orderitem.order_id.to_s%></b></h4>
             <h4><b><%= orderitem.menu_item_id%></b></h4>
