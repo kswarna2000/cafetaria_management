@@ -21,7 +21,7 @@
   <div class="content">
     <div class="DisplayOrder">
       <div class="Displaymenu">
-        <h1>Clerks</h1>
+        <h1>Customers</h1>
       </div>
 
 
@@ -30,8 +30,7 @@
       <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
-          <div class="textline"><b>Name: <%= user.first_name %></b></div>
-          <div class="textline"><b> Clerk</b></div>
+          <div class="textline"><i><%= user.first_name + user.last_name %></i></div>
           <%= form_with(url: "/users/display", method:"post") do %>
           <%= hidden_field_tag 'id', user.id %>
           <%= hidden_field_tag 'role', "customer" %>

@@ -59,7 +59,10 @@
           </div>
         </div>
         <% end %>
-        <a href="/menus/new"><button class="signup-btn-in5">Done</a>
+        <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
+           <%= hidden_field_tag 'menu_id', @current_menu_id %>
+          <%=submit_tag "Done", class: "signup-btn-in5"%>
+         <% end %>
       </div>
     </div>
 </body>

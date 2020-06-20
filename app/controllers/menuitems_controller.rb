@@ -21,7 +21,7 @@ class MenuitemsController < ApplicationController
       item_price: item_price,
       image_url: image_url,
     )
-    if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url.trim() == ""
+    if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url == ""
       if new_menuitem.save
         redirect_to new_menuitem_path
       else
@@ -54,8 +54,10 @@ class MenuitemsController < ApplicationController
     menuitem.item_description = params[:item_description]
     menuitem.item_price = params[:item_price]
     menuitem.image_url = params[:image_url]
+    image_url = params[:image_url]
     if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url.trim() == ""
       if menuitem.save
+        flash[:success] = "Updated item " + menuitem.item_name.to_s + " Successfully!!"
         redirect_to new_menuitem_path
       else
         flash[:error] = new_menuitem.errors.full_messages.join(",")
@@ -65,6 +67,17 @@ class MenuitemsController < ApplicationController
       flash[:error] = "Enter a URL with valid image extension (.jpeg, .jpg, .png)!! or leave the field blank"
       render "edititem"
       return
+    end
+  end
+
+  def done
+    menu_id = params[:menu_id]
+    if Menuitem.where(menu_id: menu_id).exists?
+      flash[:success] = "Updated Menu Successfully!!"
+      redirect_to "/menus/new"
+    else
+      flash[:error] = "Menu Cannot be empty!! If left empty will be deleted!!"
+      redirect_to new_menuitem_path
     end
   end
 end
