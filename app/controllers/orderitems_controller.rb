@@ -45,13 +45,15 @@ class OrderitemsController < ApplicationController
     menu_item_name = params[:menu_item_name]
     menu_item_price = params[:menu_item_price].to_f
     menu_item_quantity = params[:menu_item_quantity].to_i
+    menu_image_url = params[:menu_image_url]
     neworderitem = Orderitem.new(
-      user_id: user_id,
       menu_item_id: menu_item_id,
       menu_item_name: menu_item_name,
       menu_item_price: menu_item_price,
       menu_item_quantity: menu_item_quantity,
       in_cart: true,
+      image_url: menu_image_url,
+      user_id: user_id,
     )
     if neworderitem.save
       redirect_to "/orderitems/index1"

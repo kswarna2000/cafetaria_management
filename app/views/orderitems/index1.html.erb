@@ -26,6 +26,7 @@
  <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "" %> </h4>
         </div>
         <div>
+        <%= hidden_field_tag 'menu_image_url', menuitem.image_url %>
           <% if menuitem.image_url == "" %>
           <img src="/assets/menu-item-thumbnail-03.jpg" >
         <% else %>
