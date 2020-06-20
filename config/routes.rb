@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post "orders/filter1", to: "orders#filter1"
   get "orders/showreport1", to: "orders#showreport1"
   post "menuitems/done", to: "menuitems#done"
+  get "/orderitems/showcart", to: "orderitems#showcart"
   resources :menuitems
   resources :orders
   resources :orderitems

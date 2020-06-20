@@ -3,7 +3,7 @@
 
     <div class="DisplayOrder">
       <div class="Displaymenu">
-        <h1>My CART</h1>
+        <h1>Menu Items</h1>
       </div>
 
       <section class="page-heading4">
@@ -11,9 +11,7 @@
         <%order_id= session[:current_order_id]%>
         <%menu_id= session[:show_menu_id]%>
         <%total=0%>
-        <h4>Menu Items</h4>
         <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
-
         <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
 
         <div class="offer-item">
@@ -48,12 +46,12 @@
 
         <div class="DisplayOrder">
           <div class="Displaymenu">
-            <h1>Ordered Items</h1>
+            <h1>My CART</h1>
           </div>
           <hr class="roundedfull">
           <section class="page-heading1">
 
-            <% Orderitem.in_cart.each do |orderitem| #tracking current order id%>
+            <% Orderitem.where(user_id: @current_user.id).in_cart.each do |orderitem| #tracking current order id%>
 
             <h4><b><%=orderitem.order_id.to_s%></b></h4>
             <h4><b><%= orderitem.menu_item_id%></b></h4>

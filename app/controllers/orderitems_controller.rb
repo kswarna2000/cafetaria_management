@@ -31,13 +31,22 @@ class OrderitemsController < ApplicationController
     end
   end
 
+  def destroy
+    id = params[:id]
+    orderitem = Orderitem.where(user_id: @current_user.id).find(id)
+    orderitem.destroy
+    redirect_to "/orderitems/showcart"
+  end
+
   def cart
     #order_id = session[:current_order_id]
+    user_id = @current_user.id
     menu_item_id = params[:menu_item_id]
     menu_item_name = params[:menu_item_name]
     menu_item_price = params[:menu_item_price].to_f
     menu_item_quantity = params[:menu_item_quantity].to_i
     neworderitem = Orderitem.new(
+      user_id: user_id,
       menu_item_id: menu_item_id,
       menu_item_name: menu_item_name,
       menu_item_price: menu_item_price,
@@ -95,5 +104,9 @@ class OrderitemsController < ApplicationController
   def redirect
     session[:current_order_id] = nil
     redirect_to orders_path
+  end
+
+  def showcart
+    render "mycart"
   end
 end
