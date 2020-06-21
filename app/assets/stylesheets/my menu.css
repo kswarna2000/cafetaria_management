@@ -91,6 +91,21 @@ font-size: larger;
   transition: 0.8s;
 }
 
+
+.signup-btn-in15{
+  font-weight: bold;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-bottom: 16px;
+  margin-left: 10px;
+  background: url(backimg.jpg) no-repeat center;
+  color: #fff;
+  border-radius: 44px;
+  cursor: pointer;
+}
+
 .signup-btn-in5{
   font-weight: bold;
   padding-top: 8px;
@@ -200,6 +215,39 @@ font-size: larger;
   cursor: pointer;
   transition: 0.8s;
 }
+
+.signup-btn-in12{
+  font-weight: bold;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-bottom: 46px;
+  margin-top: 20px;
+  margin-left: 120px;
+  background: url(backimg.jpg) no-repeat center;
+  color: #fff;
+  border-radius: 44px;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+.signup-btn-in13{
+  font-weight: bold;
+  font-size: larger;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 45px;
+  padding-left: 45px;
+  margin-bottom: 46px;
+  margin-top: 20px;
+  margin-left: 340px;
+  color: black;
+  border-radius: 44px;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
 
 
 
@@ -350,4 +398,9 @@ margin-left: 80%;
 color:white;
 font-size: 24px;
 margin-right:500 px;
+}
+
+.inline3
+{
+  margin-top: 20px;
 }
