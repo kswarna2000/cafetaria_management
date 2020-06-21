@@ -25,7 +25,6 @@
         <% if session[:search_menuitem_id] != nil %>
         <% menuitem=Menuitem.find(session[:search_menuitem_id])%>
         <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
-
         <div class="offer-item">
         <div >
         <h4><b><%=order_id%></b></h4>
