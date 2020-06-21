@@ -66,6 +66,7 @@
 /* Style the topnav links */
 
 .topnav a {
+  font-size: 22px;
   float: left;
   display: block;
   color: #f2f2f2;

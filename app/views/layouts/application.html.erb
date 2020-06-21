@@ -4,7 +4,7 @@
     <title>CafetariaManagement</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -24,7 +24,7 @@
  <a href="/orders">show orders</a>
  <a href="/orders/complaints">my complaints</a>
  <a href="/orderitems/new1">Place new order</a>
-  <a href="/orderitems/showcart">My cart (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
+  <a href="/orderitems/showcart">My cart&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
 </div>
 <%elsif @current_user.role=="owner"%>
 <div class="topnav">
@@ -44,7 +44,7 @@
   <a href="/orderitems/new1">place new order</a>
    <a href="/orders">Placed orders</a>
    <a href="/orders/viewcomplaints">view complaints</a>
-    <a href="/orderitems/showcart">Cart  (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
+    <a href="/orderitems/showcart">My cart &nbsp;  <i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
 
 
  </div>
