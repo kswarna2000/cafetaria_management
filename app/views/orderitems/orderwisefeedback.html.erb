@@ -5,18 +5,19 @@
         <h1>Feedback</h1>
       </div>
       <% Order.all.each do |order| %>
-        <div class="textline">
-          <i><%= User.find(order.user_id).first_name + User.find(order.user_id).last_name %></i>
-        </div>
-        <div class="DisplayOrder-card">
-          <div class="DisplayOrder-container">
+        <div class="card">
+        <div class="container">
+          <div class="textline2"><i>User Name : <%= User.find(order.user_id).first_name + User.find(order.user_id).last_name %></i></div>
+
+
             <% if order.feedback != nil %>
-              <p>Feedback: <%= order.feedback%></p>
+              <div class="textline1">Feedback: <%= order.feedback%></div>
             <% else %>
-              <p>No feedback given</p>
+              <div class="textline1">No feedback given</div>
             <% end %>
-          </div>
-        </div>
+            </div>
+            </div>
+
       <% end %>
     </div>
   </div>
