@@ -245,5 +245,64 @@ hr.roundedfull {
   color: white;
   font-size: 24px;
   margin-bottom: 10px;
+  margin-left: 22px;
   font-weight: 600;
+}
+
+.options1{
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.options2{
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 16px;
+  font-weight: 600;
+}
+
+.options3{
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 16px;
+  font-weight: 600;
+}
+
+.options4{
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 68px;
+  font-weight: 600;
+}
+
+.mainoption{
+  color: yellow;
+  font-size: 44px;
+  margin-bottom: 30px;
+
+  font-weight: 600;
+}
+
+.feedback{
+  margin-top: 25px;
+}
+
+input[type="radio"] {
+  -ms-transform: scale(1.35);
+  -webkit-transform: scale(1.35);
+  transform: scale(1.35);
+  margin-right: 7px;
+}
+
+.txtarea{
+  border-radius: inherit;
+  resize: horizontal;
+  margin-right: 15px;
+  margin-left: 30px;
+  columns: 100;
 }

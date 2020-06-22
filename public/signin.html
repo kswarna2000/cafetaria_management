@@ -1,47 +1,52 @@
-<div class="header">
-  <p class="logo">Cafeteria Management</p>
-  <div class="header-right">
-    <p class="nav-text"> <%= link_to "sign-out",destroy_session_path,method: "delete"%> </p>
-  </div>
-</div>
-<div class="topnav">
-  <a href="/orders/showorders">show orders</a>
-  <a href="/menus/new">Create menu</a>
-  <a href="/menus">show menus</a>
-  <a href="/orders/viewcomplaints">view complaints</a>
-  <a href="/report">view report</a>
-  <a href="/users/newclerk">add clerk</a>
-  <a href="/users/">view customers</a>
-  <a href="/users/clerks">view clerks</a>
-  <a href="/users/report">view customer report</a>
-</div>
-</div>
-
-
 <body>
   <div class="content">
     <div class="DisplayOrder">
-      <div class="Displaymenu2">
-        <h1>Order Details</h1>
+      <div class="Displaymenu">
+        <h1>Feedback</h1>
       </div>
-      <hr class="roundedfull">
-      <section class="page-heading1">
-        <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
-        <div class="inline">
-          <h3><b>Customer name : <%= user.first_name %></b></h3>
-          <%= form_with(url: "/orders/customer", method:"post") do %>
-          <%= hidden_field_tag 'user_id', user.id %>
-          <%= submit_tag "View Orders" , class: "signup-btn-in8"%>
-          <%end%>
+      <section class="page-heading">
+        <% if session[:feedback_order_id] != nil%>
+        <%= form_with(url: "/orderitems/updatefeedback", method:"post") do %>
+        <h1>Item Rating</h1>
+        <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
+
+        <div class="mainoption">
+          <i><%= orderitem.menu_item_name %></i>
+        </div>
+        <% name=orderitem.id %>
+        <div class="options">
+          <input type="radio" id="b1" name=<%= name %> value="1">
+          <label for="b1">1 Worst</label><br>
+        </div>
+        <div class="options1">
+          <input type="radio" id="b2" name=<%= name %> value="2">
+          <label for="b2">2 Bad</label><br>
+        </div>
+        <div class="options2">
+          <input type="radio" id="b3" name=<%= name %> value="3">
+          <label for="b3">3 Good</label><br>
+        </div>
+        <div class="options3">
+          <input type="radio" id="b4" name=<%= name %> value="4">
+          <label for="b4">4 Tasty</label><br>
+        </div>
+        <div class="options4">
+          <input type="radio" id="b5" name=<%= name %> value="5">
+          <label for="b5">5 Awesome</label><br>
+        </div>
+        <% end %>
+        <div class="feedback">
+          <%= text_area_tag :feedback, "Write your feedback..", class: "Form-input"%>
         </div>
 
+        <%= submit_tag "Submit", class: "signup-btn-in4" %>
+
         <% end %>
-        <div class="inline">
-          <h3><b> Walk in customer : </b></h3>
-          <%= form_with(url: "/orders/walkincustomer", method:"post") do %>
-          <%= submit_tag "View Orders" , class: "signup-btn-in9"%>
-          <%end%>
-        </div>
+        <%= form_with(url: "/orderitems/cancel", method:"post") do %>
+        <%= submit_tag "Cancel", class: "signup-btn-in4" %>
+        <%end %>
       </section>
+      <% end %>
     </div>
+  </div>
 </body>
