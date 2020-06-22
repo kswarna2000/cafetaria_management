@@ -1,36 +1,28 @@
 <body>
-
   <div class="content">
-
     <div class="DisplayOrder">
       <div class="Displaymenu">
         <h1>View Menus</h1>
       </div>
-
       <hr class="roundedfull">
       <div class="inline">
-        <%= image_tag("hotel.jpg",:size => "500x730", :alt => "rss feed") %>
+        <%= image_tag("hotel.jpg", :size => "500x730", :alt => "rss feed") %>
         <div class="secondhalf">
-
           <section class="page-heading4">
-            <div><% Menu.all.each do |menu|%>
-
-              <%= form_with(url: "/orderitems/showmenuitems1", method:"post") do %>
-
-
-              <%= hidden_field_tag 'menu_item_id', menu.id %>
-              <div class="textline3"> <b><%=menu.name%></b></div>
-              <%= submit_tag "Show menu" , class: "signup-btn-in10"%>
-
-
-              <%end%>
-
-
-              <%end%>
+            <div>
+              <% Menu.all.each do |menu| %>
+                <%= form_with(url: "/orderitems/showmenuitems1", method: "post") do %>
+                  <%= hidden_field_tag 'menu_item_id', menu.id %>
+                  <div class="textline3">
+                    <b><%= menu.name %></b>
+                  </div>
+                  <%= submit_tag "Show menu", class: "signup-btn-in10" %>
+                <% end %>
+              <% end %>
             </div>
           </section>
-          <div>
-          </div>>
-
-        </div>
+        <div>
+      </div>>
+    </div>
+  </div>
 </body>

@@ -1,15 +1,17 @@
-<div class="layer">
-  <div class="signup-form">
-    <h1>Sign up</h1>
-    <section class="NewUser">
-      <%= form_with url: users_path do |form| %>
-      <%= form.text_field :first_name,class: "Form-input",placeholder: "first name",autofocus: "autofocus" %>
-      <%= form.text_field :last_name,class: "Form-input",placeholder: "last name",autofocus: "autofocus" %>
-      <%= form.email_field :email,placeholder: "email",class: "Form-input" %>
-      <%= form.password_field :password_digest,placeholder: "password",class: "Form-input" %>
-     <%= hidden_field_tag 'role', 'customer' %>
-      <%= form.submit "Sign Up!",class: "signup-btn" %>
-      <% end %>
-    </section>
+<body>
+  <div class="layer">
+    <div class="signup-form">
+      <h1>Sign up</h1>
+      <section class="NewUser">
+        <%= form_with url: users_path do |form| %>
+          <%= form.text_field :first_name, class: "Form-input", placeholder: "first name", autofocus: "autofocus" %>
+          <%= form.text_field :last_name, class: "Form-input", placeholder: "last name", autofocus: "autofocus" %>
+          <%= form.email_field :email, placeholder: "email", class: "Form-input" %>
+          <%= form.password_field :password_digest, placeholder: "password", class: "Form-input" %>
+          <%= hidden_field_tag 'role', 'customer' %>
+          <%= form.submit "Sign Up!", class: "signup-btn" %>
+        <% end %>
+      </section>
+    </div>
   </div>
-</div>
+</body>

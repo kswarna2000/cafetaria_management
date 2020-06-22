@@ -1,6 +1,4 @@
 <body>
-
-
   <div class="content">
     <div class="DisplayOrder">
       <div class="Displaymenu">
@@ -8,61 +6,56 @@
       </div>
       <section class="page-heading">
         <%= form_with(url: "/menuitems", method:"post", class: "") do %>
-        <div>
-          <h2>Item Name:</h2>
-          <%=text_field_tag  "item_name", nil, class: "Form-input"%>
-        </div>
-
-        <div>
-          <h3>Item Description:</h3>
-          <%=text_field_tag  "item_description", nil , class: "Form-input"%>
-        </div>
-        <div>
-          <h2>Item Price:</h2>
-          <%=text_field_tag  "item_price", nil ,class: "Form-input"%>
-        </div>
-         <div>
-          <h2>Image Url:</h2>
-          <%=text_field_tag  "image_url", "Enter Url of item's image.." ,class: "Form-input"%>
-        </div>
-        <%=submit_tag "Add Item", class: "signup-btn-in3"%>
+          <div>
+            <h2>Item Name:</h2>
+            <%= text_field_tag  "item_name", nil, class: "Form-input" %>
+          </div>
+          <div>
+            <h3>Item Description:</h3>
+            <%= text_field_tag  "item_description", nil , class: "Form-input" %>
+          </div>
+          <div>
+            <h2>Item Price:</h2>
+            <%= text_field_tag  "item_price", nil ,class: "Form-input" %>
+          </div>
+          <div>
+            <h2>Image Url:</h2>
+            <%= text_field_tag  "image_url", "Enter Url of item's image..", class: "Form-input" %>
+          </div>
+          <%= submit_tag "Add Item", class: "signup-btn-in3" %>
         <% end %>
+      </section>
     </div>
-
-    </section>
-
-
-    <div class="DisplayItem">
-      <div class="Displaymenu">
-        <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
-      </div>
-
-      <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem|%>
+  </div>
+  <div class="DisplayItem">
+    <div class="Displaymenu">
+      <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
+    </div>
+    <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem| %>
       <div class="">
         <div class="offer-item">
-        <% if menuitem.image_url == "" %>
-          <img src="/assets/menu-item-thumbnail-03.jpg" >
-        <% else %>
-          <img src=<%=menuitem.image_url%> alt="No image available">
-        <% end%>
+          <% if menuitem.image_url == "" %>
+            <img src="/assets/menu-item-thumbnail-03.jpg" >
+          <% else %>
+            <img src=<%= menuitem.image_url %> alt= "No image available">
+          <% end%>
           <div class=adjustmenu>
-
-            <h4><b><%= menuitem.item_name%></b></h4>
-            <p> <%= menuitem.item_description%></p>
-            <p> &#8377 <%= (menuitem.item_price).to_s%>.</p>
+            <h4><b><%= menuitem.item_name %></b></h4>
+            <p> <%= menuitem.item_description %></p>
+            <p> &#8377 <%= (menuitem.item_price).to_s %>.</p>
           </div>
           <div class="MenuButton-container">
             <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="signup-btn-in4">Edit</button></a>
             <%= form_with(url: "/menuitems/#{menuitem.id}", method:"delete") do %>
-            <%=submit_tag "Delete", class: "signup-btn-in4"%>
-            <% end%>
+              <%= submit_tag "Delete", class: "signup-btn-in4" %>
+            <% end %>
           </div>
         </div>
-        <% end %>
-        <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
-           <%= hidden_field_tag 'menu_id', @current_menu_id %>
-          <%=submit_tag "Done", class: "signup-btn-in5"%>
-         <% end %>
       </div>
-    </div>
+    <% end %>
+    <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
+      <%= hidden_field_tag 'menu_id', @current_menu_id %>
+      <%= submit_tag "Done", class: "signup-btn-in5" %>
+    <% end %>
+  </div>
 </body>

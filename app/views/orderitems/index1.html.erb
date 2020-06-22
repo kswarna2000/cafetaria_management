@@ -1,89 +1,50 @@
 <body>
   <div class="content">
-
     <div class="DisplayOrder">
       <div class="Displaymenu">
         <h1>Menu Items</h1>
       </div>
-
       <section class="page-heading4">
-
-        <%order_id= session[:current_order_id]%>
-        <%menu_id= session[:show_menu_id]%>
-        <%total=0%>
-           <div class="offer-item" style="align: center;">
-      <%= form_with(url: "/menuitems/search", method:"post", class: "") do %>
-
-         <select id="roles" name="menuitem_id" class="signup-btn-in13">
-            <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
-            <option value=<%= menuitem.id%>><%= menuitem.item_name%></option>
-             <% end %>
-          </select>
-         <%= submit_tag "Search item" , class: "signup-btn-in12"%>
-        <% end%>
-      </div>
+        <% order_id= session[:current_order_id] %>
+        <% menu_id= session[:show_menu_id] %>
+        <% total=0 %>
+        <div class="offer-item" style="align: center;">
+          <%= form_with(url: "/menuitems/search", method: "post", class: "") do %>
+            <select id="roles" name="menuitem_id" class="signup-btn-in13" >
+              <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
+                <option value=<%= menuitem.id %>> <%= menuitem.item_name %></option>
+              <% end %>
+            </select>
+            <%= submit_tag "Search item" , class: "signup-btn-in12" %>
+          <% end %>
+        </div>
         <% if session[:search_menuitem_id] != nil %>
-        <% menuitem=Menuitem.find(session[:search_menuitem_id])%>
-        <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
-        <div class="offer-item">
-        <div>
-        <h4><b><%=order_id%></b></h4>
-        <%= hidden_field_tag 'order_id', order_id %>
-        <h4><b>Item : <%= menuitem.item_name%></b></h4>
-        <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
-        <h4><b>Description : <%= menuitem.item_description%></b></h4>
-        <h4>Price : &#8377 <%= menuitem.item_price.to_s%></h4>
-        <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
-        <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "inline3" %> </h4>
-        </div>
-        <div>
-        <%= hidden_field_tag 'menu_image_url', menuitem.image_url %>
-          <% if menuitem.image_url == "" %>
-          <img src="/assets/menu-item-thumbnail-03.jpg" >
-        <% else %>
-         <%= image_tag(menuitem.image_url,:size => "200*200", :alt => "rss feed") %>
-        <% end%>
-        </div>
-        </div>
-        <%= submit_tag "Add to cart" , class: "signup-btn-in6"%>
-
-        <%end%>
-        <% end %>
-
-      </section>
-      <div class="content">
-
-        <div class="DisplayOrder">
-          <div class="Displaymenu">
-            <h1>My CART</h1>
-          </div>
-          <hr class="roundedfull">
-          <section class="page-heading1">
-
-            <% Orderitem.where(user_id: @current_user.id).in_cart.each do |orderitem| #tracking current order id%>
-
-            <h4><b><%=orderitem.order_id.to_s%></b></h4>
-            <h4><b><%= orderitem.menu_item_id%></b></h4>
-            <div class="inline">
-              <h4><b><%= orderitem.menu_item_name%></b></h4>
-              <div class="floatright">
-                <h4> &#8377
-                  <%total+=orderitem.menu_item_price*orderitem.menu_item_quantity%>
-                  <%= orderitem.menu_item_price*orderitem.menu_item_quantity %>
-                </h4>
+          <% menuitem=Menuitem.find(session[:search_menuitem_id]) %>
+          <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
+            <div class="offer-item">
+              <div>
+                <h4><b><%= order_id %></b></h4>
+                <%= hidden_field_tag 'order_id', order_id %>
+                <h4><b>Item : <%= menuitem.item_name %></b></h4>
+                <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
+                <h4><b>Description : <%= menuitem.item_description %></b></h4>
+                <h4>Price : &#8377 <%= menuitem.item_price.to_s %></h4>
+                <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
+                <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "inline3" %> </h4>
+              </div>
+              <div>
+                <%= hidden_field_tag 'menu_image_url', menuitem.image_url %>
+                <% if menuitem.image_url == ""  %>
+                  <img src="/assets/menu-item-thumbnail-03.jpg" >
+                <% else %>
+                  <%= image_tag(menuitem.image_url,:size => "200*200", :alt => "rss feed") %>
+                <% end %>
               </div>
             </div>
-
-            <% end %>
-
-            <hr class="rounded">
-
-            <h4><b>Total: <%=total%></b></h4>
-
-            <%= form_with(url: "/orders/store1", method:"post") do %>
-            <%= hidden_field_tag 'total', total %>
-            <%= submit_tag "Place Order" , class: "signup-btn-in4"%>
-            <%end%>
-        </div>
-      </div>
+            <%= submit_tag "Add to cart" , class: "signup-btn-in6"%>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>
 </body>

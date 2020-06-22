@@ -1,18 +1,21 @@
-<div class="layer">
-  <div class="signup-form">
-    <h1>Sign in</h1>
-    <section class="NewUser">
-      <%= form_with url: sessions_path do |form| %>
-      <div class="Form-section">
-        <%= form.email_field :email,placeholder: "email",class: "Form-input" %>
-        <%= form.password_field :password_digest,placeholder: "password",class: "Form-input" %>
-        <select id="roles" name="role">
-          <option value="customer">Customer</option>
-          <option value="clerk">Billing Clerk</option>
-          <option value="owner">Owner</option>
-        </select>
-        <%= form.submit "Sign in!",class:"signup-btn" %>
+<body>
+  <div class="layer">
+    <div class="signup-form">
+      <h1>Sign in</h1>
+      <section class="NewUser">
+        <%= form_with url: sessions_path do |form| %>
+          <div class="Form-section">
+            <%= form.email_field :email, placeholder: "email", class: "Form-input" %>
+            <%= form.password_field :password_digest, placeholder: "password", class: "Form-input" %>
+            <select id="roles" name="role">
+              <option value="customer">Customer</option>
+              <option value="clerk">Billing Clerk</option>
+              <option value="owner">Owner</option>
+            </select>
+            <%= form.submit "Sign in!",class:"signup-btn" %>
+          </div>
         <% end %>
-    </section>
+      </section>
+    </div>
   </div>
-</div>
+</body>

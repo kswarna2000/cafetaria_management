@@ -4,22 +4,25 @@
       <div class="Displaymenu">
         <h1>Your Complaint Orders</h1>
       </div>
-      <% Order.where(user_id: @current_user.id, status: "complaint" ).each do |order|%>
-      <div class="DisplayOrder-card">
-        <div class="DisplayOrder-container">
-          <div class="textline">Order id: <b><%=order.id.to_s%></b></div>
-          <div class="textline"><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>
-            <div class="textline1"><b>Delivery status:
-                <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.to_s(:long)}" %>
-                </h4>
-                <%if order.delivered_at != nil%>
+      <% Order.where(user_id: @current_user.id, status: "complaint" ).each do |order| %>
+        <div class="DisplayOrder-card">
+          <div class="DisplayOrder-container">
+            <div class="textline">
+              <b>Order id: <b><%= order.id.to_s %></b>
+            </div>
+            <div class="textline">
+              <b>Order time: <%= order.order_date.to_s(:long) %></b>
+            </div>
+            <div class="textline1"><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.to_s(:long)}" %>
+              <% if order.delivered_at != nil %>
                 <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>
-                <%= submit_tag "received?" , class: "signup-btn-in3"%>
-                <%end%>
-                <%end%>
+                  <%= submit_tag "received?" , class: "signup-btn-in3" %>
+                <% end %>
+              <% end %>
             </div>
           </div>
-          <% end %>
         </div>
-      </div>
+      <% end %>
+    </div>
+  </div>
 </body>

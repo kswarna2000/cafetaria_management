@@ -21,33 +21,24 @@
   <div class="content">
     <div class="DisplayOrder">
       <div class="Displaymenu2">
-
-        <%if @role =="customer"%>
-        <h1>Customer details</h1>
-        <%else%>
-        <h1>Clerk details</h1>
-        <%end%>
-      </div>
-
-      <section class="page-heading3">
-        <% User.where(id: session[:show_user_id]).each do |user|%>
-
-        <h4><b>Name : <%=user.first_name%></b></h4>
-
-        <h4><b>Email : <%= user.email%></b></h4>
-
-        <%if @role== "customer" %>
-
-        <%sum=0%>
-        <% Order.where(user_id: user.id).each do |order|#calculate total sales by the user%>
-
-        <%sum+=order.total%>
+        <% if @role =="customer" %>
+          <h1>Customer details</h1>
+        <% else %>
+          <h1>Clerk details</h1>
         <% end %>
-        <h4><b>Total Sales : <%=sum%></b></h4>
-
-
-        <%end%>
-        <%end%>
+      </div>
+      <section class="page-heading3">
+        <% User.where(id: session[:show_user_id]).each do |user| %>
+          <h4><b>Name : <%= user.first_name %></b></h4>
+          <h4><b>Email : <%= user.email %></b></h4>
+          <%if @role== "customer" %>
+            <%sum=0%>
+            <% Order.where(user_id: user.id).each do |order| #calculate total sales by the user %>
+              <% sum+=order.total %>
+            <% end %>
+            <h4><b>Total Sales : <%=sum%></b></h4>
+          <% end %>
+        <% end %>
       </section>
     </div>
   </div>

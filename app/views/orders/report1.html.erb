@@ -1,39 +1,35 @@
 <body>
   <div class="content">
-
     <div class="DisplayOrder">
       <div class="Displaymenu">
         <h1>Order Details</h1>
       </div>
-
       <section class="page-heading">
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <%= form_with(url: "/orders/filter1", method:"post", class: "MyTodo") do %>
-            <%= date_field_tag 'from_date' , class:"MyTodo-date" %>
-            <%= date_field_tag 'to_date' , class:"MyTodo-date" %>
-            <%= submit_tag "filter" , class: "signup-btn-in4" %>
-            <%end%>
+              <%= date_field_tag 'from_date', class:"MyTodo-date" %>
+              <%= date_field_tag 'to_date', class:"MyTodo-date" %>
+              <%= submit_tag "filter", class: "signup-btn-in4" %>
+            <% end %>
           </div>
-          <div>
-
+        <div>
       </section>
-
-
-      <%if @orders_report != nil%>
-      <% @orders_report.each do |order|  #getting only undelivered orders%>
-      <div class="DisplayOrder-card">
-        <div class="DisplayOrder-container">
-          <div class="textline"><b>Order id: <%= order.order_date.to_s(:long) %></b></h4>
-            <%= form_with(url: "/orderitems/invoice", method:"post") do %>
-            <%= hidden_field_tag 'order_id', order.id %>
-            <%= submit_tag "Invoice details" , class: "signup-btn-in4"%>
-            <%end%>
+      <%if @orders_report != nil %>
+        <% @orders_report.each do |order|  #getting only undelivered orders %>
+          <div class="DisplayOrder-card">
+            <div class="DisplayOrder-container">
+             <div class="textline">
+              <b>Order id: <%= order.order_date.to_s(:long) %></b>
+             </div>
+              <%= form_with(url: "/orderitems/invoice", method:"post") do %>
+                <%= hidden_field_tag 'order_id', order.id %>
+                <%= submit_tag "Invoice details", class: "signup-btn-in4" %>
+              <% end %>
+            </div>
           </div>
-        </div>
         <% end %>
-        <%end%>
-
-
-      </div>
+      <% end %>
+    </div>
+  </div>
 </body>

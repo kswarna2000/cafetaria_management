@@ -1,24 +1,21 @@
-<div class="header">
-  <p class="logo">Cafeteria Management</p>
-  <div class="header-right">
-    <p class="nav-text"> <%= link_to "sign-out",destroy_session_path,method: "delete"%> </p>
-  </div>
-</div>
-<div class="topnav">
-  <a href="/orders/showorders">show orders</a>
-  <a href="/menus/new">Create menu</a>
-  <a href="/menus">show menus</a>
-  <a href="/orders/viewcomplaints">view complaints</a>
-  <a href="/report">view report</a>
-  <a href="/users/newclerk">add clerk</a>
-  <a href="/users/">view customers</a>
-  <a href="/users/clerks">view clerks</a>
-  <a href="/users/report">view customer report</a>
-</div>
-</div>
-
-
 <body>
+  <div class="header">
+    <p class="logo">Cafeteria Management</p>
+    <div class="header-right">
+      <p class="nav-text"> <%= link_to "sign-out",destroy_session_path,method: "delete"%> </p>
+    </div>
+  </div>
+  <div class="topnav">
+    <a href="/orders/showorders">show orders</a>
+    <a href="/menus/new">Create menu</a>
+    <a href="/menus">show menus</a>
+    <a href="/orders/viewcomplaints">view complaints</a>
+    <a href="/report">view report</a>
+    <a href="/users/newclerk">add clerk</a>
+    <a href="/users/">view customers</a>
+    <a href="/users/clerks">view clerks</a>
+    <a href="/users/report">view customer report</a>
+  </div>
   <div class="content">
     <div class="DisplayOrder">
       <div class="Displaymenu2">
@@ -26,22 +23,22 @@
       </div>
       <hr class="roundedfull">
       <section class="page-heading1">
-        <% User.where(role: "customer").each do |user|  #getting only undelivered orders%>
-        <div class="inline">
-          <h3><b>Customer name : <%= user.first_name %></b></h3>
-          <%= form_with(url: "/orders/customer", method:"post") do %>
-          <%= hidden_field_tag 'user_id', user.id %>
-          <%= submit_tag "View Orders" , class: "signup-btn-in8"%>
-          <%end%>
-        </div>
-
+        <% User.where(role: "customer").each do |user| %>
+          <div class="inline">
+            <h3><b>Customer name : <%= user.first_name %></b></h3>
+            <%= form_with(url: "/orders/customer", method:"post") do %>
+              <%= hidden_field_tag 'user_id', user.id %>
+              <%= submit_tag "View Orders", class: "signup-btn-in8" %>
+            <% end %>
+          </div>
         <% end %>
         <div class="inline">
           <h3><b> Walk in customer : </b></h3>
           <%= form_with(url: "/orders/walkincustomer", method:"post") do %>
-          <%= submit_tag "View Orders" , class: "signup-btn-in9"%>
-          <%end%>
+            <%= submit_tag "View Orders", class: "signup-btn-in9" %>
+          <% end %>
         </div>
       </section>
     </div>
+  </div>
 </body>
