@@ -1,0 +1,23 @@
+<body>
+  <div class="content">
+    <div class="DisplayOrder">
+      <div class="Displaymenu">
+        <h1>Feedback</h1>
+      </div>
+      <% Order.all.each do |order| %>
+        <div class="textline">
+          <i><%= User.find(order.user_id).first_name + User.find(order.user_id).last_name %></i>
+        </div>
+        <div class="DisplayOrder-card">
+          <div class="DisplayOrder-container">
+            <% if order.feedback != nil %>
+              <p>Feedback: <%= order.feedback%></p>
+            <% else %>
+              <p>No feedback given</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>

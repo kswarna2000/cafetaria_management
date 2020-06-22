@@ -155,4 +155,12 @@ class OrderitemsController < ApplicationController
     flash[:success] = "Thanks for the purchase!!"
     redirect_to "/orders"
   end
+
+  def viewfeedback
+    render "viewfeedback"
+  end
+
+  def orderwisefeedback
+    render "orderwisefeedback"
+  end
 end

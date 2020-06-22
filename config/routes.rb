@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   post "/menuitems/search", to: "menuitems#search"
   post "/orderitems/updatefeedback", to: "orderitems#updatefeedback"
   post "/orderitems/cancel", to: "orderitems#cancel"
+  get "orderitems/viewfeedback", to: "orderitems#viewfeedback"
+  get "orderitems/orderwisefeedback", to: "orderitems#orderwisefeedback"
   resources :menuitems
   resources :orders
   resources :orderitems

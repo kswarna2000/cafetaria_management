@@ -14,25 +14,25 @@
                   <i><%= orderitem.menu_item_name %></i>
                 </div>
                 <% name=orderitem.id %>
-                <input type="radio" id="b1" name= <%=name%> value="1">
-                <label for="b1">1 </label><br>
-                <input type="radio" id="b2" name=<%=name%> value="2">
-                <label for="b2">2 </label><br>
-                <input type="radio" id="b3" name=<%=name%> value="3">
-                <label for="b3">3</label><br>
-                <input type="radio" id="b4" name=<%=name%> value="4">
-                <label for="b4">4</label><br>
-                <input type="radio" id="b5" name=<%=name%> value="5">
-                <label for="b5">5</label><br>
+                <input type="radio" id="b1" name= <%= name %> value="1">
+                <label for="b1">1 Worst</label><br>
+                <input type="radio" id="b2" name=<%= name %> value="2">
+                <label for="b2">2 Bad</label><br>
+                <input type="radio" id="b3" name=<% =name %> value="3">
+                <label for="b3">3 Good</label><br>
+                <input type="radio" id="b4" name=<%= name %> value="4">
+                <label for="b4">4 Tasty</label><br>
+                <input type="radio" id="b5" name=<%= name %> value="5">
+                <label for="b5">5 Will Recommend my friends</label><br>
               </div>
             </div>
           <% end %>
-          <%=text_area_tag :feedback, "Write your feedback.." %>
+          <%= text_area_tag :feedback, "Write your feedback.." %>
           <%= submit_tag "Submit", class: "signup-btn-in4" %>
         <% end %>
         <%= form_with(url: "/orderitems/cancel", method:"post") do %>
           <%= submit_tag "Cancel", class: "signup-btn-in4" %>
-        <%end%>
+        <%end %>
       <% end %>
     </div>
   </div>
