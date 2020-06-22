@@ -240,3 +240,10 @@ hr.roundedfull {
 	color:white;
 
 }
+
+.options{
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}

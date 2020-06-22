@@ -4,28 +4,38 @@
       <div class="Displaymenu">
         <h1>Feedback</h1>
       </div>
+         <section class="page-heading">
       <% if session[:feedback_order_id] != nil%>
         <%= form_with(url: "/orderitems/updatefeedback", method:"post") do %>
           <h1>Item                        Rating</h1>
           <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
-            <div class="DisplayOrder-card">
-              <div class="DisplayOrder-container">
-                <div class="textline">
+
+                <div class="">
                   <i><%= orderitem.menu_item_name %></i>
                 </div>
                 <% name=orderitem.id %>
+                <div class= "options">
                 <input type="radio" id="b1" name= <%= name %> value="1">
                 <label for="b1">1 Worst</label><br>
+                </div>
+                <div class= "options">
                 <input type="radio" id="b2" name=<%= name %> value="2">
                 <label for="b2">2 Bad</label><br>
-                <input type="radio" id="b3" name=<% =name %> value="3">
+                </div>
+                <div class= "options">
+                <input type="radio" id="b3" name=<%= name %> value="3">
                 <label for="b3">3 Good</label><br>
+                </div>
+                <div class= "options">
                 <input type="radio" id="b4" name=<%= name %> value="4">
                 <label for="b4">4 Tasty</label><br>
+                </div>
+                <div class= "options">
                 <input type="radio" id="b5" name=<%= name %> value="5">
-                <label for="b5">5 Will Recommend my friends</label><br>
-              </div>
-            </div>
+                <label for="b5">5 Awesome</label><br>
+                </div>
+
+  </section>
           <% end %>
           <%= text_area_tag :feedback, "Write your feedback.." %>
           <%= submit_tag "Submit", class: "signup-btn-in4" %>
@@ -37,3 +47,11 @@
     </div>
   </div>
 </body>
+
+<section class="page-heading">
+        <%= form_with(url: "/menus", method:"post", class: "") do %>
+          <h1>Enter Menu Name</h1>
+          <%= text_field_tag 'name', nil , class: "Form-input" %>
+          <%= submit_tag "Add Items", class: "signup-btn-in3" %>
+        <% end %>
+      </section>
