@@ -1,0 +1,17 @@
+<div class="content">
+    <div class="DisplayOrder">
+<% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
+        <div class="mainoption">
+          <i><%= orderitem.menu_item_name %></i>
+        </div>
+<%= form_with(url: "/favourites", method:"post") do %>
+          <%= hidden_field_tag 'menu_item_id', orderitem.menu_item_id %>
+          <%= hidden_field_tag 'menu_item_name', orderitem.menu_item_name %>
+          <%= hidden_field_tag 'menu_item_price', orderitem.menu_item_price %>
+          <%= hidden_field_tag 'menu_item_quantity', orderitem.menu_item_quantity %>
+          <%= hidden_field_tag 'image_url', orderitem.image_url %>
+          <%= submit_tag "Add To Favourites +", class: "signup-btn-in4" %>
+      <%end %>
+    <%end%>
+  </div>
+<div>

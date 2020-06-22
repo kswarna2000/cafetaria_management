@@ -43,6 +43,9 @@ class MenuitemsController < ApplicationController
   def destroy
     id = params[:id]
     menuitem = Menuitem.where(menu_id: session[:current_menu_id]).find(id)
+    Favourite.where(menuitem_id: menuitem.id).each do |favourite|
+      favourite.destroy
+    end #destroys all favourites with given menuitemid
     menuitem.destroy
     redirect_to new_menuitem_path
   end

@@ -1,0 +1,47 @@
+<body>
+  <div class="content">
+    <div class="DisplayOrder">
+      <div class="Displaymenu">
+        <h1>Your Favourites</h1>
+      </div>
+      <section class="page-heading4">
+        <% total=0 %>
+        <div class="offer-item" style="align: center;">
+          <%= form_with(url: "/favourites/search", method: "post", class: "") do %>
+            <select id="roles" name="menuitem_id" class="signup-btn-in13" >
+              <% Favourite.where(user_id: @current_user.id).each do |favourite|%>
+                <option value=<%= favourite.menu_item_id %>> <%= favourite.menu_item_name %></option>
+              <% end %>
+            </select>
+            <%= submit_tag "Search item" , class: "signup-btn-in12" %>
+          <% end %>
+        </div>
+        <% if session[:search_favourite_menuitem_id] != nil %>
+          <% menuitem=Menuitem.find(session[:search_favourite_menuitem_id]) %>
+          <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
+            <div class="offer-item">
+              <div>
+                <h4><b>Item : <%= menuitem.item_name %></b></h4>
+                <%= hidden_field_tag 'menu_item_id', menuitem.id %>
+                <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
+                <h4><b>Description : <%= menuitem.item_description %></b></h4>
+                <h4>Price : &#8377 <%= menuitem.item_price.to_s %></h4>
+                <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
+                <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "inline3" %> </h4>
+              </div>
+              <div>
+                <%= hidden_field_tag 'menu_image_url', menuitem.image_url %>
+                <% if menuitem.image_url == ""  %>
+                  <img src="/assets/menu-item-thumbnail-03.jpg" >
+                <% else %>
+                  <%= image_tag(menuitem.image_url,:size => "200*200", :alt => "rss feed") %>
+                <% end %>
+              </div>
+            </div>
+            <%= submit_tag "Add to cart" , class: "signup-btn-in6"%>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</body>

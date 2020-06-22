@@ -6,7 +6,7 @@
       </div>
       <section class="page-heading">
         <% if session[:feedback_order_id] != nil%>
-        <%= form_with(url: "/orderitems/updatefeedback", method:"post") do %>
+        <%= form_with(url: "/orderitems/updatefeedback", method:"post") do |f| %>
         <h1>Item Rating</h1>
         <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
 
@@ -38,9 +38,7 @@
         <div class="feedback">
           <%= text_area_tag :feedback, "Write your feedback..", class: "Form-input"%>
         </div>
-
         <%= submit_tag "Submit", class: "signup-btn-in4" %>
-
         <% end %>
         <%= form_with(url: "/orderitems/cancel", method:"post") do %>
         <%= submit_tag "Cancel", class: "signup-btn-in4" %>

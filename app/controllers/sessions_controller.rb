@@ -17,6 +17,10 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:current_user_id] = nil
+    session[:feedback_order_id] = nil
+    session[:current_menu_id] = nil
+    session[:current_order_id] = nil
+    session[:show_user_id] = nil
     @current_user = nil
     redirect_to "/"
   end

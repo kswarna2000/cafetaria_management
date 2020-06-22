@@ -41,10 +41,14 @@ Rails.application.routes.draw do
   post "/orderitems/cancel", to: "orderitems#cancel"
   get "orderitems/viewfeedback", to: "orderitems#viewfeedback"
   get "orderitems/orderwisefeedback", to: "orderitems#orderwisefeedback"
+  get "favourites/display", to: "favourites#display"
+  post "favourites/display1", to: "favourites#display1"
+  post "favourites/search", to: "favourites#search"
   resources :menuitems
   resources :orders
   resources :orderitems
   resources :menus
   resources :users
   resources :sessions
+  resources :favourites
 end

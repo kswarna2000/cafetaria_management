@@ -40,7 +40,6 @@ class UsersController < ApplicationController
 
   def display
     @@role = params[:role]
-    puts @@role
     session[:show_user_id] = params[:id]
     redirect_to "/users/displaycustomers"
   end

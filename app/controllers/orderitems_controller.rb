@@ -49,13 +49,10 @@ class OrderitemsController < ApplicationController
     menu_image_url = params[:menu_image_url]
 
     orderitems = Orderitem.where(user_id: user_id, menu_item_id: menu_item_id, in_cart: true)
-    if orderitems.count > 0
-      puts "#{orderitems[0].menu_item_quantity}\n"
-      puts "#{orderitems[0].menu_item_price}n"
-      puts "#{menu_item_price}n"
-      puts "#{menu_item_price}n"
+    if orderitems.count > 0 #if particular menuitem is already in the cart
       orderitems[0].menu_item_quantity = orderitems[0].menu_item_quantity + menu_item_quantity
       if orderitems[0].save
+        flash[:success] = "Item Updated in cart successfully!! "
         redirect_to "/orderitems/index1"
         return
       else
@@ -74,6 +71,7 @@ class OrderitemsController < ApplicationController
       user_id: user_id,
     )
     if neworderitem.save
+      flash[:success] = "Item Added to cart successfully!! "
       redirect_to "/orderitems/index1"
     else
       flash[:error] = neworderitem.errors.full_messages.join(",")
