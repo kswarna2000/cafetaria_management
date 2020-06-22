@@ -1,5 +1,6 @@
 <div class="content">
     <div class="DisplayOrder">
+    <% if session[:feedback_order_id] != nil%>
 <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
         <div class="mainoption">
           <i><%= orderitem.menu_item_name %></i>
@@ -13,5 +14,6 @@
           <%= submit_tag "Add To Favourites +", class: "signup-btn-in4" %>
       <%end %>
     <%end%>
+  <% end%>
   </div>
 <div>
