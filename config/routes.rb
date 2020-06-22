@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "/users/newclerk", to: "users#newclerk"
   post "/users/display", to: "users#display"
 
+  get "/orderitems/feedback", to: "orderitems#feedback"
   get "/users/displaycustomers", to: "users#displaycustomers"
   get "/users/displayclerks", to: "users#displayclerks"
   get "/users/clerks", to: "users#clerks"
@@ -36,6 +37,8 @@ Rails.application.routes.draw do
   post "menuitems/done", to: "menuitems#done"
   get "/orderitems/showcart", to: "orderitems#showcart"
   post "/menuitems/search", to: "menuitems#search"
+  post "/orderitems/updatefeedback", to: "orderitems#updatefeedback"
+  post "/orderitems/cancel", to: "orderitems#cancel"
   resources :menuitems
   resources :orders
   resources :orderitems

@@ -40,12 +40,30 @@ class OrderitemsController < ApplicationController
 
   def cart
     #order_id = session[:current_order_id]
+
     user_id = @current_user.id
     menu_item_id = params[:menu_item_id]
     menu_item_name = params[:menu_item_name]
     menu_item_price = params[:menu_item_price].to_f
     menu_item_quantity = params[:menu_item_quantity].to_i
     menu_image_url = params[:menu_image_url]
+
+    orderitems = Orderitem.where(user_id: user_id, menu_item_id: menu_item_id, in_cart: true)
+    if orderitems.count > 0
+      puts "#{orderitems[0].menu_item_quantity}\n"
+      puts "#{orderitems[0].menu_item_price}n"
+      puts "#{menu_item_price}n"
+      puts "#{menu_item_price}n"
+      orderitems[0].menu_item_quantity = orderitems[0].menu_item_quantity + menu_item_quantity
+      if orderitems[0].save
+        redirect_to "/orderitems/index1"
+        return
+      else
+        flash[:error] = neworderitem.errors.full_messages.join(",")
+        redirect_to "/orderitems/index1"
+        return
+      end
+    end
     neworderitem = Orderitem.new(
       menu_item_id: menu_item_id,
       menu_item_name: menu_item_name,
@@ -110,5 +128,31 @@ class OrderitemsController < ApplicationController
 
   def showcart
     render "mycart"
+  end
+
+  def feedback
+    render "feedback"
+  end
+
+  def updatefeedback
+    Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem|
+      orderitem.feedback = params[orderitem.id.to_s.to_sym]
+      if orderitem.feedback == nil
+        flash[:error] = "Please enter feedback for all items.... "
+        redirect_to "/orderitems/feedback"
+        return
+      end
+      orderitem.save
+    end
+    order = Order.find(session[:feedback_order_id])
+    order.feedback = params[:feedback]
+    order.save
+    flash[:success] = "Thanks for the feedback!!! "
+    redirect_to "/orders"
+  end
+
+  def cancel
+    flash[:success] = "Thanks for the purchase!!"
+    redirect_to "/orders"
   end
 end

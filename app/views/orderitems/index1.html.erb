@@ -26,6 +26,7 @@
                 <h4><b><%= order_id %></b></h4>
                 <%= hidden_field_tag 'order_id', order_id %>
                 <h4><b>Item : <%= menuitem.item_name %></b></h4>
+                <%= hidden_field_tag 'menu_item_id', menuitem.id %>
                 <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
                 <h4><b>Description : <%= menuitem.item_description %></b></h4>
                 <h4>Price : &#8377 <%= menuitem.item_price.to_s %></h4>

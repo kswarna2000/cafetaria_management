@@ -7,9 +7,10 @@
       <hr class="roundedfull">
       <section class="page-heading1">
         <%total=0%>
+        <% if Orderitem.where(user_id: @current_user.id).in_cart.count ==0%>
+          <i><h4 style="font-family:courier;color: red;">YOUR CART IS EMPTY</h4></i>
+        <% end %>
         <% Orderitem.where(user_id: @current_user.id).in_cart.each do |orderitem| #tracking current order id %>
-          <h4><b><%= orderitem.order_id.to_s %></b></h4>
-          <h4><b><%= orderitem.menu_item_id %></b></h4>
           <div class="inline">
             <h4><b><%= orderitem.menu_item_name %></b></h4>
             <div class="floatright">

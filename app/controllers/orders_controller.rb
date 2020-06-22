@@ -45,7 +45,8 @@ class OrdersController < ApplicationController
     order = Order.where(user_id: current_user.id).find(id)
     order.status = "completed"
     order.save!
-    redirect_to "/orders"
+    session[:feedback_order_id] = id
+    redirect_to "/orderitems/feedback"
   end
 
   def new
@@ -187,6 +188,6 @@ class OrdersController < ApplicationController
     new_order.total = sum
     new_order.save!
     flash[:success] = "Placed order successfully!!"
-    redirect_to "/orderitems/new1"
+    redirect_to "/orders/"
   end
 end

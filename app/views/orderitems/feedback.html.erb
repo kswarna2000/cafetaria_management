@@ -1,0 +1,39 @@
+<body>
+  <div class="content">
+    <div class="DisplayOrder">
+      <div class="Displaymenu">
+        <h1>Feedback</h1>
+      </div>
+      <% if session[:feedback_order_id] != nil%>
+        <%= form_with(url: "/orderitems/updatefeedback", method:"post") do %>
+          <h1>Item                        Rating</h1>
+          <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
+            <div class="DisplayOrder-card">
+              <div class="DisplayOrder-container">
+                <div class="textline">
+                  <i><%= orderitem.menu_item_name %></i>
+                </div>
+                <% name=orderitem.id %>
+                <input type="radio" id="b1" name= <%=name%> value="1">
+                <label for="b1">1 </label><br>
+                <input type="radio" id="b2" name=<%=name%> value="2">
+                <label for="b2">2 </label><br>
+                <input type="radio" id="b3" name=<%=name%> value="3">
+                <label for="b3">3</label><br>
+                <input type="radio" id="b4" name=<%=name%> value="4">
+                <label for="b4">4</label><br>
+                <input type="radio" id="b5" name=<%=name%> value="5">
+                <label for="b5">5</label><br>
+              </div>
+            </div>
+          <% end %>
+          <%=text_area_tag :feedback, "Write your feedback.." %>
+          <%= submit_tag "Submit", class: "signup-btn-in4" %>
+        <% end %>
+        <%= form_with(url: "/orderitems/cancel", method:"post") do %>
+          <%= submit_tag "Cancel", class: "signup-btn-in4" %>
+        <%end%>
+      <% end %>
+    </div>
+  </div>
+</body>
