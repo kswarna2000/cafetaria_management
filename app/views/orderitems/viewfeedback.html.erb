@@ -6,18 +6,23 @@
       </div>
       <% Menuitem.all.each do |menuitem| %>
         <div class="textline">
+           <i><%= menuitem.id %></i>
           <i><%= menuitem.item_name %></i>
         </div>
         <% orderitems= Orderitem.where(menu_item_id: menuitem.id) %>
           <% count = orderitems.count %>
           <div class="DisplayOrder-card">
             <div class="DisplayOrder-container">
+            <% if count != 0%>
               <p> Worst   <%= (orderitems.where(feedback: "1").count.to_f / count ) *100 %> % customers <br>
               <p> Bad   <%= (orderitems.where(feedback: "2").count.to_f / count ) *100 %> % customers <br>
               <p> Good  <%= (orderitems.where(feedback: "3").count.to_f / count ) *100 %> % customers <br>
               <p> Tasty  <%= (orderitems.where(feedback: "4").count.to_f / count ) *100 %> % customers <br>
-              <p> Will recommend my friends   <%= (orderitems.where(feedback: "5").count.to_f / count ) *100 %> % customers <br>
+              <p> Awesome  <%= (orderitems.where(feedback: "5").count.to_f / count ) *100 %> % customers <br>
               <p> Not given feedback  <%= (orderitems.where(feedback: nil).count.to_f / count ) *100 %> % customers <br>
+            <% else%>
+              <p>  No customer given feedback yet!! <br>
+            <% end %>
             </div>
           </div>
         <% end %>

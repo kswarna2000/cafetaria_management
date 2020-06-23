@@ -35,7 +35,7 @@
     <div class="Displaymenu">
       <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
     </div>
-    <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem| %>
+    <% Menuitem.where(menu_id: @current_menu_id, status: "active").each do |menuitem| %>
       <div class="">
         <div class="offer-item">
           <% if menuitem.image_url == "" %>

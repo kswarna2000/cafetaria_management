@@ -8,12 +8,12 @@
     <a href="/menuitems/new"> <%= submit_tag "Add new item", class: "signup-btn-in5" %></a>
 
         <% order_id= session[:current_order_id] %>
-        <% menu_id= session[:show_menu_id] %>
+        <% menu_id= @current_menu_id %>
         <% total=0 %>
         <div class="offer-item" style="align: center;">
-          <%= form_with(url: "/menuitems/search", method: "post", class: "") do %>
+          <%= form_with(url: "/menuitems/search1", method: "post", class: "") do %>
             <select id="roles" name="menuitem_id" class="signup-btn-in13" >
-              <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
+              <% Menuitem.where.not("status = ? and menu_id= ?","active",@current_menu_id).each do |menuitem|%>
                 <option value=<%= menuitem.id %>> <%= menuitem.item_name %></option>
               <% end %>
             </select>
@@ -50,7 +50,7 @@
     <div class="Displaymenu">
       <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
     </div>
-    <% Menuitem.where(menu_id: @current_menu_id).each do |menuitem| %>
+    <% Menuitem.where(menu_id: @current_menu_id,status: "active").each do |menuitem| %>
       <div class="">
         <div class="offer-item">
           <% if menuitem.image_url == "" %>

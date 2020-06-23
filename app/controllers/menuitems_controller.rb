@@ -47,7 +47,7 @@ class MenuitemsController < ApplicationController
     menuitem = Menuitem.where(menu_id: session[:current_menu_id]).find(id)
     menuitem.status = "delete"
     menuitem.save
-
+    flash[:success] = "Deleted menuitem successfully!!"
     redirect_to new_menuitem_path
   end
 
@@ -92,6 +92,13 @@ class MenuitemsController < ApplicationController
     redirect_to "/orderitems/index1"
   end
 
+  def search1
+    menuitem_id = params[:menuitem_id]
+    session[:search_menuitem_id] = menuitem_id
+
+    redirect_to "/menuitems/new1"
+  end
+
   def new1
     if session[:current_menu_id]
       @current_menu_id = session[:current_menu_id]
@@ -109,6 +116,7 @@ class MenuitemsController < ApplicationController
       menuitem.menu_id = menu_id
       menuitem.status = Menu.find(menu_id).is_active ? "active" : "inactive"
       menuitem.save
+      session[:search_menuitem_id] = nil
       flash[:success] = "Added Menuitem to the menu successfully!!"
       redirect_to new_menuitem_path
       return
@@ -127,6 +135,7 @@ class MenuitemsController < ApplicationController
       )
       if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url == ""
         if new_menuitem.save
+          session[:search_menuitem_id] = nil
           flash[:success] = "Added Menuitem to the menu successfully!!"
           redirect_to new_menuitem_path
           return
