@@ -5,15 +5,13 @@
         <h1>Feedback</h1>
       </div>
       <% Menuitem.all.each do |menuitem| %>
-      <div class="card">
-        <div class="container">
-        <div class="mainoption1">
-
-          <i><%= menuitem.item_name %></i>
-        </div>
-        <% orderitems= Orderitem.where(menu_item_id: menuitem.id) %>
-          <% count = orderitems.count %>
-
+        <div class="card">
+          <div class="container">
+            <div class="mainoption1">
+              <i><%= menuitem.item_name %></i>
+            </div>
+            <% orderitems= Orderitem.where(menu_item_id: menuitem.id) %>
+            <% count = orderitems.count %>
             <% if count != 0%>
               <div class="option"> Worst   <%= (orderitems.where(feedback: "1").count.to_f / count ) *100 %> % <br></div>
               <div class="option"> Bad   <%= (orderitems.where(feedback: "2").count.to_f / count ) *100 %> % <br></div>
@@ -24,9 +22,9 @@
             <% else%>
               <div class="option1">  No customer given feedback yet!! <br> </div>
             <% end %>
-            </div>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </body>

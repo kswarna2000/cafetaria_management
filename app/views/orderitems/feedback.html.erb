@@ -6,45 +6,44 @@
       </div>
       <section class="page-heading">
         <% if session[:feedback_order_id] != nil%>
-        <%= form_with(url: "/orderitems/updatefeedback", method:"post") do |f| %>
-        <h1>Item Rating</h1>
-        <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
-
-        <div class="mainoption">
-          <i><%= orderitem.menu_item_name %></i>
-        </div>
-        <% name=orderitem.id %>
-        <div class="options">
-          <input type="radio" id="b1" name=<%= name %> value="1">
-          <label for="b1">1 Worst</label><br>
-        </div>
-        <div class="options1">
-          <input type="radio" id="b2" name=<%= name %> value="2">
-          <label for="b2">2 Bad</label><br>
-        </div>
-        <div class="options2">
-          <input type="radio" id="b3" name=<%= name %> value="3">
-          <label for="b3">3 Good</label><br>
-        </div>
-        <div class="options3">
-          <input type="radio" id="b4" name=<%= name %> value="4">
-          <label for="b4">4 Tasty</label><br>
-        </div>
-        <div class="options4">
-          <input type="radio" id="b5" name=<%= name %> value="5">
-          <label for="b5">5 Awesome</label><br>
-        </div>
+          <%= form_with(url: "/orderitems/updatefeedback", method:"post") do |f| %>
+            <h1>Item Rating</h1>
+            <% Orderitem.where(order_id: session[:feedback_order_id]).each do |orderitem| %>
+              <div class="mainoption">
+                <i><%= orderitem.menu_item_name %></i>
+              </div>
+              <% name=orderitem.id %>
+              <div class="options">
+                <input type="radio" id="b1" name=<%= name %> value="1">
+                <label for="b1">1 Worst</label><br>
+              </div>
+              <div class="options1">
+                <input type="radio" id="b2" name=<%= name %> value="2">
+                <label for="b2">2 Bad</label><br>
+              </div>
+              <div class="options2">
+                <input type="radio" id="b3" name=<%= name %> value="3">
+                <label for="b3">3 Good</label><br>
+              </div>
+              <div class="options3">
+                <input type="radio" id="b4" name=<%= name %> value="4">
+                <label for="b4">4 Tasty</label><br>
+              </div>
+              <div class="options4">
+                <input type="radio" id="b5" name=<%= name %> value="5">
+                <label for="b5">5 Awesome</label><br>
+              </div>
+            <% end %>
+            <div class="feedback">
+              <%= text_area_tag :feedback, "Write your feedback..", class: "Form-input"%>
+            </div>
+            <%= submit_tag "Submit", class: "signup-btn-in4" %>
+          <% end %>
+          <%= form_with(url: "/orderitems/cancel", method:"post") do %>
+            <%= submit_tag "Cancel", class: "signup-btn-in4" %>
+          <%end %>
         <% end %>
-        <div class="feedback">
-          <%= text_area_tag :feedback, "Write your feedback..", class: "Form-input"%>
-        </div>
-        <%= submit_tag "Submit", class: "signup-btn-in4" %>
-        <% end %>
-        <%= form_with(url: "/orderitems/cancel", method:"post") do %>
-        <%= submit_tag "Cancel", class: "signup-btn-in4" %>
-        <%end %>
       </section>
-      <% end %>
     </div>
   </div>
 </body>

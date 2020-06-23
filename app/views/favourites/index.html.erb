@@ -36,14 +36,14 @@
                 <% if menuitem.image_url == ""  %>
                   <img src="/assets/menu-item-thumbnail-03.jpg" >
                 <% else %>
-                  <%= image_tag(menuitem.image_url,:size => "200*200", :alt => "rss feed") %>
+                  <%= image_tag(menuitem.image_url, :size => "200*200", :alt => "rss feed") %>
                 <% end %>
               </div>
             </div>
             <% if menuitem.status == "active"%>
-            <%= submit_tag "Add to cart" , class: "signup-btn-in6"%>
+              <%= submit_tag "Add to cart", class: "signup-btn-in6"%>
             <% else %>
-            <div class="option5"><b> Sorry!! Your favourite is not available for orders</b></div>
+              <div class="option5"><b> Sorry!! Your favourite is not available for orders</b></div>
             <% end %>
           <% end %>
         <% end %>

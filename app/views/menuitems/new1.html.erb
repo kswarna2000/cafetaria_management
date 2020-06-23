@@ -1,14 +1,11 @@
 <body>
- <div class="content">
+  <div class="content">
     <div class="DisplayOrder">
-  <div class="Displaymenu">
+      <div class="Displaymenu">
         <h1>Add Items</h1>
       </div>
-
-   <section class="page-heading4">
-
-    <a href="/menuitems/new"> <%= submit_tag "Add new item", class: "signup-btn-in16" %></a>
-
+      <section class="page-heading4">
+        <a href="/menuitems/new"> <%= submit_tag "Add new item", class: "signup-btn-in16" %></a>
         <% order_id= session[:current_order_id] %>
         <% menu_id= @current_menu_id %>
         <% total=0 %>
@@ -22,7 +19,6 @@
             <%= submit_tag "Search item" , class: "signup-btn-in12" %>
           <% end %>
         </div>
-
         <% if session[:search_menuitem_id] != nil %>
           <% menuitem=Menuitem.find(session[:search_menuitem_id]) %>
           <%= form_with(url: "/menuitems/add", method:"post", class: "") do %>
@@ -48,37 +44,37 @@
           <% end %>
         <% end %>
       </section>
-  <div class="DisplayItem">
-    <div class="Displaymenu">
-      <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
-    </div>
-    <% Menuitem.where(menu_id: @current_menu_id,status: "active").each do |menuitem| %>
-      <div class="">
-        <div class="offer-item">
-          <% if menuitem.image_url == "" %>
-            <img src="/assets/menu-item-thumbnail-03.jpg" >
-          <% else %>
-            <img src=<%= menuitem.image_url %> alt= "No image available">
-          <% end%>
-          <div class=adjustmenu>
-            <h4><b><%= menuitem.item_name %></b></h4>
-            <p> <%= menuitem.item_description %></p>
-            <p> &#8377 <%= (menuitem.item_price).to_s %>.</p>
-          </div>
-          <div class="MenuButton-container">
-            <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="signup-btn-in4">Edit</button></a>
-            <%= form_with(url: "/menuitems/#{menuitem.id}", method:"delete") do %>
-              <%= submit_tag "Delete", class: "signup-btn-in4" %>
-            <% end %>
-          </div>
+      <div class="DisplayItem">
+        <div class="Displaymenu">
+          <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
         </div>
+        <% Menuitem.where(menu_id: @current_menu_id,status: "active").each do |menuitem| %>
+          <div class="">
+            <div class="offer-item">
+              <% if menuitem.image_url == "" %>
+                <img src="/assets/menu-item-thumbnail-03.jpg" >
+              <% else %>
+                <img src=<%= menuitem.image_url %> alt= "No image available">
+              <% end%>
+              <div class=adjustmenu>
+                <h4><b><%= menuitem.item_name %></b></h4>
+                <p> <%= menuitem.item_description %></p>
+                <p> &#8377 <%= (menuitem.item_price).to_s %>.</p>
+              </div>
+              <div class="MenuButton-container">
+                <a href="/menuitems/<%= menuitem.id%>/edit"> <button class="signup-btn-in4">Edit</button></a>
+                <%= form_with(url: "/menuitems/#{menuitem.id}", method:"delete") do %>
+                  <%= submit_tag "Delete", class: "signup-btn-in4" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
+          <%= hidden_field_tag 'menu_id', @current_menu_id %>
+          <%= submit_tag "Done", class: "signup-btn-in16" %>
+        <% end %>
       </div>
-    <% end %>
-    <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
-      <%= hidden_field_tag 'menu_id', @current_menu_id %>
-      <%= submit_tag "Done", class: "signup-btn-in16" %>
-    <% end %>
-  </div>
     </div>
   </div>
 </body>

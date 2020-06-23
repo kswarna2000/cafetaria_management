@@ -18,7 +18,6 @@
             <%= submit_tag "Search item" , class: "signup-btn-in12" %>
           <% end %>
         </div>
-
         <% if session[:search_menuitem_id] != nil %>
           <% menuitem=Menuitem.find(session[:search_menuitem_id]) %>
           <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>

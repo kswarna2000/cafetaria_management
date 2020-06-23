@@ -11,14 +11,14 @@
           <section class="page-heading4">
             <div>
               <% Menu.all.each do |menu| %>
-              <% if  menu.is_active %>
-                <%= form_with(url: "/orderitems/showmenuitems1", method: "post") do %>
-                  <%= hidden_field_tag 'menu_item_id', menu.id %>
-                  <div class="textline3">
-                    <b><%= menu.name %></b>
-                  </div>
-                  <%= submit_tag "Show menu", class: "signup-btn-in10" %>
-                <% end %>
+                <% if  menu.is_active %>
+                  <%= form_with(url: "/orderitems/showmenuitems1", method: "post") do %>
+                    <%= hidden_field_tag 'menu_item_id', menu.id %>
+                    <div class="textline3">
+                      <b><%= menu.name %></b>
+                    </div>
+                    <%= submit_tag "Show menu", class: "signup-btn-in10" %>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
