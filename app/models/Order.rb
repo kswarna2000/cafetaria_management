@@ -7,4 +7,7 @@ class Order < ActiveRecord::Base
   def self.show_orders
     where(status: "inprogress").order(:order_date)
   end
+  def self.show_history
+    where(status: "completed")
+  end
 end

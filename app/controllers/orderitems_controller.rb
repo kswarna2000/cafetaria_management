@@ -146,12 +146,12 @@ class OrderitemsController < ApplicationController
     order.feedback = params[:feedback]
     order.save
     flash[:success] = "Thanks for the feedback!!! "
-    redirect_to "/orders"
+    redirect_to "/favourites/display"
   end
 
   def cancel
     flash[:success] = "Thanks for the purchase!!"
-    redirect_to "/orders"
+    redirect_to "/favourites/display"
   end
 
   def viewfeedback
