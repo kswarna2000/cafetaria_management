@@ -13,7 +13,7 @@
             <div class="textline10">
               <b>Order time: <%= order.order_date.to_s(:long) %></b>
             </div>
-            <div class="textline10"><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.to_s(:long)}" %>
+            <div class="textline10"><b>Delivery status: <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.in_time_zone("Chennai").to_s(:long)}" %>
               <% if order.delivered_at != nil %>
                 <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>
                   <%= submit_tag "received?" , class: "signup-btn-in3" %>

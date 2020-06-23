@@ -13,7 +13,7 @@
           </div>
           <div class="textline">
             <b>Delivery status:
-            <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.to_s(:long) %>
+            <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.in_time_zone("Chennai").to_s(:long) %>
           </div>
           <div class="textline">
             <b>Total: <b><%=order.total.to_s%></b>

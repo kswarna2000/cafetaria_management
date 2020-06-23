@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order_date = DateTime.now
+    order_date = DateTime.now.in_time_zone("Chennai")
     user_id = current_user.id
     delivered_at = nil
     if @current_user.role == "customer"
@@ -46,7 +46,12 @@ class OrdersController < ApplicationController
     order.status = "completed"
     order.save!
     session[:feedback_order_id] = id
-    redirect_to "/orderitems/feedback"
+    if @current_user.role == "customer"
+      redirect_to "/orderitems/feedback"
+      return
+    else
+      redirect_to "/orders/showorders"
+    end
   end
 
   def new
@@ -87,14 +92,19 @@ class OrdersController < ApplicationController
     end
     from_date = Date.parse params[:from_date]
     to_date = Date.parse params[:to_date]
+    from_datetime = Time.zone.at(from_date.to_time).to_datetime.in_time_zone("UTC") #considering the input as IST converting )):)) IST to UTC
+    to_datetime = Time.zone.at(to_date.to_time).to_datetime.in_time_zone("UTC") #because by default the date time is stored as UTC
+
+    puts from_datetime.to_s(:long)
+    puts to_datetime.to_s(:long)
     if from_date > to_date
       flash[:error] = "From date cannot be greater than to date"
       redirect_to "/orders/showreport"
       return
     end
-    @@orders_report = Order.where(status: "completed").where("order_date BETWEEN ? and ?", from_date.to_datetime, to_date.to_datetime)
+    @@orders_report = Order.where(status: "completed").where("order_date BETWEEN ? and ?", from_datetime, to_datetime)
     if @@orders_report.empty?
-      flash[:error] = "No records found"
+      flash[:error] = "No recordss found"
     end
     redirect_to "/orders/showreport"
   end
@@ -118,12 +128,15 @@ class OrdersController < ApplicationController
     end
     from_date = Date.parse params[:from_date]
     to_date = Date.parse params[:to_date]
+    from_datetime = Time.zone.at(from_date.to_time).to_datetime.in_time_zone("UTC") #considering the input as IST converting )):)) IST to UTC
+    to_datetime = Time.zone.at(to_date.to_time).to_datetime.in_time_zone("UTC") #because by default the date time is stored as UTC
+
     if from_date > to_date
       flash[:error] = "From date cannot be greater than to date"
       redirect_to "/orders/showreport1"
       return
     end
-    @@orders_report = Order.where(status: "completed", user_id: session[:show_customer_id]).where("order_date BETWEEN ? and ?", from_date.to_datetime, to_date.to_datetime)
+    @@orders_report = Order.where(status: "completed", user_id: session[:show_customer_id]).where("order_date BETWEEN ? and ?", from_datetime, to_datetime)
     if @@orders_report.empty?
       flash[:error] = "No records found"
     end
