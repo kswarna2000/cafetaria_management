@@ -27,7 +27,9 @@
                 <h4><b>Description : <%= menuitem.item_description %></b></h4>
                 <h4>Price : &#8377 <%= menuitem.item_price.to_s %></h4>
                 <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
+                <% if menuitem.status == "active"%>
                 <h4> Qty : <%= text_field_tag  "menu_item_quantity", nil, class: "inline3" %> </h4>
+                <% end %>
               </div>
               <div>
                 <%= hidden_field_tag 'menu_image_url', menuitem.image_url %>
@@ -38,7 +40,11 @@
                 <% end %>
               </div>
             </div>
+            <% if menuitem.status == "active"%>
             <%= submit_tag "Add to cart" , class: "signup-btn-in6"%>
+            <% else %>
+            <p style="color: white;"><b> Sorry!! Your favourite is not available for orders</b></p>
+            <% end %>
           <% end %>
         <% end %>
       </section>

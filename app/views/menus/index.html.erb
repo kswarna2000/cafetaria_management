@@ -16,10 +16,18 @@
               <div>
                 <%= form_with(url: "/menus/edit", method:"post") do %>
                   <%= hidden_field_tag 'id', menu.id %>
-                  <%= submit_tag "View menu" , class: "signup-btn-in1" %>
+                  <%= submit_tag "Edit menu" , class: "signup-btn-in1" %>
                 <% end %>
                 <%= form_with(url: "/menus/#{menu.id}", method:"delete") do %>
                   <%= submit_tag "Delete menu", class: "signup-btn-in2" %>
+                <% end %>
+                <%= form_with(url: "/menus/status", method:"post") do %>
+                 <%= hidden_field_tag 'id', menu.id %>
+                  <% if menu.is_active == false %>
+                   <%= submit_tag "Set as active", class: "signup-btn-in2" %>
+                  <% else %>
+                     <%= submit_tag "Set as Inactive", class: "signup-btn-in2" %>
+                  <% end %>
                 <% end %>
               </div>
             </div>

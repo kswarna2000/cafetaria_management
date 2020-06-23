@@ -5,6 +5,9 @@
         <h1>Add Items</h1>
       </div>
       <section class="page-heading">
+
+         <a href="/menuitems/new1">   <%= submit_tag "Choose from existing items", class: "signup-btn-in5" %></a>
+
         <%= form_with(url: "/menuitems", method:"post", class: "") do %>
           <div>
             <h2>Item Name:</h2>
@@ -24,6 +27,7 @@
           </div>
           <%= submit_tag "Add Item", class: "signup-btn-in3" %>
         <% end %>
+
       </section>
     </div>
   </div>

@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
 
   def destroy
     id = params[:id]
-    order = Order.where(user_id: current_user.id).find(id)
+    order = Order.where(user_id: @current_user.id).find(id)
     order.status = "completed"
     order.save!
     session[:feedback_order_id] = id

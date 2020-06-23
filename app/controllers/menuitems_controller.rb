@@ -20,9 +20,11 @@ class MenuitemsController < ApplicationController
       item_description: item_description,
       item_price: item_price,
       image_url: image_url,
+      status: "active",
     )
     if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url == ""
       if new_menuitem.save
+        flash[:success] = "Added Menuitem to the menu successfully!!"
         redirect_to new_menuitem_path
       else
         flash[:error] = new_menuitem.errors.full_messages.join(",")
@@ -43,10 +45,9 @@ class MenuitemsController < ApplicationController
   def destroy
     id = params[:id]
     menuitem = Menuitem.where(menu_id: session[:current_menu_id]).find(id)
-    Favourite.where(menuitem_id: menuitem.id).each do |favourite|
-      favourite.destroy
-    end #destroys all favourites with given menuitemid
-    menuitem.destroy
+    menuitem.status = "delete"
+    menuitem.save
+
     redirect_to new_menuitem_path
   end
 
@@ -89,5 +90,56 @@ class MenuitemsController < ApplicationController
     session[:search_menuitem_id] = menuitem_id
 
     redirect_to "/orderitems/index1"
+  end
+
+  def new1
+    if session[:current_menu_id]
+      @current_menu_id = session[:current_menu_id]
+      render "new1"
+    else
+      redirect_to new_menu_path
+    end
+  end
+
+  def add
+    menu_id = session[:current_menu_id]
+    menu_item_id = params[:menu_item_id]
+    menuitem = Menuitem.find(menu_item_id)
+    if menuitem.status == "delete" #if menuitem is deleted then change menu id to current menu id
+      menuitem.menu_id = menu_id
+      menuitem.status = Menu.find(menu_id).is_active ? "active" : "inactive"
+      menuitem.save
+      flash[:success] = "Added Menuitem to the menu successfully!!"
+      redirect_to new_menuitem_path
+      return
+    else
+      item_name = params[:menu_item_name]
+      item_description = params[:menu_item_description]
+      item_price = (params[:menu_item_price]).to_f
+      image_url = params[:image_url]
+      new_menuitem = Menuitem.new(
+        menu_id: menu_id,
+        item_name: item_name,
+        item_description: item_description,
+        item_price: item_price,
+        image_url: image_url,
+        status: "active",
+      )
+      if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url == ""
+        if new_menuitem.save
+          flash[:success] = "Added Menuitem to the menu successfully!!"
+          redirect_to new_menuitem_path
+          return
+        else
+          flash[:error] = new_menuitem.errors.full_messages.join(",")
+          redirect_to new_menuitem_path
+          return
+        end
+      else
+        flash[:error] = "Enter a URL with valid image extension (.jpeg, .jpg, .png)!! or leave the field blank"
+        redirect_to new_menuitem_path
+        return
+      end
+    end
   end
 end

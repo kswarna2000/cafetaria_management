@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.htmlS
   get "/", to: "home#index"
   get "/report", to: "orders#report"
   post "/orderitems/showmenuitems", to: "orderitems#showmenuitems"
@@ -39,11 +39,15 @@ Rails.application.routes.draw do
   post "/menuitems/search", to: "menuitems#search"
   post "/orderitems/updatefeedback", to: "orderitems#updatefeedback"
   post "/orderitems/cancel", to: "orderitems#cancel"
-  get "orderitems/viewfeedback", to: "orderitems#viewfeedback"
-  get "orderitems/orderwisefeedback", to: "orderitems#orderwisefeedback"
-  get "favourites/display", to: "favourites#display"
-  post "favourites/display1", to: "favourites#display1"
-  post "favourites/search", to: "favourites#search"
+  get "/orderitems/viewfeedback", to: "orderitems#viewfeedback"
+  get "/orderitems/orderwisefeedback", to: "orderitems#orderwisefeedback"
+  get "/favourites/display", to: "favourites#display"
+  post "/favourites/display1", to: "favourites#display1"
+  post "/favourites/search", to: "favourites#search"
+  post "/menus/status", to: "menus#status"
+  get "/menuitems/new1", to: "menuitems#new1"
+  post "/menuitems/add", to: "menuitems#add"
+
   resources :menuitems
   resources :orders
   resources :orderitems
