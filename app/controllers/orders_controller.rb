@@ -190,4 +190,8 @@ class OrdersController < ApplicationController
     flash[:success] = "Placed order successfully!!"
     redirect_to "/orders/"
   end
+
+  def history
+    render "history"
+  end
 end

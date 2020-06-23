@@ -27,6 +27,7 @@
   <a href="/orderitems/showcart">My cart&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
   <a href="/favourites">Favourites&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Favourite.where(user_id: @current_user.id).count%>)</a>
   <a href="/favourites/display">Add to Favourites+</a>
+   <a href="/orders/history">Order History</a>
 </div>
 <%elsif @current_user.role=="owner"%>
 <div class="topnav">

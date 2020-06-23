@@ -1,0 +1,29 @@
+<body>
+  <div class="content">
+    <div class="DisplayOrder">
+      <div class="Displaymenu2">
+        <h1>Your Orders</h1>
+      </div>
+      <div class="inline">
+        <%= image_tag("deliveryboy.jpg", :size => "600x550", :alt => "rss feed") %>
+        <% Order.show_history.where(user_id: @current_user.id).each do |order| %>
+          <div class="secondhalf2">
+            <div class="DisplayOrder-card">
+              <div class="DisplayOrder-container">
+                <div class="textline1">
+                Order id: <b><%= order.id.to_s %></b>
+              </div>
+              <div class="textline1">
+                <b>Order time: <%= order.order_date.to_s(:long) %></b>
+              </div>
+              <%= form_with(url: "/orderitems/invoice", method:"post") do %>
+                  <%= hidden_field_tag 'order_id', order.id %>
+                  <%= submit_tag "view", class: "signup-btn-in3" %>
+                <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</body>

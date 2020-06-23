@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get "/menuitems/new1", to: "menuitems#new1"
   post "/menuitems/add", to: "menuitems#add"
   post "/menuitems/search1", to: "menuitems#search1"
+  get "/orders/history", to: "orders#history"
   resources :menuitems
   resources :orders
   resources :orderitems
