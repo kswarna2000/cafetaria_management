@@ -165,7 +165,7 @@ section.page-heading4 {
 
 }
 
-.textline1{
+.textline10{
 
 	margin-top: 30px;
 	margin-bottom: 20px;
@@ -423,4 +423,21 @@ input[type="radio"] {
 	margin-top: 30px;
   margin-left: 350px ;
   font-weight: 600;
+}
+
+
+
+.signup-btn-in16{
+  font-weight: bold;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-bottom: 6px;
+  margin-left: 580px;
+  background: url(backimg.jpg) no-repeat center;
+  color: #fff;
+  border-radius: 44px;
+  cursor: pointer;
+  transition: 0.8s;
 }

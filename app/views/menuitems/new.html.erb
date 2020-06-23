@@ -6,7 +6,7 @@
       </div>
       <section class="page-heading">
 
-         <a href="/menuitems/new1">   <%= submit_tag "Choose from existing items", class: "signup-btn-in5" %></a>
+         <a href="/menuitems/new1">   <%= submit_tag "Choose from existing items", class: "signup-btn-in16" %></a>
 
         <%= form_with(url: "/menuitems", method:"post", class: "") do %>
           <div>
@@ -27,10 +27,7 @@
           </div>
           <%= submit_tag "Add Item", class: "signup-btn-in3" %>
         <% end %>
-
-      </section>
-    </div>
-  </div>
+    </section>
   <div class="DisplayItem">
     <div class="Displaymenu">
       <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
@@ -59,7 +56,9 @@
     <% end %>
     <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
       <%= hidden_field_tag 'menu_id', @current_menu_id %>
-      <%= submit_tag "Done", class: "signup-btn-in5" %>
+      <%= submit_tag "Done", class: "signup-btn-in16" %>
     <% end %>
+  </div>
+    </div>
   </div>
 </body>

@@ -1,11 +1,13 @@
 <body>
+ <div class="content">
+    <div class="DisplayOrder">
   <div class="Displaymenu">
         <h1>Add Items</h1>
       </div>
 
    <section class="page-heading4">
 
-    <a href="/menuitems/new"> <%= submit_tag "Add new item", class: "signup-btn-in5" %></a>
+    <a href="/menuitems/new"> <%= submit_tag "Add new item", class: "signup-btn-in16" %></a>
 
         <% order_id= session[:current_order_id] %>
         <% menu_id= @current_menu_id %>
@@ -74,7 +76,9 @@
     <% end %>
     <%= form_with(url: "/menuitems/done", method:"post", class: "") do %>
       <%= hidden_field_tag 'menu_id', @current_menu_id %>
-      <%= submit_tag "Done", class: "signup-btn-in5" %>
+      <%= submit_tag "Done", class: "signup-btn-in16" %>
     <% end %>
+  </div>
+    </div>
   </div>
 </body>
