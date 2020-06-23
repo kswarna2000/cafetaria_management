@@ -8,7 +8,7 @@
       <section class="page-heading1">
         <%total=0%>
         <% if Orderitem.where(user_id: @current_user.id).in_cart.count ==0%>
-          <i><h4 style="font-family:courier;color: red;">YOUR CART IS EMPTY</h4></i>
+          <i><h4 style="font-family:courier;color: yellow;">YOUR CART IS EMPTY</h4></i>
         <% end %>
         <% Orderitem.where(user_id: @current_user.id).in_cart.each do |orderitem| #tracking current order id %>
           <div class="inline">

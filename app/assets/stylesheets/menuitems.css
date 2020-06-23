@@ -390,3 +390,26 @@ input[type="radio"] {
   margin-left: 430px ;
   font-weight: 600;
 }
+
+.mainoption3{
+  color: yellow;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 600px;
+	font-weight: 600;
+	display: flex;
+}
+
+.textline4{
+
+	margin-right: 20px;
+	margin-left: 525px;
+	margin-bottom: 30px;
+  text-align: center;
+  font-weight: 550;
+  font-size: 22px;
+  font-style: roboto;
+  display: flex;
+
+}
