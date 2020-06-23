@@ -21,11 +21,11 @@
               </div>
               <% if order.delivered_at != nil %>
                 <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>
-                  <%= submit_tag "received?", class: "signup-btn-in3" %>
+                  <%= submit_tag "received?", class: "signup-btn-in8" %>
                 <% end %>
                 <%= form_with(url: "/orders/complain", method:"post") do %>
                   <%= hidden_field_tag 'id', order.id %>
-                  <%= submit_tag "complain", class: "signup-btn-in3" %>
+                  <%= submit_tag "complain", class: "signup-btn-in8" %>
                 <% end %>
               <% end %>
             </div>
