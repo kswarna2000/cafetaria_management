@@ -6,7 +6,7 @@
       </div>
       <hr class="roundedfull">
       <section class="page-heading1">
-        <% Order.where(status: "complaint").each do |order|  #getting only undelivered orders %>
+        <% Order.show_complaints.each do |order|  #getting only undelivered orders %>
           <h4><b>Order time: <%= order.order_date.to_s(:long) %></b></h4>
           <h4><b>Delivery status:
           <%= (order.delivered_at==nil) ?  "Delivery in progress" : order.delivered_at.in_time_zone("Chennai").to_s(:long) %></h4>

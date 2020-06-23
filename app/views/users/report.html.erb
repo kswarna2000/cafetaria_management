@@ -25,7 +25,7 @@
       </div>
       <hr class="roundedfull">
       <section class="page-heading1">
-        <% User.where(role: "customer").each do |user| %>
+        <% User.customers.each do |user| %>
           <div class="inline">
             <h3><b>Customer name : <%= user.first_name %></b></h3>
             <%= form_with(url: "/orders/customer", method:"post") do %>

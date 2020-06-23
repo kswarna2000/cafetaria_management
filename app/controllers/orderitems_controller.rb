@@ -1,12 +1,4 @@
 class OrderitemsController < ApplicationController
-  def index
-    if session[:current_order_id]
-      render "index"
-    else
-      redirect_to orders_path
-    end
-  end
-
   def create
     order_id = session[:current_order_id]
     menu_item_id = params[:menu_item_id]

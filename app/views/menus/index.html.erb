@@ -5,7 +5,7 @@
         <div class="Displaymenu">
           <h1>Your Menus</h1>
         </div>
-        <% Menu.where(user_id: @current_user.id).each do |menu| %>
+        <% Menu.show_menus(@current_user.id).each do |menu| %>
           <div class="">
             <div class="offer-item">
               <img src="/assets/menu-item-thumbnail-03.jpg" alt="">

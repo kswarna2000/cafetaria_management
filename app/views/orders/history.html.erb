@@ -6,7 +6,7 @@
       </div>
       <div class="inline">
         <%= image_tag("deliveryboy.jpg", :size => "600x550", :alt => "rss feed") %>
-        <% Order.show_history.where(user_id: @current_user.id).each do |order| %>
+        <% Order.show_history( @current_user.id).each do |order| %>
           <div class="secondhalf2">
             <div class="DisplayOrder-card">
               <div class="DisplayOrder-container">

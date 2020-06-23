@@ -9,7 +9,7 @@
         <div class="offer-item" style="align: center;">
           <%= form_with(url: "/favourites/search", method: "post", class: "") do %>
             <select id="roles" name="menuitem_id" class="signup-btn-in13" >
-              <% Favourite.where(user_id: @current_user.id).each do |favourite|%>
+              <% Favourite.show_favourites(@current_user.id).each do |favourite|%>
                 <option value=<%= favourite.menu_item_id %>> <%= favourite.menu_item_name %></option>
               <% end %>
             </select>

@@ -27,6 +27,7 @@
                 <h4><b>Item : <%= menuitem.item_name %></b></h4>
                 <%= hidden_field_tag 'menu_item_id', menuitem.id %>
                 <%= hidden_field_tag 'menu_item_name', menuitem.item_name %>
+                <%= hidden_field_tag 'menu_item_description', menuitem.item_description %>
                 <h4><b>Description : <%= menuitem.item_description %></b></h4>
                 <h4>Price : &#8377 <%= menuitem.item_price.to_s %></h4>
                 <%= hidden_field_tag 'menu_item_price', menuitem.item_price %>
@@ -48,7 +49,7 @@
         <div class="Displaymenu">
           <h4><%= Menu.find( @current_menu_id).name %> Menu:</h4>
         </div>
-        <% Menuitem.where(menu_id: @current_menu_id,status: "active").each do |menuitem| %>
+        <% Menuitem.show_active_items(@current_menu_id).each do |menuitem| %>
           <div class="">
             <div class="offer-item">
               <% if menuitem.image_url == "" %>

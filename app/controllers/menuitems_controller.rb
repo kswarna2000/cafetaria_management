@@ -124,7 +124,7 @@ class MenuitemsController < ApplicationController
       item_name = params[:menu_item_name]
       item_description = params[:menu_item_description]
       item_price = (params[:menu_item_price]).to_f
-      image_url = params[:image_url]
+      image_url = params[:menu_image_url]
       new_menuitem = Menuitem.new(
         menu_id: menu_id,
         item_name: item_name,
@@ -133,7 +133,7 @@ class MenuitemsController < ApplicationController
         image_url: image_url,
         status: "active",
       )
-      if image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg") or image_url == ""
+      if image_url == "" or image_url.ends_with?(".jpeg") or image_url.ends_with?(".png") or image_url.ends_with?(".jpg")
         if new_menuitem.save
           session[:search_menuitem_id] = nil
           flash[:success] = "Added Menuitem to the menu successfully!!"

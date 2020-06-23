@@ -4,7 +4,7 @@
       <div class="Displaymenu">
         <h1>Your Complaint Orders</h1>
       </div>
-      <% Order.where(user_id: @current_user.id, status: "complaint" ).each do |order| %>
+      <% Order.complaints(@current_user.id).each do |order| %>
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <div class="textline10">

@@ -23,7 +23,7 @@
       <div class="Displaymenu">
         <h1>Customers</h1>
       </div>
-      <% User.where(role: "customer").each do |user| %>
+      <% User.customers.each do |user| %>
         <div class="DisplayOrder-card">
           <div class="DisplayOrder-container">
             <div class="textline">

@@ -5,10 +5,9 @@
         <h1>Order no <%= session[:show_order_id] %>: </h1>
       </div>
       <section class="page-heading">
-        <% Orderitem.where(order_id: session[:show_order_id]).each do |orderitem| %>
+        <% Orderitem.show_order_items(session[:show_order_id]).each do |orderitem| %>
           <div class="">
             <div class="">
-              <h4><b>Order id : <%= orderitem.order_id.to_s %></b></h4>
               <h4><b>Item name : <%= orderitem.menu_item_name %></b></h4>
               <h4><b>Item quantity : <%= orderitem.menu_item_quantity %></b></h4>
             </div>

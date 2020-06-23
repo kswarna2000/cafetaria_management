@@ -11,7 +11,7 @@
         <div class="offer-item" style="align: center;">
           <%= form_with(url: "/menuitems/search", method: "post", class: "") do %>
             <select id="roles" name="menuitem_id" class="signup-btn-in13" >
-              <% Menuitem.where(menu_id: menu_id ).each do |menuitem|%>
+              <% Menuitem.show_active_items(menu_id).each do |menuitem|%>
                 <option value=<%= menuitem.id %>> <%= menuitem.item_name %></option>
               <% end %>
             </select>

@@ -12,7 +12,9 @@
     <% if @current_user %>
       <div class="header">
         <p class="logo">Cafeteria Management</p>
-        <div class="header-right">
+         <div class="header-right">
+
+          <p class="nav-text">Id: <%=@current_user.id%></p>
           <p class="nav-text"><%=@current_user.first_name+" "+@current_user.last_name%></p>
           <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
         </div>
@@ -22,7 +24,7 @@
           <a href="/orders">show orders</a>
           <a href="/orders/complaints">my complaints</a>
           <a href="/orderitems/new1">Place new order</a>
-          <a href="/orderitems/showcart">My cart&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
+          <a href="/orderitems/showcart">My cart&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.in_cart(@current_user.id).count%>)</a>
           <a href="/favourites">Favourites&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Favourite.where(user_id: @current_user.id).count%>)</a>
           <a href="/orders/history">Order History</a>
         </div>

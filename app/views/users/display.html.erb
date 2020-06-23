@@ -37,7 +37,7 @@
             <% Order.where(user_id: user.id).each do |order| #calculate total sales by the user %>
               <% sum+=order.total %>
             <% end %>
-            <h4><b>Total Sales : <%=sum%></b></h4>
+            <h4><b>Total Sales : &#8377 <%=sum%></b></h4>
           <% end %>
         <% end %>
       </section>

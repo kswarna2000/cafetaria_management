@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def self.check(credentials)
     where("gmail=? and password=?", credentials["email"], credentials["password"]).exists?
   end
+
+  def self.customers
+    where(role: "customer")
+  end
 end
