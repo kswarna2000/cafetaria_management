@@ -349,3 +349,44 @@ input[type="radio"] {
   display: inline-flex;
 
 }
+
+.textline3{
+
+  margin-top: 20px;
+  margin-right: 20px;
+  text-align: center;
+  font-weight: 550;
+  font-size: 22px;
+  font-style: roboto;
+  display: inline-flex;
+
+}
+
+
+.mainoption1{
+  color: yellow;
+  font-size: 35px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.option{
+  color: white;
+  display: inline-flex;
+  font-size: 24px;
+  margin-bottom: 25px;
+  margin-left: 12px;
+  margin-right: 20px;
+  font-weight: 600;
+}
+
+.option1{
+  color: white;
+  display: inline-flex;
+  font-size: 24px;
+  margin-bottom: 25px;
+  margin-left: 430px ;
+  font-weight: 600;
+}
