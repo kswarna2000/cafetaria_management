@@ -40,6 +40,12 @@ class OrderitemsController < ApplicationController
     menu_item_quantity = params[:menu_item_quantity].to_i
     menu_image_url = params[:menu_image_url]
 
+    if menu_item_quantity == 0
+      flash[:error] = "Item Quantity can't be zero!! "
+      redirect_to "/orderitems/index1"
+      return
+    end
+
     orderitems = Orderitem.where(user_id: user_id, menu_item_id: menu_item_id, in_cart: true)
     if orderitems.count > 0 #if particular menuitem is already in the cart
       orderitems[0].menu_item_quantity = orderitems[0].menu_item_quantity + menu_item_quantity
