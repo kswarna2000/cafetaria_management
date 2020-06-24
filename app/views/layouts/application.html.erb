@@ -48,7 +48,7 @@
           <a href="/orderitems/new1">place new order</a>
           <a href="/orders">Placed orders</a>
           <a href="/orders/viewcomplaints">view complaints</a>
-          <a href="/orderitems/showcart">My cart &nbsp;  <i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.where(user_id: @current_user.id).in_cart.count%>)</a>
+          <a href="/orderitems/showcart">My cart &nbsp;  <i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.in_cart(@current_user.id).count%>)</a>
           <a href="/orders/history">Order History</a>
         </div>
       <% end %>
