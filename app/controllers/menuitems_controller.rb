@@ -65,7 +65,7 @@ class MenuitemsController < ApplicationController
         flash[:success] = "Updated item " + menuitem.item_name.to_s + " Successfully!!"
         redirect_to new_menuitem_path
       else
-        flash[:error] = new_menuitem.errors.full_messages.join(",")
+        flash[:error] = menuitem.errors.full_messages.join(",")
         render "edititem"
       end
     else
