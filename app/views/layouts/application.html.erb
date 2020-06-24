@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -23,7 +24,7 @@
           <a href="/orders/complaints">my complaints</a>
           <a href="/orderitems/new1">Place new order</a>
           <a href="/orderitems/showcart">My cart&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.in_cart(@current_user.id).count%>)</a>
-          <a href="/favourites">Favourites&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Favourite.where(user_id: @current_user.id).count%>)</a>
+          <a href="/favourites">Favourites&nbsp;&nbsp;<i class="material-icons" style="font-size:20px">favorite</i> (<%= Favourite.where(user_id: @current_user.id).count%>)</a>
           <a href="/orders/history">Order History</a>
         </div>
       <% elsif @current_user.role=="owner" %>
