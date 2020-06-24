@@ -11,7 +11,7 @@
           <i><h4 style="font-family:courier;color: yellow;">YOUR CART IS EMPTY</h4></i>
         <% end %>
         <% Orderitem.in_cart(@current_user.id).each do |orderitem| #tracking current order id %>
-          <div class="inline">
+          <div class="textline5">
             <h4><b><%= orderitem.menu_item_name %></b></h4>
             <div class="floatright">
               <h4> &#8377
