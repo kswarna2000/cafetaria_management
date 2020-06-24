@@ -9,7 +9,7 @@
       <div class="DisplayOrder-card">
         <div class="DisplayOrder-container">
           <div class="textline">
-            <b>Order time: <%= order.order_date.to_s(:long) %></b>
+            <b>Order time: <%= order.order_date.in_time_zone("Chennai").to_s(:long) %></b>
           </div>
            <div class="textline">
             <b>Order id: <%= order.id %></b>
