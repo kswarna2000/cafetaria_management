@@ -540,3 +540,17 @@ input[type="radio"] {
 .header1-right {
   float: right;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: larger;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
