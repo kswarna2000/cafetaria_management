@@ -13,7 +13,12 @@ class UsersController < ApplicationController
   def create
     if User.exists?(email: params[:email]) and User.exists?(role: params[:role])
       flash[:error] = "User Email Id already exists"
-      redirect_to new_user_path
+      if params[:role] == "owner"
+        redirect_to new_user_path
+        return
+      else
+        redirect_to "/users/newclerk"
+      end
       return
     end
 
