@@ -13,8 +13,6 @@
       <div class="header">
         <p class="logo">Cafeteria Management</p>
          <div class="header-right">
-
-          <p class="nav-text">Id: <%=@current_user.id%></p>
           <p class="nav-text"><%=@current_user.first_name+" "+@current_user.last_name%></p>
           <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
         </div>
