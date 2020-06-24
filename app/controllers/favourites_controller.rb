@@ -31,13 +31,15 @@ class FavouritesController < ApplicationController
   end
 
   def index
+    puts("hiiiii")
+    puts(session[:search_favourite_menuitem_id])
     render "index"
   end
 
   def search
     menuitem_id = params[:menuitem_id]
+    puts(params[:menuitem_id])
     session[:search_favourite_menuitem_id] = menuitem_id
-
     redirect_to "/favourites"
   end
 

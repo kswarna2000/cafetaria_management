@@ -16,7 +16,7 @@
             <%= submit_tag "Search item" , class: "signup-btn-in12" %>
           <% end %>
         </div>
-        <% if session[:search_favourite_menuitem_id] != nil %>
+        <% if session[:search_favourite_menuitem_id] != nil && session[:search_favourite_menuitem_id] != "" %>
           <% menuitem=Menuitem.find(session[:search_favourite_menuitem_id]) %>
           <%= form_with(url: "/orderitems/cart", method:"post", class: "") do %>
             <div class="offer-item">
