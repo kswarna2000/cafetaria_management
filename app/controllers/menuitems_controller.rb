@@ -89,14 +89,12 @@ class MenuitemsController < ApplicationController
   def search
     menuitem_id = params[:menuitem_id]
     session[:search_menuitem_id] = menuitem_id
-
     redirect_to "/orderitems/index1"
   end
 
   def search1
     menuitem_id = params[:menuitem_id]
     session[:search_menuitem_id] = menuitem_id
-
     redirect_to "/menuitems/new1"
   end
 

@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   @@orders_report = nil
 
   def index
+    @show_orders = Order.show_orders(@current_user.id)
     render "index"
   end
 
