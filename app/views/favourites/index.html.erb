@@ -40,6 +40,7 @@
                 <% end %>
               </div>
             </div>
+            <%= hidden_field_tag 'favourites', "yes" %>
             <% if menuitem.status == "active"%>
               <%= submit_tag "Add to cart", class: "signup-btn-in6"%>
             <% else %>

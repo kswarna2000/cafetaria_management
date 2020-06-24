@@ -51,7 +51,7 @@ class OrderitemsController < ApplicationController
       orderitems[0].menu_item_quantity = orderitems[0].menu_item_quantity + menu_item_quantity
       if orderitems[0].save
         flash[:success] = "Item Updated in cart successfully!! "
-        redirect_to "/orderitems/index1"
+        redirect_to "/orderitems/showcart"
         return
       else
         flash[:error] = neworderitem.errors.full_messages.join(",")
@@ -70,7 +70,7 @@ class OrderitemsController < ApplicationController
     )
     if neworderitem.save
       flash[:success] = "Item Added to cart successfully!! "
-      redirect_to "/orderitems/index1"
+      redirect_to "/orderitems/showcart"
     else
       flash[:error] = neworderitem.errors.full_messages.join(",")
       redirect_to "/orderitems/index1"
