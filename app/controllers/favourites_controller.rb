@@ -31,8 +31,6 @@ class FavouritesController < ApplicationController
   end
 
   def index
-    puts("hiiiii")
-    puts(session[:search_favourite_menuitem_id])
     render "index"
   end
 

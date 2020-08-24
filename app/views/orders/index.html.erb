@@ -17,7 +17,7 @@
                 <b>Order time: <%= order.order_date.in_time_zone("Chennai").to_s(:long) %></b>
               </div>
               <div class="textline10"><b>Delivery status:
-                <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.to_s(:long)}" %>
+                <%= (order.delivered_at==nil) ?  "Delivery in progress" : "Delivered at #{order.delivered_at.in_time_zone("Chennai").to_s(:long)}" %>
               </div>
               <% if order.delivered_at != nil %>
                 <%= form_with(url: "/orders/#{order.id}", method:"delete") do %>

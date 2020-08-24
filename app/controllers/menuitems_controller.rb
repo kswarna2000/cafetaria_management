@@ -2,7 +2,6 @@ class MenuitemsController < ApplicationController
   def new
     if session[:current_menu_id]
       @current_menu_id = session[:current_menu_id]
-
       render "new"
     else
       redirect_to new_menu_path

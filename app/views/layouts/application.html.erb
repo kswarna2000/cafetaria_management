@@ -15,6 +15,7 @@
         <p class="logo">Cafeteria Management</p>
          <div class="header-right">
           <p class="nav-text"><%=@current_user.first_name+" "+@current_user.last_name%></p>
+
           <p class="nav-text">   <%= link_to "sign-out",destroy_session_path,method: "delete"%>  </p>
         </div>
       </div>
@@ -26,7 +27,7 @@
           <a href="/orderitems/showcart">My cart&nbsp;&nbsp;<i class="fa fa-shopping-cart" style="font-size:22px"></i> (<%= Orderitem.in_cart(@current_user.id).count%>)</a>
           <a href="/favourites">Favourites&nbsp;&nbsp;<i class="material-icons" style="font-size:20px">favorite</i> (<%= Favourite.where(user_id: @current_user.id).count%>)</a>
           <a href="/orders/history">Order History</a>
-          <a href="/favourites/display/history">Add To Favourites+</a>
+          <a href="/favourites/display">Add To Favourites+</a>
         </div>
       <% elsif @current_user.role=="owner" %>
         <div class="topnav">
@@ -62,10 +63,9 @@
       <p class=Flash-success>
         <%= flash[:success] %>
       </p>
+
     <% end %>
     <%= yield %>
-    <div class="footer">
-      <p>SAAS PROJECT</p>
-    </div>
+
   </body>
 </html>

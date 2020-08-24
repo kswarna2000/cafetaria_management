@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       elsif current_user.role == "owner"
         redirect_to menus_path
       else
-        redirect_to "/orders/showorders"
+        redirect_to orders_path
       end
     else
       render :index

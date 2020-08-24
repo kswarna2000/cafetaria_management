@@ -6,6 +6,6 @@ class Menuitem < ActiveRecord::Base
   validates :item_price, numericality: { greater_than: 0 }
 
   def self.show_active_items(menu_id)
-    where.not(menu_id: menu_id, status: "delete")
+    where(menu_id: menu_id).where.not(status: "delete")
   end
 end

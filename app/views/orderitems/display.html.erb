@@ -3,6 +3,13 @@
     <div class="DisplayOrder">
       <div class="Displaymenu">
         <h1>Order no <%= session[:show_order_id] %>: </h1>
+        <%order=Order.find(session[:show_order_id])%>
+        <%if order.walkin_customer ==true%>
+        <h1> Walkin Customer with id:<%=order.user_id%></h1>
+        <%else%>
+        <%customer=User.find(order.user_id)%>
+        <h1>Customer name: <%=customer.first_name + customer.last_name%>
+        <%end%>
       </div>
       <section class="page-heading">
         <% Orderitem.show_order_items(session[:show_order_id]).each do |orderitem| %>

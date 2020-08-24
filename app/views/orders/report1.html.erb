@@ -15,6 +15,7 @@
           </div>
         <div>
       </section>
+      <% total=0%>
       <%if @orders_report != nil %>
         <% @orders_report.each do |order|  #getting only undelivered orders %>
           <div class="DisplayOrder-card">
@@ -22,13 +23,15 @@
              <div class="textline">
               <b>Order id: <%= order.order_date.in_time_zone("Chennai").to_s(:long) %></b>
              </div>
+             <%total+=order.total%>
               <%= form_with(url: "/orderitems/invoice", method:"post") do %>
                 <%= hidden_field_tag 'order_id', order.id %>
-                <%= submit_tag "Invoice details", class: "signup-btn-in4" %>
+                <%= submit_tag "Invoice details", class: "signup-btn-in6" %>
               <% end %>
             </div>
           </div>
         <% end %>
+         <b><h1 style="text-align: center;font-size: 40px;"> <%= "Total Sales= "+total.to_s%></h1></b>
       <% end %>
     </div>
   </div>
